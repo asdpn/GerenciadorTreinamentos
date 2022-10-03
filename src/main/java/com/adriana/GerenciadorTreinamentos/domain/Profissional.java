@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,6 +24,10 @@ public class Profissional implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name="id_funcao")
+	private Funcao funcao;
 	
 	@JsonIgnore
 	@ManyToMany
@@ -44,11 +49,13 @@ public class Profissional implements Serializable{
 		
 	}
 
-	public Profissional(Integer id) {
+	public Profissional(Integer id, Funcao funcao) {
 		super();
 		this.id = id;
+		this.funcao = funcao;
 	}
 	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -97,4 +104,12 @@ public class Profissional implements Serializable{
 		this.provas = provas;
 	}
 	
+	public Funcao getFuncao() {
+		return funcao;
+	}
+
+	public void setFuncao(Funcao funcao) {
+		this.funcao = funcao;
+	}
+
 }

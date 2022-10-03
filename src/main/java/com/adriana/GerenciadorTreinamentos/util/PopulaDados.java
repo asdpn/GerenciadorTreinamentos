@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.adriana.GerenciadorTreinamentos.domain.Categoria;
+import com.adriana.GerenciadorTreinamentos.domain.Funcao;
+import com.adriana.GerenciadorTreinamentos.domain.Profissional;
 import com.adriana.GerenciadorTreinamentos.domain.Prova;
 import com.adriana.GerenciadorTreinamentos.domain.Questao;
+import com.adriana.GerenciadorTreinamentos.domain.Treinamento;
 import com.adriana.GerenciadorTreinamentos.repository.CategoriaRepository;
 import com.adriana.GerenciadorTreinamentos.repository.CertificadoRepository;
 import com.adriana.GerenciadorTreinamentos.repository.ConviteRepository;
@@ -69,9 +72,23 @@ public class PopulaDados {
 		Questao q4 = new Questao(null, "Um menino tem 50 laranjas e comeu 2, com quantas ele ficou?", "48");
 		Questao q5 = new Questao(null, "Um menino tem 20 laranjas e comeu 10, com quantas ele ficou?", "10");
 		
+		Treinamento t1 = new Treinamento(null, "C++", "Básico de C++", null, dev);
+		Treinamento t2 = new Treinamento(null, ".NET", "Básico de .NET", null, dev);
+		Treinamento t3 = new Treinamento(null, "Comunicação Não Violenta", "Básico de CNV", null, com);
+		
+		Funcao gerente = new Funcao(null, "Gerente");
+		Funcao coordenador = new Funcao(null, "Coordenador");
+		
+		Profissional pf1 = new Profissional(null, gerente);
+		Profissional pf2 = new Profissional(null, coordenador);
+		
 		categoriaRepository.saveAll(Arrays.asList(dev, lid, com));
 		provaRepository.saveAll(Arrays.asList(p1,p2));
 		questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
+		treinamentoRepository.saveAll(Arrays.asList(t1,t2,t3));
+		funcaoRepository.saveAll(Arrays.asList(gerente, coordenador));
+		profissionalRepository.saveAll(Arrays.asList(pf1,pf2));
+		
 
 		p1.getQuestoes().addAll(Arrays.asList(q1,q2,q3));
 		p2.getQuestoes().addAll(Arrays.asList(q3,q4,q5));

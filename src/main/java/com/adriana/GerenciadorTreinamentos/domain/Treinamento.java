@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Treinamento implements Serializable{
@@ -25,6 +26,10 @@ public class Treinamento implements Serializable{
 	private String descricao;
 	private String motivoReprovacao;
 	
+	@ManyToOne
+	@JoinColumn(name="id_categoria")
+	private Categoria categoria;
+	
 	@ManyToMany
 	@JoinTable(name = "TREINAMENTO_PROFISSIONAL",
 			joinColumns = @JoinColumn(name = "id_treinamento"),
@@ -36,13 +41,13 @@ public class Treinamento implements Serializable{
 		
 	}
 
-	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao) {
+	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;	
 		this.motivoReprovacao = motivoReprovacao;	
-		
+		this.categoria = categoria;
 	}
 	
 	@Override
@@ -100,6 +105,14 @@ public class Treinamento implements Serializable{
 
 	public void setProfissionais(List<Profissional> profissionais) {
 		this.profissionais = profissionais;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 }
