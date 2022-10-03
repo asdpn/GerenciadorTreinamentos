@@ -1,12 +1,17 @@
 package com.adriana.GerenciadorTreinamentos.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Treinamento implements Serializable{
@@ -19,6 +24,13 @@ public class Treinamento implements Serializable{
 	private String titulo;
 	private String descricao;
 	private String motivoReprovacao;
+	
+	@ManyToMany
+	@JoinTable(name = "TREINAMENTO_PROFISSIONAL",
+			joinColumns = @JoinColumn(name = "id_treinamento"),
+			inverseJoinColumns = @JoinColumn(name = "id_profissional"))
+	
+	private List<Profissional> profissionais = new ArrayList<>();
 	
 	public Treinamento() {
 		

@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adriana.GerenciadorTreinamentos.domain.Turma;
-import com.adriana.GerenciadorTreinamentos.service.TurmaService;
+import com.adriana.GerenciadorTreinamentos.domain.Certificado;
+import com.adriana.GerenciadorTreinamentos.service.CertificadoService;
 
 @RestController
-@RequestMapping(value = "/turma")
+@RequestMapping(value = "/certificado")
 public class CertificadoResource {
 
 	@Autowired
-	TurmaService service;
+	CertificadoService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Turma> find(@PathVariable Integer id) {
-		Turma obj = service.find(id);
+	public ResponseEntity<Certificado> find(@PathVariable Integer id) {
+		Certificado obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }

@@ -1,12 +1,15 @@
 package com.adriana.GerenciadorTreinamentos.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Turma implements Serializable{
@@ -18,6 +21,11 @@ public class Turma implements Serializable{
 	private Integer id;
 	private Integer tamanhoMaximo;
 	private Integer tamanhoMinimo;
+	
+	
+	@ManyToMany(mappedBy = "turmas")
+	
+	private List<Profissional> profissionais = new ArrayList<>();
 	
 	public Turma() {
 		
@@ -70,6 +78,14 @@ public class Turma implements Serializable{
 
 	public void setTamanhoMaximo(Integer tamanhoMaximo) {
 		this.tamanhoMaximo = tamanhoMaximo;
+	}
+
+	public List<Profissional> getProfissionais() {
+		return profissionais;
+	}
+
+	public void setProfissionais(List<Profissional> profissionais) {
+		this.profissionais = profissionais;
 	}
 	
 	
