@@ -21,13 +21,13 @@ public class Prova implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Float notaMaxima;
-	private Float notaMinima;
+	private Double notaMaxima;
+	private Double notaMinima;
 	
 	
 	@ManyToMany
 	@JoinTable(name = "PROVA_PROFISSIONAL",
-			joinColumns = @JoinColumn(name = "id_profissional"),
+			joinColumns = @JoinColumn(name = "id_prova"),
 			inverseJoinColumns = @JoinColumn(name = "id_profissional"))
 	
 	private List<Profissional> profissionais = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Prova implements Serializable{
 		
 	}
 
-	public Prova(Integer id, Float notaMaxima, Float notaMinima) {
+	public Prova(Integer id, Double notaMaxima, Double notaMinima) {
 		super();
 		this.id = id;
 		this.notaMaxima = notaMaxima;
@@ -74,20 +74,36 @@ public class Prova implements Serializable{
 		this.id = id;
 	}
 
-	public Float getNotaMaxima() {
+	public Double getNotaMaxima() {
 		return notaMaxima;
 	}
 
-	public void setNotaMaxima(Float notaMaxima) {
+	public void setNotaMaxima(Double notaMaxima) {
 		this.notaMaxima = notaMaxima;
 	}
 	
-	public Float getNotaMinima() {
+	public Double getNotaMinima() {
 		return notaMinima;
 	}
 
-	public void setNotaMinima(Float notaMinima) {
+	public void setNotaMinima(Double notaMinima) {
 		this.notaMinima = notaMinima;
+	}
+
+	public List<Profissional> getProfissionais() {
+		return profissionais;
+	}
+
+	public void setProfissionais(List<Profissional> profissionais) {
+		this.profissionais = profissionais;
+	}
+
+	public List<Questao> getQuestoes() {
+		return questoes;
+	}
+
+	public void setQuestoes(List<Questao> questoes) {
+		this.questoes = questoes;
 	}
 	
 	

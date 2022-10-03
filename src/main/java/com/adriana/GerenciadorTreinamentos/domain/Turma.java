@@ -88,5 +88,4 @@ public class Turma implements Serializable{
 		this.profissionais = profissionais;
 	}
 	
-	
 }

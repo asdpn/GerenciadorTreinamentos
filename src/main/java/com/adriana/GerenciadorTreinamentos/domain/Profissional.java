@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Profissional implements Serializable{
 
@@ -22,6 +24,7 @@ public class Profissional implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "PROFISSIONAL_TURMA",
 			joinColumns = @JoinColumn(name = "id_profissional"),
@@ -29,9 +32,11 @@ public class Profissional implements Serializable{
 	
 	private List<Turma> turmas = new ArrayList<>();
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "profissionais")
 	private List<Treinamento> treinamentos = new ArrayList<>();
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "profissionais")
 	private List<Prova> provas = new ArrayList<>();
 	
@@ -72,9 +77,24 @@ public class Profissional implements Serializable{
 	public List<Turma> getTurmas() {
 		return turmas;
 	}
-
 	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
 	}	
+
+	public List<Treinamento> getTreinamentos() {
+		return treinamentos;
+	}
+
+	public void setTreinamentos(List<Treinamento> treinamentos) {
+		this.treinamentos = treinamentos;
+	}
+
+	public List<Prova> getProvas() {
+		return provas;
+	}
+
+	public void setProvas(List<Prova> provas) {
+		this.provas = provas;
+	}
 	
 }

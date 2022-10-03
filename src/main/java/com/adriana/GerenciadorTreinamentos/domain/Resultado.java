@@ -16,13 +16,13 @@ public class Resultado implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Float notaObtida;
+	private Double notaObtida;
 	
 	public Resultado() {
 		
 	}
 
-	public Resultado(Integer id, Float notaObtida) {
+	public Resultado(Integer id, Double notaObtida) {
 		super();
 		this.id = id;
 		this.notaObtida = notaObtida;
@@ -54,13 +54,12 @@ public class Resultado implements Serializable{
 		this.id = id;
 	}
 
-	public Float getNotaObtida() {
+	public Double getNotaObtida() {
 		return notaObtida;
 	}
 
-	public void setNotaObtida(Float notaObtida) {
+	public void setNotaObtida(Double notaObtida) {
 		this.notaObtida = notaObtida;
 	}
-	
 	
 }

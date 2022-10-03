@@ -93,6 +93,13 @@ public class Treinamento implements Serializable{
 	public void setMotivoReprovacao(String motivoReprovacao) {
 		this.motivoReprovacao = motivoReprovacao;
 	}
-	
+
+	public List<Profissional> getProfissionais() {
+		return profissionais;
+	}
+
+	public void setProfissionais(List<Profissional> profissionais) {
+		this.profissionais = profissionais;
+	}
 	
 }

@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Questao implements Serializable{
 
@@ -22,6 +24,7 @@ public class Questao implements Serializable{
 	private String cabecalho;
 	private String gabarito;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "questoes")
 	private List<Prova> provas = new ArrayList<>();
 	
@@ -78,5 +81,12 @@ public class Questao implements Serializable{
 		this.gabarito = gabarito;
 	}
 	
-	
+	public List<Prova> getProvas() {
+		return provas;
+	}
+
+	public void setProvas(List<Prova> provas) {
+		this.provas = provas;
+	}
+		
 }
