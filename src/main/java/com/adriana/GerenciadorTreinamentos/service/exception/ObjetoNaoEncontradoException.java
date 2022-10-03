@@ -1,4 +1,4 @@
-package com.adriana.GerenciadorTreinamentos.service.expection;
+package com.adriana.GerenciadorTreinamentos.service.exception;
 
 public class ObjetoNaoEncontradoException extends RuntimeException{
 	private static final long serialVersionUID = 1L;

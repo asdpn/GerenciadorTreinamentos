@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.adriana.GerenciadorTreinamentos.domain.Categoria;
 import com.adriana.GerenciadorTreinamentos.repository.CategoriaRepository;
-import com.adriana.GerenciadorTreinamentos.service.expection.ObjetoNaoEncontradoException;
+import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
+
 
 @Service
 public class CategoriaService {
@@ -17,6 +18,6 @@ public class CategoriaService {
 	
 	public Categoria find (Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Categoria.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Categoria.class.getName()));
 	}
 }

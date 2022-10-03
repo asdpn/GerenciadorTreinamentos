@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adriana.GerenciadorTreinamentos.domain.Turma;
 import com.adriana.GerenciadorTreinamentos.repository.TurmaRepository;
+import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
 @Service
 public class TurmaService {
@@ -16,6 +17,6 @@ public class TurmaService {
 	
 	public Turma find (Integer id) {
 		Optional<Turma> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Turma.class.getName()));
 	}
 }

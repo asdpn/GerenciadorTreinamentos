@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adriana.GerenciadorTreinamentos.domain.Convite;
 import com.adriana.GerenciadorTreinamentos.repository.ConviteRepository;
+import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
 @Service
 public class ConviteService {
@@ -16,6 +17,6 @@ public class ConviteService {
 	
 	public Convite find (Integer id) {
 		Optional<Convite> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Convite.class.getName()));
 	}
 }

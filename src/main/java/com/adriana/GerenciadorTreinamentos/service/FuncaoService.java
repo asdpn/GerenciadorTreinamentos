@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adriana.GerenciadorTreinamentos.domain.Funcao;
 import com.adriana.GerenciadorTreinamentos.repository.FuncaoRepository;
+import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
 @Service
 public class FuncaoService {
@@ -16,6 +17,6 @@ public class FuncaoService {
 	
 	public Funcao find (Integer id) {
 		Optional<Funcao> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Funcao.class.getName()));
 	}
 }

@@ -7,16 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.adriana.GerenciadorTreinamentos.service.expection.ObjetoNaoEncontradoException;
+import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
 @ControllerAdvice
 public class ResourceExpectionHandler {
 	
 	@ExceptionHandler(ObjetoNaoEncontradoException.class)
-	
 	public ResponseEntity<StandardError> objectNotFound(ObjetoNaoEncontradoException e, HttpServletRequest request) {
 		StandardError erro = new StandardError(HttpStatus.NOT_FOUND.value(), e.getMessage());
-		return ResponseEntity.status(null).body(erro);
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
 	}
 
 }
+

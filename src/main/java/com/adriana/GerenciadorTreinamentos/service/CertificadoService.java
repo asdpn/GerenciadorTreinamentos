@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adriana.GerenciadorTreinamentos.domain.Certificado;
 import com.adriana.GerenciadorTreinamentos.repository.CertificadoRepository;
+import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
 @Service
 public class CertificadoService {
@@ -16,6 +17,6 @@ public class CertificadoService {
 	
 	public Certificado find (Integer id) {
 		Optional<Certificado> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Certificado.class.getName()));
 	}
 }
