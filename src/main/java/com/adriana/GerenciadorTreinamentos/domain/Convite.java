@@ -1,6 +1,7 @@
 package com.adriana.GerenciadorTreinamentos.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -17,17 +18,19 @@ public class Convite implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String localLink;
-	//private Datetime dataHora;
+	private Date data;
+	private Integer hora;
 	
 	public Convite() {
 		
 	}
 
-	public Convite(Integer id, String localLink) {
+	public Convite(Integer id, String localLink, Date data, Integer hora) {
 		super();
 		this.id = id;
 		this.localLink = localLink;
-		//this.dataHora = dataHora;	
+		this.data = data;	
+		this.hora = hora;
 	}
 	
 	@Override
@@ -63,13 +66,21 @@ public class Convite implements Serializable{
 		this.localLink = localLink;
 	}
 	
-	//public String getDataHora() {
-	//	return dataHora;
-	//}
+	public Date getData() {
+		return data;
+	}
 
-	//public void setDataHora(DateTime dataHora) {
-	//	this.dataHora = dataHora;
-	//}
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public Integer getHora() {
+		return hora;
+	}
+
+	public void setHora(Integer hora) {
+		this.hora = hora;
+	}
 	
 	
 }

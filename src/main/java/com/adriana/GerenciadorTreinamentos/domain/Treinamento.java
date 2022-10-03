@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusTreinamento;
+
 @Entity
 public class Treinamento implements Serializable{
 
@@ -25,6 +27,8 @@ public class Treinamento implements Serializable{
 	private String titulo;
 	private String descricao;
 	private String motivoReprovacao;
+	
+	private StatusTreinamento statusTreinamento; 
 	
 	@ManyToOne
 	@JoinColumn(name="id_categoria")
@@ -41,13 +45,14 @@ public class Treinamento implements Serializable{
 		
 	}
 
-	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria) {
+	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;	
 		this.motivoReprovacao = motivoReprovacao;	
 		this.categoria = categoria;
+		this.statusTreinamento = statusTreinamento;
 	}
 	
 	@Override
@@ -113,6 +118,14 @@ public class Treinamento implements Serializable{
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public StatusTreinamento getStatusTreinamento() {
+		return statusTreinamento;
+	}
+
+	public void setStatusTreinamento(StatusTreinamento statusTreinamento) {
+		this.statusTreinamento = statusTreinamento;
 	}
 	
 }

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusCertificado;
+
 @Entity
 public class Certificado implements Serializable{
 
@@ -16,14 +18,16 @@ public class Certificado implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private StatusCertificado statusCertificado;
 	
 	public Certificado() {
 		
 	}
 
-	public Certificado(Integer id) {
+	public Certificado(Integer id, StatusCertificado statusCertificado) {
 		super();
 		this.id = id;
+		this.statusCertificado = statusCertificado;
 		
 	}
 	
@@ -50,6 +54,14 @@ public class Certificado implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public StatusCertificado getStatusCertificado() {
+		return statusCertificado;
+	}
+
+	public void setStatusCertificado(StatusCertificado statusCertificado) {
+		this.statusCertificado = statusCertificado;
 	}
 	
 }

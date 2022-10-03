@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusResultado;
+
 @Entity
 public class Resultado implements Serializable{
 
@@ -17,16 +19,17 @@ public class Resultado implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Double notaObtida;
+	private StatusResultado statusResultado;
 	
 	public Resultado() {
 		
 	}
 
-	public Resultado(Integer id, Double notaObtida) {
+	public Resultado(Integer id, Double notaObtida, StatusResultado statusResultado) {
 		super();
 		this.id = id;
 		this.notaObtida = notaObtida;
-		
+		this.statusResultado = statusResultado;
 	}
 	
 	@Override
@@ -60,6 +63,14 @@ public class Resultado implements Serializable{
 
 	public void setNotaObtida(Double notaObtida) {
 		this.notaObtida = notaObtida;
+	}
+
+	public StatusResultado getStatusResultado() {
+		return statusResultado;
+	}
+
+	public void setStatusResultado(StatusResultado statusResultado) {
+		this.statusResultado = statusResultado;
 	}
 	
 }

@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.adriana.GerenciadorTreinamentos.domain.enuns.Permissao;
+
 @Entity
 public class Funcao implements Serializable{
 
@@ -20,6 +22,7 @@ public class Funcao implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
+	private Permissao permissao;
 	
 	@OneToMany(mappedBy = "funcao")
 	private List<Profissional> profissionais = new ArrayList<>();
@@ -28,11 +31,11 @@ public class Funcao implements Serializable{
 		
 	}
 
-	public Funcao(Integer id, String descricao) {
+	public Funcao(Integer id, String descricao, Permissao permissao) {
 		super();
 		this.id = id;
-		this.setDescricao(descricao);
-		
+		this.descricao = descricao;
+		this.permissao = permissao;
 	}
 	
 	@Override
@@ -66,6 +69,14 @@ public class Funcao implements Serializable{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Permissao getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(Permissao permissao) {
+		this.permissao = permissao;
 	}
 	
 	

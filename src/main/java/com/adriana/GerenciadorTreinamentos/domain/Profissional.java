@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.adriana.GerenciadorTreinamentos.domain.enuns.TipoProfissional;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -24,6 +25,7 @@ public class Profissional implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private TipoProfissional tipoProfissional;
 	
 	@ManyToOne
 	@JoinColumn(name="id_funcao")
@@ -49,10 +51,11 @@ public class Profissional implements Serializable{
 		
 	}
 
-	public Profissional(Integer id, Funcao funcao) {
+	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional) {
 		super();
 		this.id = id;
 		this.funcao = funcao;
+		this.tipoProfissional = tipoProfissional;
 	}
 	
 
@@ -110,6 +113,14 @@ public class Profissional implements Serializable{
 
 	public void setFuncao(Funcao funcao) {
 		this.funcao = funcao;
+	}
+
+	public TipoProfissional getTipoProfissional() {
+		return tipoProfissional;
+	}
+
+	public void setTipoProfissional(TipoProfissional tipoProfissional) {
+		this.tipoProfissional = tipoProfissional;
 	}
 
 }
