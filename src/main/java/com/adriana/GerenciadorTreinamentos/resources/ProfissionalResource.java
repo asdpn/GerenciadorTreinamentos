@@ -2,6 +2,7 @@ package com.adriana.GerenciadorTreinamentos.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adriana.GerenciadorTreinamentos.domain.Profissional;
+import com.adriana.GerenciadorTreinamentos.dto.ProfissionalDTO;
 import com.adriana.GerenciadorTreinamentos.service.ProfissionalService;
 
 @RestController
@@ -48,9 +50,17 @@ public class ProfissionalResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	//Juntar findAll para mostrar DTO para consulta e normal para quem não tem perfil edição
+	//@RequestMapping(method = RequestMethod.GET)
+	//public ResponseEntity<List<?>> findAll() {
+	//	List<Profissional> list = service.findAll();
+	//	return ResponseEntity.ok().body(list);
+	//}
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Profissional>> findAll() {
+	public ResponseEntity<List<ProfissionalDTO>> findAllDTO() {
 		List<Profissional> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		List<ProfissionalDTO> listDTO = list.stream().map(obj -> new ProfissionalDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
 	}
 }
