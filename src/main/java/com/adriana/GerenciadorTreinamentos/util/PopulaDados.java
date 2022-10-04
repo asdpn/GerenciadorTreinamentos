@@ -128,8 +128,7 @@ public class PopulaDados {
 		q3.getProvas().addAll(Arrays.asList(p1,p2));
 		q4.getProvas().addAll(Arrays.asList(p2));
 		q5.getProvas().addAll(Arrays.asList(p2));
-		
-		categoriaRepository.saveAll(Arrays.asList(dev, lid, com));
+
 		provaRepository.saveAll(Arrays.asList(p1,p2));
 		questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
 	
