@@ -1,5 +1,6 @@
 package com.adriana.GerenciadorTreinamentos.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -40,4 +41,8 @@ public class FuncaoService {
 			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
 		}
 	} 
+	
+	public List<Funcao> findAll() {
+		return repo.findAll();
+	}
 }
