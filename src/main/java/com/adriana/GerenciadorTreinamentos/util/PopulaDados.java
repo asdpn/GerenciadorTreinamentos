@@ -69,8 +69,8 @@ public class PopulaDados {
 		Categoria lid = new Categoria(null,"Liderança");
 		Categoria com = new Categoria(null,"Comunicação");
 		
-		Prova p1 = new Prova(null, 10.0, 7.5);
-		Prova p2 = new Prova(null, 10.0, 7.0);
+		Prova p1 = new Prova(null, 10.0, 7.5,null);
+		Prova p2 = new Prova(null, 10.0, 7.0, null);
 		
 		Questao q1 = new Questao(null, "Um menino tem 3 laranjas e comeu 2, com quantas ele ficou?", "1");
 		Questao q2 = new Questao(null, "Um menino tem 10 laranjas e comeu 2, com quantas ele ficou?", "8");
@@ -80,9 +80,9 @@ public class PopulaDados {
 		
 		
 		
-		Treinamento t1 = new Treinamento(null, "C++", "Básico de C++", null, dev, StatusTreinamento.AGENDADO, null,null);
-		Treinamento t2 = new Treinamento(null, ".NET", "Básico de .NET", null, dev, StatusTreinamento.CRIADO, null,null);
-		Treinamento t3 = new Treinamento(null, "Comunicação Não Violenta", "Básico de CNV", null, com, StatusTreinamento.FINALIZADO, null,null);
+		Treinamento t1 = new Treinamento(null, "C++", "Básico de C++", null, dev, StatusTreinamento.AGENDADO, null,null,p1);
+		Treinamento t2 = new Treinamento(null, ".NET", "Básico de .NET", null, dev, StatusTreinamento.CRIADO, null,null,p2);
+		Treinamento t3 = new Treinamento(null, "Comunicação Não Violenta", "Básico de CNV", null, com, StatusTreinamento.FINALIZADO, null,null,p1);
 		
 		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
@@ -107,8 +107,8 @@ public class PopulaDados {
 		Funcao gerente = new Funcao(null, "Gerente",Permissao.EDICAOGERENTE);
 		Funcao coordenador = new Funcao(null, "Coordenador", Permissao.CONSULTA);
 		
-		Profissional pf1 = new Profissional(null, gerente, TipoProfissional.INTERNO, "Tomas", "Siemens", "tomas@teste123.com", "012384569");
-		Profissional pf2 = new Profissional(null, coordenador, TipoProfissional.INTERNO, "Adriana", "Radix", "adriana@teste123.com", "012384569");
+		Profissional pf1 = new Profissional(null, gerente, TipoProfissional.INTERNO, "Tomas", "Siemens", "tomas@teste123.com", "012384569", "123456");
+		Profissional pf2 = new Profissional(null, coordenador, TipoProfissional.INTERNO, "Adriana", "Radix", "adriana@teste123.com", "012384569", "0125892");
 		
 	
 		categoriaRepository.saveAll(Arrays.asList(dev, lid, com));

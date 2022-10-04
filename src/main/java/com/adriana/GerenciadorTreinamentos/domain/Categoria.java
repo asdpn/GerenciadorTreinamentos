@@ -66,7 +66,13 @@ public class Categoria implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	
-	
+
+	public List<Treinamento> getTreinamentos() {
+		return treinamentos;
+	}
+
+	public void setTreinamentos(List<Treinamento> treinamentos) {
+		this.treinamentos = treinamentos;
+	}
+		
 }

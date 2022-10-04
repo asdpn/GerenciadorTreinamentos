@@ -78,6 +78,13 @@ public class Funcao implements Serializable{
 	public void setPermissao(Permissao permissao) {
 		this.permissao = permissao;
 	}
-	
+
+	public List<Profissional> getProfissionais() {
+		return profissionais;
+	}
+
+	public void setProfissionais(List<Profissional> profissionais) {
+		this.profissionais = profissionais;
+	}
 	
 }

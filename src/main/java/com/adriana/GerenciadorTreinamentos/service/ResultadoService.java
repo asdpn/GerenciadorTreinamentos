@@ -1,6 +1,5 @@
 package com.adriana.GerenciadorTreinamentos.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -42,7 +41,4 @@ public class ResultadoService {
 		}
 	} 
 	
-	public List<Resultado> findAll() {
-		return repo.findAll();
-	}
 }

@@ -30,6 +30,7 @@ public class Profissional implements Serializable{
 	private String empresa;
 	private String email;
 	private String telefone;
+	private String senha;
 	
 	@ManyToOne
 	@JoinColumn(name="id_funcao")
@@ -55,7 +56,7 @@ public class Profissional implements Serializable{
 		
 	}
 
-	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional, String nomeCompleto, String empresa, String email, String telefone) {
+	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional, String nomeCompleto, String empresa, String email, String telefone, String senha) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
@@ -64,6 +65,7 @@ public class Profissional implements Serializable{
 		this.empresa = empresa;
 		this.setEmail(email);
 		this.setTelefone(telefone);
+		this.setSenha(senha);
 	}
 	
 
@@ -161,6 +163,14 @@ public class Profissional implements Serializable{
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 }

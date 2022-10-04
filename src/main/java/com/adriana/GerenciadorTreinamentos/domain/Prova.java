@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Prova implements Serializable{
@@ -39,15 +41,22 @@ public class Prova implements Serializable{
 	
 	private List<Questao> questoes = new ArrayList<>();
 	
+	@OneToOne
+	@JoinColumn(name = "id_treinamento")
+	@MapsId
+	private Treinamento treinamento;	
+	
 	public Prova() {
 		
 	}
 
-	public Prova(Integer id, Double notaMaxima, Double notaMinima) {
+	public Prova(Integer id, Double notaMaxima, Double notaMinima, Treinamento treinamento) {
 		super();
 		this.id = id;
 		this.notaMaxima = notaMaxima;
-		this.notaMinima = notaMinima;	}
+		this.notaMinima = notaMinima;	
+		this.treinamento = treinamento;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -105,6 +114,13 @@ public class Prova implements Serializable{
 	public void setQuestoes(List<Questao> questoes) {
 		this.questoes = questoes;
 	}
-	
-	
+
+	public Treinamento getTreinamento() {
+		return treinamento;
+	}
+
+	public void setTreinamento(Treinamento treinamento) {
+		this.treinamento = treinamento;
+	}
+		
 }

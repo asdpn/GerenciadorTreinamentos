@@ -31,7 +31,6 @@ public class Turma implements Serializable{
 	private Treinamento treinamento;	
 	
 	@ManyToMany(mappedBy = "turmas")
-	
 	private List<Profissional> profissionais = new ArrayList<>();
 	
 	public Turma() {

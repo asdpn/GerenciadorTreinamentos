@@ -29,19 +29,21 @@ public class Treinamento implements Serializable{
 	private String titulo;
 	private String descricao;
 	private String motivoReprovacao;
-	
+	private StatusTreinamento statusTreinamento; 
+
 	@ManyToOne
 	@JoinColumn(name="id_categoria")
 	private Categoria categoria;
 	
-	private StatusTreinamento statusTreinamento; 
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
 	private Turma turma;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
 	private Convite convite;
-
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
+	private Prova prova;
 
 	@ManyToMany
 	@JoinTable(name = "TREINAMENTO_PROFISSIONAL",
@@ -54,16 +56,17 @@ public class Treinamento implements Serializable{
 		
 	}
 
-	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento, Turma turma, Convite convite) {
+	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento, Turma turma, Convite convite, Prova prova) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;	
-		this.motivoReprovacao = motivoReprovacao;	
-		this.categoria = categoria;
+		this.motivoReprovacao = motivoReprovacao;
 		this.statusTreinamento = statusTreinamento;
+		this.categoria = categoria;
 		this.turma = turma;
 		this.convite = convite;
+		this.prova = prova;
 	}
 	
 	@Override
@@ -153,6 +156,14 @@ public class Treinamento implements Serializable{
 
 	public void setConvite(Convite convite) {
 		this.convite = convite;
+	}
+	
+	public Prova getProva() {
+		return prova;
+	}
+
+	public void setProva(Prova prova) {
+		this.prova = prova;
 	}
 
 	

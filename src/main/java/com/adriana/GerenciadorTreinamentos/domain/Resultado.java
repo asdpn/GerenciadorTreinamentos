@@ -30,11 +30,12 @@ public class Resultado implements Serializable{
 		
 	}
 
-	public Resultado(Integer id, Double notaObtida, StatusResultado statusResultado) {
+	public Resultado(Integer id, Double notaObtida, StatusResultado statusResultado, Certificado certificado) {
 		super();
 		this.id = id;
 		this.notaObtida = notaObtida;
 		this.statusResultado = statusResultado;
+		this.certificado = certificado;
 	}
 	
 	@Override
@@ -77,5 +78,13 @@ public class Resultado implements Serializable{
 	public void setStatusResultado(StatusResultado statusResultado) {
 		this.statusResultado = statusResultado;
 	}
-	
+
+	public Certificado getCertificado() {
+		return certificado;
+	}
+
+	public void setCertificado(Certificado certificado) {
+		this.certificado = certificado;
+	}
+		
 }

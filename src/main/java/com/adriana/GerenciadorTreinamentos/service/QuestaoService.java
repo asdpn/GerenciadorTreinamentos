@@ -1,6 +1,5 @@
 package com.adriana.GerenciadorTreinamentos.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -42,7 +41,4 @@ public class QuestaoService {
 		}
 	} 
 	
-	public List<Questao> findAll() {
-		return repo.findAll();
-	}
 }

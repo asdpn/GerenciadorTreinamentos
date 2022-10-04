@@ -1,7 +1,6 @@
 package com.adriana.GerenciadorTreinamentos.resources;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -48,9 +47,4 @@ public class ResultadoResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Resultado>> findAll() {
-		List<Resultado> list = service.findAll();
-		return ResponseEntity.ok().body(list);
-	}
 }
