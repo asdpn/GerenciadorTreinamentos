@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusCertificado;
 
@@ -16,9 +19,14 @@ public class Certificado implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private StatusCertificado statusCertificado;
+	
+	@OneToOne
+	@JoinColumn(name = "id_resultado")
+	@MapsId
+	private Resultado resultado;	
 	
 	public Certificado() {
 		

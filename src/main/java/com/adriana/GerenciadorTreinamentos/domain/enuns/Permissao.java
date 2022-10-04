@@ -13,7 +13,7 @@ public enum Permissao {
 		this.descricao = descricao;
 	}
 	
-	private static Permissao toEnum(Integer cod) {
+	public static Permissao toEnum(Integer cod) {
 		if (cod == null) {
 			return null;
 		}

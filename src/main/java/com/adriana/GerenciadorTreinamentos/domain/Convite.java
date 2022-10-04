@@ -5,9 +5,12 @@ import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Convite implements Serializable{
@@ -15,22 +18,26 @@ public class Convite implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String localLink;
-	private Date data;
-	private Integer hora;
+	private Date dataHora;
+	
+	@OneToOne
+	@JoinColumn(name = "id_treinamento")
+	@MapsId
+	private Treinamento treinamento;
 	
 	public Convite() {
 		
 	}
 
-	public Convite(Integer id, String localLink, Date data, Integer hora) {
+	public Convite(Integer id, String localLink, Date dataHora, Treinamento treinamento) {
 		super();
 		this.id = id;
 		this.localLink = localLink;
-		this.data = data;	
-		this.hora = hora;
+		this.dataHora = dataHora;	
+		this.treinamento = treinamento;
 	}
 	
 	@Override
@@ -66,20 +73,20 @@ public class Convite implements Serializable{
 		this.localLink = localLink;
 	}
 	
-	public Date getData() {
-		return data;
+	public Date getDataHora() {
+		return dataHora;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDataHora(Date dataHora) {
+		this.dataHora = dataHora;
 	}
 
-	public Integer getHora() {
-		return hora;
+	public Treinamento getTreinamento() {
+		return treinamento;
 	}
 
-	public void setHora(Integer hora) {
-		this.hora = hora;
+	public void setTreinamento(Treinamento treinamento) {
+		this.treinamento = treinamento;
 	}
 	
 	

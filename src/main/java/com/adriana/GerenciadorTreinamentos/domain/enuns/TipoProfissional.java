@@ -12,7 +12,7 @@ public enum TipoProfissional {
 		this.descricao = descricao;
 	}
 	
-	private static TipoProfissional toEnum(Integer cod) {
+	public static TipoProfissional toEnum(Integer cod) {
 		if (cod == null) {
 			return null;
 		}

@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Turma implements Serializable{
@@ -17,11 +20,15 @@ public class Turma implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer tamanhoMaximo;
 	private Integer tamanhoMinimo;
 	
+	@OneToOne
+	@JoinColumn(name = "id_treinamento")
+	@MapsId
+	private Treinamento treinamento;	
 	
 	@ManyToMany(mappedBy = "turmas")
 	
@@ -31,12 +38,12 @@ public class Turma implements Serializable{
 		
 	}
 
-	public Turma(Integer id, Integer tamanhoMaximo, Integer tamanhoMinimo) {
+	public Turma(Integer id, Integer tamanhoMaximo, Integer tamanhoMinimo, Treinamento treinamento) {
 		super();
 		this.id = id;
 		this.tamanhoMaximo = tamanhoMaximo;
 		this.tamanhoMinimo = tamanhoMinimo;	
-		
+		this.treinamento = treinamento;
 	}
 	
 	@Override
@@ -86,6 +93,14 @@ public class Turma implements Serializable{
 
 	public void setProfissionais(List<Profissional> profissionais) {
 		this.profissionais = profissionais;
+	}
+
+	public Treinamento getTreinamento() {
+		return treinamento;
+	}
+
+	public void setTreinamento(Treinamento treinamento) {
+		this.treinamento = treinamento;
 	}
 	
 }

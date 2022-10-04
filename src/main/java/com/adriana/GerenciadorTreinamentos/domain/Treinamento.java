@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusTreinamento;
 
@@ -28,12 +30,19 @@ public class Treinamento implements Serializable{
 	private String descricao;
 	private String motivoReprovacao;
 	
-	private StatusTreinamento statusTreinamento; 
-	
 	@ManyToOne
 	@JoinColumn(name="id_categoria")
 	private Categoria categoria;
 	
+	private StatusTreinamento statusTreinamento; 
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
+	private Turma turma;
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
+	private Convite convite;
+
+
 	@ManyToMany
 	@JoinTable(name = "TREINAMENTO_PROFISSIONAL",
 			joinColumns = @JoinColumn(name = "id_treinamento"),
@@ -45,7 +54,7 @@ public class Treinamento implements Serializable{
 		
 	}
 
-	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento) {
+	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento, Turma turma, Convite convite) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -53,6 +62,8 @@ public class Treinamento implements Serializable{
 		this.motivoReprovacao = motivoReprovacao;	
 		this.categoria = categoria;
 		this.statusTreinamento = statusTreinamento;
+		this.turma = turma;
+		this.convite = convite;
 	}
 	
 	@Override
@@ -127,5 +138,22 @@ public class Treinamento implements Serializable{
 	public void setStatusTreinamento(StatusTreinamento statusTreinamento) {
 		this.statusTreinamento = statusTreinamento;
 	}
+
+	public Turma getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
+	}
+	
+	public Convite getConvite() {
+		return convite;
+	}
+
+	public void setConvite(Convite convite) {
+		this.convite = convite;
+	}
+
 	
 }
