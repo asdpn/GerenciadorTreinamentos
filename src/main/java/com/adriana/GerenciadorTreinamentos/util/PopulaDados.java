@@ -107,8 +107,8 @@ public class PopulaDados {
 		Funcao gerente = new Funcao(null, "Gerente",Permissao.EDICAOGERENTE);
 		Funcao coordenador = new Funcao(null, "Coordenador", Permissao.CONSULTA);
 		
-		Profissional pf1 = new Profissional(null, gerente, TipoProfissional.INTERNO);
-		Profissional pf2 = new Profissional(null, coordenador, TipoProfissional.INTERNO);
+		Profissional pf1 = new Profissional(null, gerente, TipoProfissional.INTERNO, "Tomas", "Siemens", "tomas@teste123.com", "012384569");
+		Profissional pf2 = new Profissional(null, coordenador, TipoProfissional.INTERNO, "Adriana", "Radix", "adriana@teste123.com", "012384569");
 		
 	
 		categoriaRepository.saveAll(Arrays.asList(dev, lid, com));

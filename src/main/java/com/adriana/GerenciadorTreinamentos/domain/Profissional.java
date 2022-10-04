@@ -25,7 +25,11 @@ public class Profissional implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String nomeCompleto;
 	private TipoProfissional tipoProfissional;
+	private String empresa;
+	private String email;
+	private String telefone;
 	
 	@ManyToOne
 	@JoinColumn(name="id_funcao")
@@ -51,11 +55,15 @@ public class Profissional implements Serializable{
 		
 	}
 
-	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional) {
+	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional, String nomeCompleto, String empresa, String email, String telefone) {
 		super();
 		this.id = id;
+		this.nomeCompleto = nomeCompleto;
 		this.funcao = funcao;
 		this.tipoProfissional = tipoProfissional;
+		this.empresa = empresa;
+		this.setEmail(email);
+		this.setTelefone(telefone);
 	}
 	
 
@@ -123,4 +131,36 @@ public class Profissional implements Serializable{
 		this.tipoProfissional = tipoProfissional;
 	}
 
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+
+	public String getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
 }
