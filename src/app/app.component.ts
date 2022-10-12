@@ -12,9 +12,9 @@ import { CategoriaService } from './categoria.service';
 export class AppComponent implements OnInit{
 
   public categorias: Categoria[] = [];
-  public addCategoria: Categoria = {id:0, descricao: ""};
-  public editCategoria: Categoria = {id:0, descricao: ""};
-  public deleteCategoria: Categoria = {id:0, descricao: ""};
+  public addCategoria: Categoria = {id:0, titulo: "", descricao: ""};
+  public editCategoria: Categoria = {id:0, titulo: "", descricao: ""};
+  public deleteCategoria: Categoria = {id:0, titulo: "", descricao: ""};
 
   constructor(private categoriaService: CategoriaService){}
 
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
   }
 
   public onAddCategoria(addForm: NgForm): void {
-    document.getElementById('add-categoria-form')!.click();
+    document.getElementById('close-add-categoria-form')!.click();
     this.categoriaService.addCategoria(addForm.value).subscribe(
       (response: Categoria) => {
         console.log(response);
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit{
     console.log(key);
     const results: Categoria[] = [];
     for (const categoria of this.categorias) {
-      if (categoria.descricao.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      if (categoria.titulo.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(categoria);
       }
     }
