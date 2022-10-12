@@ -23,22 +23,22 @@ public class FuncaoResource {
 	FuncaoService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Funcao> find(@PathVariable Integer id) {
-		Funcao obj = service.find(id);
+	public ResponseEntity<Funcao> get(@PathVariable Integer id) {
+		Funcao obj = service.get(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Funcao> insert (@RequestBody Funcao obj) {
-		obj = service.insert(obj);
+	public ResponseEntity<Funcao> create (@RequestBody Funcao obj) {
+		obj = service.create(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Funcao obj, @PathVariable Integer id) {
+	public ResponseEntity<Void> edit(@RequestBody Funcao obj, @PathVariable Integer id) {
 		obj.setId(id);
-		obj = service.update(obj);
+		obj = service.edit(obj);
 		return ResponseEntity.noContent().build();
 	}
 	
@@ -50,7 +50,7 @@ public class FuncaoResource {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Funcao>> findAll() {
-		List<Funcao> list = service.findAll();
+		List<Funcao> list = service.listFuncoes();
 		return ResponseEntity.ok().body(list);
 	}
 }

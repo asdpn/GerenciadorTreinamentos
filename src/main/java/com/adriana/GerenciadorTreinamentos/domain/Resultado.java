@@ -5,9 +5,9 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusResultado;
@@ -18,7 +18,6 @@ public class Resultado implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Double notaObtida;
 	private StatusResultado statusResultado;
@@ -26,16 +25,23 @@ public class Resultado implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "resultado")
 	private Certificado certificado;
 	
+	
+	@OneToOne
+	@JoinColumn(name = "id_prova")
+	@MapsId
+	private Prova prova;
+	
 	public Resultado() {
 		
 	}
 
-	public Resultado(Integer id, Double notaObtida, StatusResultado statusResultado, Certificado certificado) {
+	public Resultado(Integer id, Double notaObtida, StatusResultado statusResultado, Certificado certificado, Profissional profissional, Prova prova) {
 		super();
 		this.id = id;
 		this.notaObtida = notaObtida;
 		this.statusResultado = statusResultado;
 		this.certificado = certificado;
+		this.prova = prova;
 	}
 	
 	@Override
@@ -85,6 +91,14 @@ public class Resultado implements Serializable{
 
 	public void setCertificado(Certificado certificado) {
 		this.certificado = certificado;
+	}
+
+	public Prova getProva() {
+		return prova;
+	}
+
+	public void setProva(Prova prova) {
+		this.prova = prova;
 	}
 		
 }

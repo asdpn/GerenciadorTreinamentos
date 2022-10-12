@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.TipoProfissional;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,11 +28,23 @@ public class Profissional implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(nullable = false)
 	private String nomeCompleto;
+	
+	@Column(nullable = false)
 	private TipoProfissional tipoProfissional;
+	
+	@Column(nullable = false)
 	private String empresa;
+	
+	@Column(nullable = false)
 	private String email;
+	
+	@Column(nullable = false)
 	private String telefone;
+	
+	@Column(nullable = false)
 	private String senha;
 	
 	@ManyToOne
@@ -48,15 +63,14 @@ public class Profissional implements Serializable{
 	@ManyToMany(mappedBy = "profissionais")
 	private List<Treinamento> treinamentos = new ArrayList<>();
 	
-	@JsonIgnore
-	@ManyToMany(mappedBy = "profissionais")
-	private List<Prova> provas = new ArrayList<>();
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "profissional")
+	private Prova prova;	
 	
 	public Profissional() {
 		
 	}
 
-	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional, String nomeCompleto, String empresa, String email, String telefone, String senha) {
+	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional, String nomeCompleto, String empresa, String email, String telefone, String senha, Prova prova) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
@@ -66,6 +80,7 @@ public class Profissional implements Serializable{
 		this.setEmail(email);
 		this.setTelefone(telefone);
 		this.setSenha(senha);
+		this.prova = prova;
 	}
 	
 
@@ -107,14 +122,6 @@ public class Profissional implements Serializable{
 
 	public void setTreinamentos(List<Treinamento> treinamentos) {
 		this.treinamentos = treinamentos;
-	}
-
-	public List<Prova> getProvas() {
-		return provas;
-	}
-
-	public void setProvas(List<Prova> provas) {
-		this.provas = provas;
 	}
 	
 	public Funcao getFuncao() {
@@ -172,5 +179,13 @@ public class Profissional implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
+	public Prova getProva() {
+		return prova;
+	}
+
+	public void setProva(Prova prova) {
+		this.prova = prova;
+	}
+		
 }

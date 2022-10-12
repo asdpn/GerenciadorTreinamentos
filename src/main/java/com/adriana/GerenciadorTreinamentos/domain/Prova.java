@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
@@ -21,40 +22,46 @@ public class Prova implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(nullable = false)
 	private Double notaMaxima;
+	
+	@Column(nullable = false)
 	private Double notaMinima;
 	
-	
-	@ManyToMany
-	@JoinTable(name = "PROVA_PROFISSIONAL",
-			joinColumns = @JoinColumn(name = "id_prova"),
-			inverseJoinColumns = @JoinColumn(name = "id_profissional"))
-	
-	private List<Profissional> profissionais = new ArrayList<>();
 	
 	@ManyToMany
 	@JoinTable(name = "PROVA_QUESTAO",
 			joinColumns = @JoinColumn(name = "id_prova"),
 			inverseJoinColumns = @JoinColumn(name = "id_questao"))
-	
 	private List<Questao> questoes = new ArrayList<>();
 	
+
 	@OneToOne
-	@JoinColumn(name = "id_treinamento")
+	@JoinColumn(name = "id_profissional")
 	@MapsId
-	private Treinamento treinamento;	
+	private Profissional profissional;
+	
+	@ManyToOne
+	@JoinColumn(name="id_treinamento")
+	private Treinamento treinamento;
+	
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "prova")
+	private Resultado resultado;
 	
 	public Prova() {
 		
 	}
 
-	public Prova(Integer id, Double notaMaxima, Double notaMinima, Treinamento treinamento) {
+	public Prova(Integer id, Double notaMaxima, Double notaMinima, Resultado resultado, Profissional profissional, Treinamento treinamento) {
 		super();
 		this.id = id;
 		this.notaMaxima = notaMaxima;
 		this.notaMinima = notaMinima;	
+		this.resultado = resultado;
+		this.profissional = profissional;
 		this.treinamento = treinamento;
 	}
 	
@@ -99,20 +106,29 @@ public class Prova implements Serializable{
 		this.notaMinima = notaMinima;
 	}
 
-	public List<Profissional> getProfissionais() {
-		return profissionais;
-	}
-
-	public void setProfissionais(List<Profissional> profissionais) {
-		this.profissionais = profissionais;
-	}
-
 	public List<Questao> getQuestoes() {
 		return questoes;
 	}
 
 	public void setQuestoes(List<Questao> questoes) {
 		this.questoes = questoes;
+	}
+
+
+	public Resultado getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(Resultado resultado) {
+		this.resultado = resultado;
+	}
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
 	}
 
 	public Treinamento getTreinamento() {

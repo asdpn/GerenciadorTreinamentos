@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusTreinamento;
@@ -42,8 +43,8 @@ public class Treinamento implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
 	private Convite convite;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
-	private Prova prova;
+	@OneToMany(mappedBy = "treinamento")
+	private List<Prova> provas = new ArrayList<>();
 
 	@ManyToMany
 	@JoinTable(name = "TREINAMENTO_PROFISSIONAL",
@@ -51,7 +52,7 @@ public class Treinamento implements Serializable{
 			inverseJoinColumns = @JoinColumn(name = "id_profissional"))
 	
 	private List<Profissional> profissionais = new ArrayList<>();
-	
+		
 	public Treinamento() {
 		
 	}
@@ -66,7 +67,6 @@ public class Treinamento implements Serializable{
 		this.categoria = categoria;
 		this.turma = turma;
 		this.convite = convite;
-		this.prova = prova;
 	}
 	
 	@Override
@@ -157,14 +157,13 @@ public class Treinamento implements Serializable{
 	public void setConvite(Convite convite) {
 		this.convite = convite;
 	}
-	
-	public Prova getProva() {
-		return prova;
+
+	public List<Prova> getProvas() {
+		return provas;
 	}
 
-	public void setProva(Prova prova) {
-		this.prova = prova;
+	public void setProvas(List<Prova> provas) {
+		this.provas = provas;
 	}
-
-	
+		
 }

@@ -18,23 +18,23 @@ public class FuncaoService {
 	@Autowired
 	private FuncaoRepository repo;
 	
-	public Funcao find (Integer id) {
+	public Funcao get (Integer id) {
 		Optional<Funcao> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Funcao.class.getName()));
 	}
 	
-	public Funcao insert (Funcao obj) {
+	public Funcao create (Funcao obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Funcao update (Funcao obj) {
-		find(obj.getId());
+	public Funcao edit (Funcao obj) {
+		get(obj.getId());
 		return repo.save(obj);
 	}
 	
 	public void delete (Integer id) {
-		find(id);
+		get(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
@@ -42,7 +42,7 @@ public class FuncaoService {
 		}
 	} 
 	
-	public List<Funcao> findAll() {
+	public List<Funcao> listFuncoes() {
 		return repo.findAll();
 	}
 }

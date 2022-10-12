@@ -1,15 +1,16 @@
 package com.adriana.GerenciadorTreinamentos.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 
 @Entity
 public class Categoria implements Serializable{
@@ -19,18 +20,23 @@ public class Categoria implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(nullable = false)
+	private String titulo;
+	
 	private String descricao;
 	
-	@OneToMany(mappedBy = "categoria")
-	private List<Treinamento> treinamentos = new ArrayList<>();
+	//@OneToMany(mappedBy = "categoria")
+	//private List<Treinamento> treinamentos = new ArrayList<>();
 	
 	public Categoria() {
 		
 	}
 
-	public Categoria(Integer id, String descricao) {
+	public Categoria(Integer id, String titulo, String descricao) {
 		super();
 		this.id = id;
+		this.titulo = titulo;
 		this.descricao = descricao;
 	}
 	
@@ -67,12 +73,20 @@ public class Categoria implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public List<Treinamento> getTreinamentos() {
-		return treinamentos;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTreinamentos(List<Treinamento> treinamentos) {
-		this.treinamentos = treinamentos;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
+	
+	//public List<Treinamento> getTreinamentos() {
+	//	return treinamentos;
+	//}
+
+	//public void setTreinamentos(List<Treinamento> treinamentos) {
+	//	this.treinamentos = treinamentos;
+	//}
 		
 }

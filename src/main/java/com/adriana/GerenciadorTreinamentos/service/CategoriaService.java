@@ -19,31 +19,31 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repo;
 	
-	public Categoria find (Integer id) {
+	public Categoria getCategoria (Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Categoria.class.getName()));
 	}
 	
-	public Categoria insert (Categoria obj) {
+	public Categoria addCategoria (Categoria obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Categoria update (Categoria obj) {
-		find(obj.getId());
+	public Categoria editCategoria (Categoria obj) {
+		getCategoria(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		find(id);
+	public void deleteCategoria (Integer id) {
+		getCategoria(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Categoria, pois existem referências externas a utilizando.");
 		}
 	} 
 	
-	public List<Categoria> findAll() {
+	public List<Categoria> getCategorias() {
 		return repo.findAll();
 	}
 }

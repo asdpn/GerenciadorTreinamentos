@@ -17,23 +17,23 @@ public class ConviteService {
 	@Autowired
 	private ConviteRepository repo;
 	
-	public Convite find (Integer id) {
+	public Convite get (Integer id) {
 		Optional<Convite> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Convite.class.getName()));
 	}
 	
-	public Convite insert (Convite obj) {
+	public Convite create (Convite obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Convite update (Convite obj) {
-		find(obj.getId());
+	public Convite edit (Convite obj) {
+		get(obj.getId());
 		return repo.save(obj);
 	}
 	
 	public void delete (Integer id) {
-		find(id);
+		get(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){

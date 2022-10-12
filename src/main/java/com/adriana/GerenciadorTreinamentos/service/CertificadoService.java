@@ -17,23 +17,23 @@ public class CertificadoService {
 	@Autowired
 	private CertificadoRepository repo;
 	
-	public Certificado find (Integer id) {
+	public Certificado get (Integer id) {
 		Optional<Certificado> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Certificado.class.getName()));
 	}
 	
-	public Certificado insert (Certificado obj) {
+	public Certificado create (Certificado obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Certificado update (Certificado obj) {
-		find(obj.getId());
+	public Certificado edit (Certificado obj) {
+		get(obj.getId());
 		return repo.save(obj);
 	}
 	
 	public void delete (Integer id) {
-		find(id);
+		get(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
