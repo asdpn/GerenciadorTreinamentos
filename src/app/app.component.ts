@@ -37,7 +37,6 @@ export class AppComponent implements OnInit{
     document.getElementById('close-add-categoria-form')!.click();
     this.categoriaService.addCategoria(addForm.value).subscribe(
       (response: Categoria) => {
-        console.log(response);
         this.getCategorias();
         addForm.reset();
       },
@@ -51,7 +50,6 @@ export class AppComponent implements OnInit{
   public onUpdateCategoria(categoria: Categoria): void {
     this.categoriaService.updateCategoria(categoria).subscribe(
       (response: Categoria) => {
-        console.log(response);
         this.getCategorias();
       },
       (error: HttpErrorResponse) => {
@@ -63,7 +61,6 @@ export class AppComponent implements OnInit{
   public onDeleteCategoria(categoriaId: number): void {
     this.categoriaService.deleteCategoria(categoriaId).subscribe(
       (response: void) => {
-        console.log(response);
         this.getCategorias();
       },
       (error: HttpErrorResponse) => {
@@ -73,7 +70,6 @@ export class AppComponent implements OnInit{
   }
 
   public searchCategorias(key: string): void {
-    console.log(key);
     const results: Categoria[] = [];
     for (const categoria of this.categorias) {
       if (categoria.titulo.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
