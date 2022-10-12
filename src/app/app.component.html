@@ -82,25 +82,25 @@
     <!-- Add Modal -->
     <div class="modal fade" id="addCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="addCategoriaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addCategoriaModalLabel">Criar Categoria</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button></div>
-            <div class="modal-body">
-                <form #addForm="ngForm" (ngSubmit)="onAddCategoria(addForm)">
-                <div class="form-group">
-                <label for="name">Descrição</label>
-                <input type="text" ngModel name="descricao" class="form-control" id="descricao" placeholder="descricao" required>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCategoriaModalLabel">Criar Categoria</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></div>
+                <div class="modal-body">
+                    <form #addForm="ngForm" (ngSubmit)="onAddCategoria(addForm)">
+                        <div class="form-group">
+                            <label for="name">Descrição</label>
+                            <input type="text" ngModel name="descricao" class="form-control" id="descricao" placeholder="descricao" required>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                <button type="button" id="add-categoria-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Salvar</button>
+                    <button type="button" id="add-categoria-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Salvar</button>
                 </div>
-                </form>
             </div>
-        </div>
         </div>
     </div>
   <!-- Edit Modal -->
@@ -119,12 +119,12 @@
                    <label for="name">Descrição</label>
                    <input type="text" ngModel="{{editCategoria.descricao}}" name="descricao" class="form-control" id="descricao" aria-describedby="emailHelp" placeholder="Descrição">
                 </div>
-                <div class="modal-footer">
-                   <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                   <button (click)="onUpdateCategoria(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
-                </div>
              </form>
           </div>
+          <div class="modal-footer">
+            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+            <button (click)="onUpdateCategoria(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
+         </div>
        </div>
     </div>
   </div>
@@ -134,18 +134,18 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
           <div class="modal-header">
-             <h5 class="modal-title" id="deleteCategoriaModalLabel">Apagar Categoria</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-             </button>
+            <h5 class="modal-title" id="deleteCategoriaModalLabel">Apagar Categoria</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           <div class="modal-body">
              <p>Você tem certeza que quer apagar a categoria {{deleteCategoria.descricao}}?</p>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                <button (click)="onDeleteCategoria(deleteCategoria.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
-             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            <button (click)="onDeleteCategoria(deleteCategoria.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+         </div>
        </div>
     </div>
   </div>
