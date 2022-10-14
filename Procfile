@@ -1,1 +1,1 @@
-web: java -jar --port $PORT target/GerenciadorTreinamentos-0.0.1-SNAPSHOT.war
+web: java -war --port $PORT target/GerenciadorTreinamentos-0.0.1-SNAPSHOT.war
