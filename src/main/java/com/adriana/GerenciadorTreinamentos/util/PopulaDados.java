@@ -63,7 +63,7 @@ public class PopulaDados {
 	@Autowired
 	TurmaRepository turmaRepository;	
 	
-	@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
+	//@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
 	public void cadastrar () {
 		Categoria dev = new Categoria(null,"Desenvolvimento",null);
 		Categoria lid = new Categoria(null,"Liderança",null);
