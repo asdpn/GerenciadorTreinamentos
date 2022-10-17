@@ -1,3 +1,3 @@
 export const environment = {
-  production: true
-};
+  production: true,
+  apiBaseUrl: 'https://gerenciador-treinamentos.herokuapp.com/'};
