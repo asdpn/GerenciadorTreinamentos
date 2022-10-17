@@ -63,7 +63,7 @@ public class PopulaDados {
 	@Autowired
 	TurmaRepository turmaRepository;	
 	
-	//@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
+	@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
 	public void cadastrar () {
 		Categoria dev = new Categoria(null,"Desenvolvimento",null);
 		Categoria lid = new Categoria(null,"Liderança",null);
@@ -72,11 +72,11 @@ public class PopulaDados {
 		//Prova p1 = new Prova(null, 10.0, 7.5,null);
 		//Prova p2 = new Prova(null, 10.0, 7.0, null);
 		
-		Questao q1 = new Questao(null, "Um menino tem 3 laranjas e comeu 2, com quantas ele ficou?", "1");
-		Questao q2 = new Questao(null, "Um menino tem 10 laranjas e comeu 2, com quantas ele ficou?", "8");
-		Questao q3 = new Questao(null, "Um menino tem 5 laranjas e comeu 2, com quantas ele ficou?", "3");
-		Questao q4 = new Questao(null, "Um menino tem 50 laranjas e comeu 2, com quantas ele ficou?", "48");
-		Questao q5 = new Questao(null, "Um menino tem 20 laranjas e comeu 10, com quantas ele ficou?", "10");
+		//Questao q1 = new Questao(null, "Um menino tem 3 laranjas e comeu 2, com quantas ele ficou?", "1");
+		//Questao q2 = new Questao(null, "Um menino tem 10 laranjas e comeu 2, com quantas ele ficou?", "8");
+		//Questao q3 = new Questao(null, "Um menino tem 5 laranjas e comeu 2, com quantas ele ficou?", "3");
+		//Questao q4 = new Questao(null, "Um menino tem 50 laranjas e comeu 2, com quantas ele ficou?", "48");
+		//Questao q5 = new Questao(null, "Um menino tem 20 laranjas e comeu 10, com quantas ele ficou?", "10");
 		
 		
 		
@@ -104,8 +104,8 @@ public class PopulaDados {
 	    //t2.setConvite(c2);
 	    //t3.setConvite(c3);
 		
-		Funcao gerente = new Funcao(null, "Gerente",Permissao.EDICAOGERENTE);
-		Funcao coordenador = new Funcao(null, "Coordenador", Permissao.CONSULTA);
+		//Funcao gerente = new Funcao(null, "Gerente",Permissao.EDICAOGERENTE);
+		//Funcao coordenador = new Funcao(null, "Coordenador", Permissao.CONSULTA);
 		
 		//Profissional pf1 = new Profissional(null, gerente, TipoProfissional.INTERNO, "Tomas", "Siemens", "tomas@teste123.com", "012384569", "123456");
 		//Profissional pf2 = new Profissional(null, coordenador, TipoProfissional.INTERNO, "Adriana", "Radix", "adriana@teste123.com", "012384569", "0125892");
@@ -113,9 +113,9 @@ public class PopulaDados {
 	
 		categoriaRepository.saveAll(Arrays.asList(dev, lid, com));
 		//provaRepository.saveAll(Arrays.asList(p1,p2));
-		questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
+		//questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
 		//treinamentoRepository.saveAll(Arrays.asList(t1,t2,t3));
-		funcaoRepository.saveAll(Arrays.asList(gerente, coordenador));
+		//funcaoRepository.saveAll(Arrays.asList(gerente, coordenador));
 		//profissionalRepository.saveAll(Arrays.asList(pf1,pf2));
 		//turmaRepository.saveAll(Arrays.asList(tu1));
 		//conviteRepository.saveAll(Arrays.asList(c1,c2,c3));
@@ -130,7 +130,7 @@ public class PopulaDados {
 		//q5.getProvas().addAll(Arrays.asList(p2));
 
 		//provaRepository.saveAll(Arrays.asList(p1,p2));
-		questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
+		//questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
 	
 	}
 }
