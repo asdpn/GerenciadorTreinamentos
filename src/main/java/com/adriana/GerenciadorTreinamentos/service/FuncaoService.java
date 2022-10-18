@@ -12,37 +12,38 @@ import com.adriana.GerenciadorTreinamentos.repository.FuncaoRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
+
 @Service
 public class FuncaoService {
 
 	@Autowired
 	private FuncaoRepository repo;
 	
-	public Funcao get (Integer id) {
+	public Funcao getFuncao (Integer id) {
 		Optional<Funcao> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Funcao.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Funcao.class.getName()));
 	}
 	
-	public Funcao create (Funcao obj) {
+	public Funcao addFuncao (Funcao obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Funcao edit (Funcao obj) {
-		get(obj.getId());
+	public Funcao editFuncao (Funcao obj) {
+		getFuncao(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		get(id);
+	public void deleteFuncao (Integer id) {
+		getFuncao(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Funcao, pois existem referências externas a utilizando.");
 		}
 	} 
 	
-	public List<Funcao> listFuncoes() {
+	public List<Funcao> getFuncoes() {
 		return repo.findAll();
 	}
 }

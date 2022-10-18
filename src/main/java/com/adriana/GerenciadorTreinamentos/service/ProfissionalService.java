@@ -12,37 +12,38 @@ import com.adriana.GerenciadorTreinamentos.repository.ProfissionalRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
+
 @Service
 public class ProfissionalService {
 
 	@Autowired
 	private ProfissionalRepository repo;
 	
-	public Profissional find (Integer id) {
+	public Profissional getProfissional (Integer id) {
 		Optional<Profissional> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Profissional.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Profissional.class.getName()));
 	}
 	
-	public Profissional insert (Profissional obj) {
+	public Profissional addProfissional (Profissional obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Profissional update (Profissional obj) {
-		find(obj.getId());
+	public Profissional editProfissional (Profissional obj) {
+		getProfissional(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		find(id);
+	public void deleteProfissional (Integer id) {
+		getProfissional(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Profissional, pois existem referências externas a utilizando.");
 		}
 	} 
 	
-	public List<Profissional> findAll() {
+	public List<Profissional> getProfissionais() {
 		return repo.findAll();
 	}
 }

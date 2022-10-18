@@ -1,5 +1,6 @@
 package com.adriana.GerenciadorTreinamentos.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -11,33 +12,38 @@ import com.adriana.GerenciadorTreinamentos.repository.ProvaRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
+
 @Service
 public class ProvaService {
 
 	@Autowired
 	private ProvaRepository repo;
 	
-	public Prova find (Integer id) {
+	public Prova getProva (Integer id) {
 		Optional<Prova> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Prova.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Prova.class.getName()));
 	}
 	
-	public Prova insert (Prova obj) {
+	public Prova addProva (Prova obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Prova update (Prova obj) {
-		find(obj.getId());
+	public Prova editProva (Prova obj) {
+		getProva(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		find(id);
+	public void deleteProva (Integer id) {
+		getProva(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Prova, pois existem referências externas a utilizando.");
 		}
 	} 
+	
+	public List<Prova> getProvas() {
+		return repo.findAll();
+	}
 }

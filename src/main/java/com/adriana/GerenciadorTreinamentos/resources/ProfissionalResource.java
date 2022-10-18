@@ -1,66 +1,57 @@
 package com.adriana.GerenciadorTreinamentos.resources;
 
-import java.net.URI;
 import java.util.List;
-//import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adriana.GerenciadorTreinamentos.domain.Profissional;
-//import com.adriana.GerenciadorTreinamentos.dto.ProfissionalDTO;
 import com.adriana.GerenciadorTreinamentos.service.ProfissionalService;
 
 @RestController
-@RequestMapping(value = "/profissional")
+@RequestMapping("/profissional")
 public class ProfissionalResource {
 
 	@Autowired
-	ProfissionalService service;
+	private ProfissionalService service;
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Profissional> find(@PathVariable Integer id) {
-		Profissional obj = service.find(id);
+	@GetMapping("/{id}")
+	public ResponseEntity<Profissional> getProfissional(@PathVariable Integer id) {
+		Profissional obj = service.getProfissional(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Profissional> insert (@RequestBody Profissional obj) {
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+	@PostMapping("/add")
+	public ResponseEntity<Profissional> addProfissional(@RequestBody Profissional profissional) {
+		profissional = service.addProfissional(profissional);
+		return new ResponseEntity<>(profissional, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Profissional obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Profissional> editProfissional(@RequestBody Profissional profissional, @PathVariable Integer id) {
+		profissional.setId(id);
+		profissional = service.editProfissional(profissional);
+		return new ResponseEntity<>(profissional, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		service.delete(id);
-		return ResponseEntity.noContent().build();
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> deleteProfissional(@PathVariable Integer id) {
+		service.deleteProfissional(id);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<?>> findAll() {
-		List<Profissional> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+	@GetMapping("/all")
+	public ResponseEntity<List<Profissional>> getProfissionais() {
+		List<Profissional> list = service.getProfissionais();
+		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
-	
-	//Juntar findAll para mostrar DTO para consulta e normal para quem não tem perfil edição
-	//@RequestMapping(method = RequestMethod.GET)
-	//public ResponseEntity<List<ProfissionalDTO>> findAllDTO() {
-	//	List<Profissional> list = service.findAll();
-	//	List<ProfissionalDTO> listDTO = list.stream().map(obj -> new ProfissionalDTO(obj)).collect(Collectors.toList());
-	//	return ResponseEntity.ok().body(listDTO);
-	//}
 }

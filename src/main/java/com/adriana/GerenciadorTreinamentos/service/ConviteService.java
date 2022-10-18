@@ -1,5 +1,6 @@
 package com.adriana.GerenciadorTreinamentos.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -11,33 +12,38 @@ import com.adriana.GerenciadorTreinamentos.repository.ConviteRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
+
 @Service
 public class ConviteService {
 
 	@Autowired
 	private ConviteRepository repo;
 	
-	public Convite get (Integer id) {
+	public Convite getConvite (Integer id) {
 		Optional<Convite> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Convite.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Convite.class.getName()));
 	}
 	
-	public Convite create (Convite obj) {
+	public Convite addConvite (Convite obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Convite edit (Convite obj) {
-		get(obj.getId());
+	public Convite editConvite (Convite obj) {
+		getConvite(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		get(id);
+	public void deleteConvite (Integer id) {
+		getConvite(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Convite, pois existem referências externas a utilizando.");
 		}
 	} 
+	
+	public List<Convite> getConvites() {
+		return repo.findAll();
+	}
 }

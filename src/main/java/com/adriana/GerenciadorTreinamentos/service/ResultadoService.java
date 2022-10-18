@@ -1,5 +1,6 @@
 package com.adriana.GerenciadorTreinamentos.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -11,34 +12,38 @@ import com.adriana.GerenciadorTreinamentos.repository.ResultadoRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
+
 @Service
 public class ResultadoService {
 
 	@Autowired
 	private ResultadoRepository repo;
 	
-	public Resultado find (Integer id) {
+	public Resultado getResultado (Integer id) {
 		Optional<Resultado> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Resultado.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Resultado.class.getName()));
 	}
 	
-	public Resultado insert (Resultado obj) {
+	public Resultado addResultado (Resultado obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Resultado update (Resultado obj) {
-		find(obj.getId());
+	public Resultado editResultado (Resultado obj) {
+		getResultado(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		find(id);
+	public void deleteResultado (Integer id) {
+		getResultado(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Resultado, pois existem referências externas a utilizando.");
 		}
 	} 
 	
+	public List<Resultado> getResultados() {
+		return repo.findAll();
+	}
 }

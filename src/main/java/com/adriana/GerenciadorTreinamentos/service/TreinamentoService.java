@@ -12,37 +12,38 @@ import com.adriana.GerenciadorTreinamentos.repository.TreinamentoRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
+
 @Service
 public class TreinamentoService {
 
 	@Autowired
 	private TreinamentoRepository repo;
 	
-	public Treinamento find (Integer id) {
+	public Treinamento getTreinamento (Integer id) {
 		Optional<Treinamento> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Treinamento.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Treinamento.class.getName()));
 	}
 	
-	public Treinamento insert (Treinamento obj) {
+	public Treinamento addTreinamento (Treinamento obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Treinamento update (Treinamento obj) {
-		find(obj.getId());
+	public Treinamento editTreinamento (Treinamento obj) {
+		getTreinamento(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		find(id);
+	public void deleteTreinamento (Integer id) {
+		getTreinamento(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Treinamento, pois existem referências externas a utilizando.");
 		}
 	} 
 	
-	public List<Treinamento> findAll() {
+	public List<Treinamento> getTreinamentos() {
 		return repo.findAll();
 	}
 }

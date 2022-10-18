@@ -1,5 +1,6 @@
 package com.adriana.GerenciadorTreinamentos.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -11,33 +12,38 @@ import com.adriana.GerenciadorTreinamentos.repository.CertificadoRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
 
+
 @Service
 public class CertificadoService {
 
 	@Autowired
 	private CertificadoRepository repo;
 	
-	public Certificado get (Integer id) {
+	public Certificado getCertificado (Integer id) {
 		Optional<Certificado> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID:" + id + "Tipo:" + Certificado.class.getName()));
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado. ID: " + id + " , Tipo: " + Certificado.class.getName()));
 	}
 	
-	public Certificado create (Certificado obj) {
+	public Certificado addCertificado (Certificado obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Certificado edit (Certificado obj) {
-		get(obj.getId());
+	public Certificado editCertificado (Certificado obj) {
+		getCertificado(obj.getId());
 		return repo.save(obj);
 	}
 	
-	public void delete (Integer id) {
-		get(id);
+	public void deleteCertificado (Integer id) {
+		getCertificado(id);
 		try {
 			repo.deleteById(id);
 		} catch (ConstraintViolationException e){
-			throw new ConstraintViolationExcep("Não é possível deletar, pois existem referências externas.");
+			throw new ConstraintViolationExcep("Não é possível deletar Certificado, pois existem referências externas a utilizando.");
 		}
 	} 
+	
+	public List<Certificado> getCertificados() {
+		return repo.findAll();
+	}
 }

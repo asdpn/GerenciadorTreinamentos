@@ -1,56 +1,57 @@
 package com.adriana.GerenciadorTreinamentos.resources;
 
-import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adriana.GerenciadorTreinamentos.domain.Treinamento;
 import com.adriana.GerenciadorTreinamentos.service.TreinamentoService;
 
 @RestController
-@RequestMapping(value = "/treinamento")
+@RequestMapping("/treinamento")
 public class TreinamentoResource {
 
 	@Autowired
-	TreinamentoService service;
+	private TreinamentoService service;
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Treinamento> find(@PathVariable Integer id) {
-		Treinamento obj = service.find(id);
+	@GetMapping("/{id}")
+	public ResponseEntity<Treinamento> getTreinamento(@PathVariable Integer id) {
+		Treinamento obj = service.getTreinamento(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Treinamento> insert (@RequestBody Treinamento obj) {
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+	@PostMapping("/add")
+	public ResponseEntity<Treinamento> addTreinamento(@RequestBody Treinamento treinamento) {
+		treinamento = service.addTreinamento(treinamento);
+		return new ResponseEntity<>(treinamento, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Treinamento obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Treinamento> editTreinamento(@RequestBody Treinamento treinamento, @PathVariable Integer id) {
+		treinamento.setId(id);
+		treinamento = service.editTreinamento(treinamento);
+		return new ResponseEntity<>(treinamento, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		service.delete(id);
-		return ResponseEntity.noContent().build();
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> deleteTreinamento(@PathVariable Integer id) {
+		service.deleteTreinamento(id);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Treinamento>> findAll() {
-		List<Treinamento> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+	@GetMapping("/all")
+	public ResponseEntity<List<Treinamento>> getTreinamentos() {
+		List<Treinamento> list = service.getTreinamentos();
+		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 }
