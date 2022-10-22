@@ -12,9 +12,9 @@ import { CategoriaService } from './categoria.service';
 export class AppComponent implements OnInit{
 
   public categorias: Categoria[] = [];
-  public addCategoria: Categoria = {id:0, titulo: "", descricao: ""};
-  public editCategoria: Categoria = {id:0, titulo: "", descricao: ""};
-  public deleteCategoria: Categoria = {id:0, titulo: "", descricao: ""};
+  public addCategoria: Categoria = {id:0, titulo: "", descricao: "", treinamentos: []};
+  public editCategoria: Categoria = {id:0, titulo: "", descricao: "", treinamentos: []};
+  public deleteCategoria: Categoria = {id:0, titulo: "", descricao: "", treinamentos: []};
 
   constructor(private categoriaService: CategoriaService){}
 
