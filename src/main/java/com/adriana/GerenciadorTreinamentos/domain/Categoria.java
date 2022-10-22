@@ -1,8 +1,8 @@
 package com.adriana.GerenciadorTreinamentos.domain;
 
 import java.io.Serializable;
-//import java.util.ArrayList;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
-//import javax.persistence.OneToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categoria implements Serializable{
@@ -28,8 +28,8 @@ public class Categoria implements Serializable{
 	
 	private String descricao;
 	
-	//@OneToMany(mappedBy = "categoria")
-	//private List<Treinamento> treinamentos = new ArrayList<>();
+	@OneToMany(mappedBy = "categoria")
+	private List<Treinamento> treinamentos = new ArrayList<>();
 	
 	public Categoria() {
 		
