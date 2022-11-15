@@ -1,5 +1,5 @@
-import { Permissao } from "./permissao.enum";
-import { Profissional } from "./profissional";
+import { Permissao } from "../permissao.enum";
+import { Profissional } from "../profissional/profissional";
 
 export interface Funcao{
     id: number;

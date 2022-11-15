@@ -1,4 +1,4 @@
-import { Prova } from "./prova";
+import { Prova } from "../prova/prova";
 
 export interface Questao{
     id: number;

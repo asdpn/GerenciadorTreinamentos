@@ -1,6 +1,6 @@
-import { Profissional } from "./profissional";
-import { Questao } from "./questao";
-import { Treinamento } from "./treinamento";
+import { Profissional } from "../profissional/profissional";
+import { Questao } from "../questao/questao";
+import { Treinamento } from "../treinamento/treinamento";
 
 export interface Prova{
     id: number;

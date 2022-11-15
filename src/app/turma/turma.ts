@@ -1,5 +1,5 @@
-import { Profissional } from "./profissional";
-import { Treinamento } from "./treinamento";
+import { Profissional } from "../profissional/profissional";
+import { Treinamento } from "../treinamento/treinamento";
 
 export interface Turma{
     id: number;

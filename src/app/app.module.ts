@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { CategoriaService } from './categoria.service';
+import { CategoriaService } from './categoria/categoria.service';
 
 @NgModule({
   declarations: [

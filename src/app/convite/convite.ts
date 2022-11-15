@@ -1,4 +1,4 @@
-import { Treinamento } from "./treinamento";
+import { Treinamento } from "../treinamento/treinamento";
 
 export interface Convite{
     id: number;

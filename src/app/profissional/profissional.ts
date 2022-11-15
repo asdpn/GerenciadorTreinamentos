@@ -1,5 +1,5 @@
-import { Funcao } from "./funcao";
-import { TipoProfissional } from "./tipoProfissional.enum";
+import { Funcao } from "../funcao/funcao";
+import { TipoProfissional } from "../tipoProfissional.enum";
 
 export interface Profissional{
     id: number;
