@@ -1,16 +1,16 @@
 <div class="row align-items-center">
     <div class="col-md-4">
-        <h2 style="padding-top:10px">Certificados</h2>
+        <h2 style="padding-top:10px">Funcoes</h2>
     </div>
     <div class="col-md-4">
         <form class="form-inline" style="padding-top:10px">
-            <input type="search" (ngModelChange)="searchCertificados(key.value)" #key="ngModel" ngModel
-                name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Certificados..." required>
+            <input type="search" (ngModelChange)="searchFuncoes(key.value)" #key="ngModel" ngModel
+                name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Funções..." required>
         </form>
     </div>
     <div class="col-md-4">
         <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
-            <a (click)="onOpenModal(addCertificado, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
+            <a (click)="onOpenModal(addFuncao, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
         </div>
     </div>
 </div>
@@ -21,24 +21,30 @@
                 <table class="table project-list-table table-nowrap align-middle table-borderless">
                     <thead>
                         <tr>
+                            <th scope="col" class="ps-4" style="width: 50px;">
+                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
+                            </th>
                             <th scope="col">Título</th>
-                            <th scope="col">Status Certificado</th>
+                            <th scope="col">Status Funcao</th>
                             <th scope="col">Resultado</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let certificado of certificados">
-                            <td>{{certificado.titulo}}</td>
-                            <td>{{certificado.statusCertificado}}</td>
-                            <td>{{certificado.resultado}}</td>
+                        <tr *ngFor="let funcao of Funcoes">
+                            <th scope="row" class="ps-4">
+                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
+                            </th>
+                            <td>{{funcao.titulo}}</td>
+                            <td>{{funcao.statusFuncao}}</td>
+                            <td>{{funcao.resultado}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
-                                        <a (click)="onOpenModal(certificado, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
+                                        <a (click)="onOpenModal(funcao, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a (click)="onOpenModal(certificado, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
+                                        <a (click)="onOpenModal(funcao, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
                                     </li>
                                 </ul>
                             </td>
@@ -51,30 +57,30 @@
 </div>
 
 <!-- Add Modal -->
-<div class="modal fade" id="addCertificadoModal" tabindex="-1" role="dialog" aria-labelledby="addCertificadoModalLabel" aria-hidden="true">
+<div class="modal fade" id="addFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="addFuncaoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addCertificadoModalLabel">Criar Certificado</h5>
+                <h5 class="modal-title" id="addFuncaoModalLabel">Criar Funcao</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>
             <div class="modal-body">
-                <form #addForm="ngForm" (ngSubmit)="onAddCertificado(addForm)">
+                <form #addForm="ngForm" (ngSubmit)="onAddFuncao(addForm)">
                     <div class="form-group">
                         <label for="titulo">Título</label>
                         <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
                     </div>
                     <div class="form-group">
-                        <label for="statusCertificado">Status Certificado</label>
-                        <input type="text" ngModel name="statusCertificado" class="form-control" id="statusCertificado" placeholder="Status Certificado" required>
+                        <label for="statusFuncao">Status Funcao</label>
+                        <input type="text" ngModel name="statusFuncao" class="form-control" id="statusFuncao" placeholder="Status Funcao" required>
                     </div>
                     <div class="form-group">
                         <label for="resultado">Resultado</label>
                         <input type="text" ngModel name="resultado" class="form-control" id="resultado" placeholder="Resultado">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="close-add-Certificado-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="close-add-Funcao-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
@@ -84,11 +90,11 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade" id="editCertificadoModal" tabindex="-1" role="dialog" aria-labelledby="editCertificadoModalLabel" aria-hidden="true">
+<div class="modal fade" id="editFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="editFuncaoModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="editCertificadoModalLabel">Editar Certificado</h5>
+            <h5 class="modal-title" id="editFuncaoModalLabel">Editar Função</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -96,46 +102,46 @@
         <div class="modal-body">
             <form #editForm="ngForm">
             <div class="form-group" >
-                <input type="hidden" ngModel="{{editCertificado.id}}" name="id" class="form-control" id="id" placeholder="Identificador" required>
+                <input type="hidden" ngModel="{{editFuncao.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
             </div>
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" ngModel="{{editCertificado.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                <input type="text" ngModel="{{editFuncao.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo">
             </div>
             <div class="form-group">
-                <label for="statusCertificado">Status Certificado</label>
-                <input type="text" ngModel="{{editCertificado.statusCertificado}}" name="statusCertificado" class="form-control" id="statusCertificado" placeholder="Status Certificado" required>
+                <label for="statusFuncao">Status Funcao</label>
+                <input type="text" ngModel="{{editFuncao.statusFuncao}}" name="statusFuncao" class="form-control" id="statusFuncao" placeholder="Status Funcao">
                 </div>
             <div class="form-group">
                 <label for="resultado">Resultado</label>
-                <input type="text" ngModel="{{editCertificado.resultado}}" name="resultado" class="form-control" id="resultado" placeholder="Resultado">
+                <input type="text" ngModel="{{editFuncao.resultado}}" name="resultado" class="form-control" id="resultado" placeholder="Resultado">
             </div>
             </form>
         </div>
         <div class="modal-footer">
         <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-        <button (click)="onUpdateCertificado(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
+        <button (click)="onUpdateFuncao(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
         </div>
     </div>
 </div>
 </div>
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteCertificadoModal" tabindex="-1" role="dialog" aria-labelledby="deleteCertificadoModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="deleteFuncaoModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="deleteCertificadoModalLabel">Apagar Certificado</h5>
+        <h5 class="modal-title" id="deleteFuncaoModalLabel">Apagar Funcao</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
         <div class="modal-body">
-            <p>Você tem certeza que quer apagar o Certificado {{deleteCertificado.titulo}}?</p>
+            <p>Você tem certeza que quer apagar a Função {{deleteFuncao.titulo}}?</p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button (click)="onDeleteCertificado(deleteCertificado.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+        <button (click)="onDeleteFuncao(deleteFuncao.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
         </div>
     </div>
 </div>

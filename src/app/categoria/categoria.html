@@ -21,9 +21,6 @@
                 <table class="table project-list-table table-nowrap align-middle table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col" class="ps-4" style="width: 50px;">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                            </th>
                             <th scope="col">Título</th>
                             <th scope="col">Descrição</th>
                             <th scope="col" style="width: 200px;">Ação</th>
@@ -31,9 +28,6 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let categoria of categorias">
-                            <th scope="row" class="ps-4">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                            </th>
                             <td>{{categoria.titulo}}</td>
                             <td>{{categoria.descricao}}</td>
                             <td>
@@ -136,35 +130,3 @@
     </div>
 </div>
 </div>
-
-
-<!-- Notification for no categorias -->
-<div *ngIf="categorias?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
-<div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">SEM CATEGORIAS!</h4>
-    <p>Nenhuma categoria foi encontrada.</p>
-</div>
-</div>
-
-<!-- Pagination Footer -->
-<!--div class="row g-0 align-items-center pb-4">
-<div class="col-sm-6">
-    <div><p class="mb-sm-0">Motrando 1 de 10 de 57 registros</p></div>
-</div>
-<div class="col-sm-6">
-    <div class="float-sm-end">
-        <ul class="pagination mb-sm-0">
-            <li class="page-item disabled">
-                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-            </li>
-            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-            <li class="page-item"><a href="#" class="page-link">2</a></li>
-            <li class="page-item"><a href="#" class="page-link">3</a></li>
-            <li class="page-item"><a href="#" class="page-link">4</a></li>
-            <li class="page-item"><a href="#" class="page-link">5</a></li>
-            <li class="page-item">
-                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-            </li>
-        </ul>
-    </div>
-</div-->
