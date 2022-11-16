@@ -20,6 +20,9 @@ public class Convite implements Serializable{
 	private Integer id;
 	
 	@Column(nullable = false)
+	private String titulo;
+	
+	@Column(nullable = false)
 	private String localLink;
 	
 	@Column(nullable = false)
@@ -34,9 +37,10 @@ public class Convite implements Serializable{
 		
 	}
 
-	public Convite(Integer id, String localLink, Date dataHora, Treinamento treinamento) {
+	public Convite(Integer id, String titulo, String localLink, Date dataHora, Treinamento treinamento) {
 		super();
 		this.id = id;
+		this.titulo = titulo;
 		this.localLink = localLink;
 		this.dataHora = dataHora;	
 		this.treinamento = treinamento;
@@ -65,6 +69,14 @@ public class Convite implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getLocalLink() {

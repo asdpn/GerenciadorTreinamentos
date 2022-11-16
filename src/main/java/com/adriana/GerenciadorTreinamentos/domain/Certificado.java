@@ -21,6 +21,9 @@ public class Certificado implements Serializable{
 	private Integer id;
 	
 	@Column(nullable = false)
+	private String titulo;
+	
+	@Column(nullable = false)
 	private StatusCertificado statusCertificado;
 	
 	@OneToOne
@@ -32,9 +35,10 @@ public class Certificado implements Serializable{
 		
 	}
 
-	public Certificado(Integer id, StatusCertificado statusCertificado, Resultado resultado) {
+	public Certificado(Integer id, String titulo, StatusCertificado statusCertificado, Resultado resultado) {
 		super();
 		this.id = id;
+		this.titulo = titulo;
 		this.statusCertificado = statusCertificado;
 		this.resultado = resultado;
 	}
@@ -62,6 +66,14 @@ public class Certificado implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public StatusCertificado getStatusCertificado() {
