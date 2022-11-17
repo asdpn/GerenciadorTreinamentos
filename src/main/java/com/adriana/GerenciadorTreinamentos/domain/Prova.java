@@ -25,6 +25,9 @@ public class Prova implements Serializable{
 	private Integer id;
 	
 	@Column(nullable = false)
+	private String titulo;
+	
+	@Column(nullable = false)
 	private Double notaMaxima;
 	
 	@Column(nullable = false)
@@ -55,9 +58,10 @@ public class Prova implements Serializable{
 		
 	}
 
-	public Prova(Integer id, Double notaMaxima, Double notaMinima, Resultado resultado, Profissional profissional, Treinamento treinamento) {
+	public Prova(Integer id, String titulo, Double notaMaxima, Double notaMinima, Resultado resultado, Profissional profissional, Treinamento treinamento) {
 		super();
 		this.id = id;
+		this.titulo = titulo;
 		this.notaMaxima = notaMaxima;
 		this.notaMinima = notaMinima;	
 		this.resultado = resultado;
@@ -88,6 +92,14 @@ public class Prova implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public Double getNotaMaxima() {

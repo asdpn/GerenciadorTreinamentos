@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,14 @@ public class Resultado implements Serializable{
 	
 	@Id
 	private Integer id;
+	
+	@Column(nullable = false)
+	private String titulo;
+	
+	@Column(nullable = false)
 	private Double notaObtida;
+	
+	@Column(nullable = false)
 	private StatusResultado statusResultado;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "resultado")
@@ -35,9 +43,10 @@ public class Resultado implements Serializable{
 		
 	}
 
-	public Resultado(Integer id, Double notaObtida, StatusResultado statusResultado, Certificado certificado, Profissional profissional, Prova prova) {
+	public Resultado(Integer id, String titulo, Double notaObtida, StatusResultado statusResultado, Certificado certificado, Profissional profissional, Prova prova) {
 		super();
 		this.id = id;
+		this.titulo = titulo;
 		this.notaObtida = notaObtida;
 		this.statusResultado = statusResultado;
 		this.certificado = certificado;
@@ -67,6 +76,14 @@ public class Resultado implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public Double getNotaObtida() {

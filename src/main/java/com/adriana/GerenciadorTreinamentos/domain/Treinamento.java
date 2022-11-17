@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +28,13 @@ public class Treinamento implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(nullable = false)
 	private String titulo;
 	private String descricao;
 	private String motivoReprovacao;
+	
+	@Column(nullable = false)
 	private StatusTreinamento statusTreinamento; 
 
 	@ManyToOne

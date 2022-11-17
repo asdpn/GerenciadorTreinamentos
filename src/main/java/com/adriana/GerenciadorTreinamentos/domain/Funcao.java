@@ -24,6 +24,9 @@ public class Funcao implements Serializable{
 	private Integer id;
 	
 	@Column(nullable = false)
+	private String titulo;
+	
+	@Column(nullable = false)
 	private String descricao;
 	
 	@Column(nullable = false)
@@ -36,9 +39,10 @@ public class Funcao implements Serializable{
 		
 	}
 
-	public Funcao(Integer id, String descricao, Permissao permissao) {
+	public Funcao(Integer id, String titulo, String descricao, Permissao permissao) {
 		super();
 		this.id = id;
+		this.titulo = titulo;
 		this.descricao = descricao;
 		this.permissao = permissao;
 	}
@@ -66,6 +70,14 @@ public class Funcao implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getDescricao() {
