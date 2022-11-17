@@ -12,9 +12,9 @@ import { ConviteService } from './convite.service';
 export class ConviteComponent {
 
   public convites: Convite[] = [];
-  public addConvite: Convite = {id:0, titulo: "", statusconvite: Statusconvite.CRIADO, resultado: Resultado};
-  public editConvite: Convite = {id:0, titulo: "", statusconvite: Statusconvite.CRIADO, resultado: []};
-  public deleteConvite: Convite = {id:0, titulo: "", statusconvite: Statusconvite.CRIADO, resultado: []};
+  public addConvite: Convite = {id:0, titulo: "",  localLink: "", dataHora: "", treinamento: Treinamento};
+  public editConvite: Convite = {id:0, titulo: "",  localLink: "", dataHora: "", treinamento: Treinamento};
+  public deleteConvite: Convite = {id:0, titulo: "",  localLink: "", dataHora: "", treinamento: Treinamento};
 
   constructor(private ConviteService: ConviteService){}
 

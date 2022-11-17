@@ -13,7 +13,7 @@ import { CertificadoService } from './certificado.service';
 export class CertificadoComponent {
 
   public certificados: Certificado[] = [];
-  public addCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: Resultado};
+  public addCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: {}};
   public editCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: []};
   public deleteCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: []};
 

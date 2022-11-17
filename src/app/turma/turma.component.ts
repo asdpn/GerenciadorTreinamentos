@@ -12,9 +12,9 @@ import { TurmaService } from '../turma/turma.service';
 export class TurmaComponent {
 
   public turmas: Turma[] = [];
-  public addTurma: Turma = {id:0, titulo: "", statusTurma: StatusTurma.CRIADO, Turma: Turma};
-  public editTurma: Turma = {id:0, titulo: "", statusTurma: StatusTurma.CRIADO, Turma: []};
-  public deleteTurma: Turma = {id:0, titulo: "", statusTurma: StatusTurma.CRIADO, Turma: []};
+  public addTurma: Turma = {id:0, tamanhoMaximo: 0, tamanhoMinimo: 0, treinamento: Treinamento, profissionais: Profissional[]};
+  public editTurma: Turma = {id:0, tamanhoMaximo: 0, tamanhoMinimo: 0, treinamento: Treinamento, profissionais: Profissional[]};
+  public deleteTurma: Turma = {id:0, tamanhoMaximo: 0, tamanhoMinimo: 0, treinamento: Treinamento, profissionais: Profissional[]};
 
   constructor(private TurmaService: TurmaService){}
 

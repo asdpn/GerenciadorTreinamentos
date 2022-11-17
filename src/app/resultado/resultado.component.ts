@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { StatusResultado } from '../statusResultado.enum';
 import { Resultado } from './resultado';
 import { ResultadoService } from './resultado.service';
 
@@ -12,9 +13,9 @@ import { ResultadoService } from './resultado.service';
 export class ResultadoComponent {
 
   public resultados: Resultado[] = [];
-  public addResultado: Resultado = {id:0, titulo: "", statusResultado: StatusResultado.CRIADO, resultado: Resultado};
-  public editResultado: Resultado = {id:0, titulo: "", statusResultado: StatusResultado.CRIADO, resultado: []};
-  public deleteResultado: Resultado = {id:0, titulo: "", statusResultado: StatusResultado.CRIADO, resultado: []};
+  public addResultado: Resultado = {id:0, titulo: "", notaObtida: 0, statusResultado: StatusResultado.CRIADO, certificado: Certificado, prova: Prova};
+  public editResultado: Resultado = {id:0, titulo: "", notaObtida: 0, statusResultado: StatusResultado.CRIADO, certificado: Certificado, prova: Prova};
+  public deleteResultado: Resultado = {id:0, titulo: "", notaObtida: 0, statusResultado: StatusResultado.CRIADO, certificado: Certificado, prova: Prova};
 
   constructor(private ResultadoService: ResultadoService){}
 

@@ -17,3 +17,4 @@ export interface Treinamento{
     provas: Prova[];
     profissionais: Profissional[];
 }
+

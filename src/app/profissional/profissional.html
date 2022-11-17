@@ -21,23 +21,26 @@
                 <table class="table project-list-table table-nowrap align-middle table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col" class="ps-4" style="width: 50px;">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                            </th>
-                            <th scope="col">Título</th>
-                            <th scope="col">Status Profissional</th>
-                            <th scope="col">Resultado</th>
+                            <th scope="col">Nome Completo</th>
+                            <th scope="col">Tipo Profissional</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Senha</th>
+                            <th scope="col">Função</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let profissional of Profissionais">
-                            <th scope="row" class="ps-4">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                            </th>
-                            <td>{{profissional.titulo}}</td>
-                            <td>{{profissional.statusProfissional}}</td>
-                            <td>{{profissional.resultado}}</td>
+                        <tr *ngFor="let profissional of profissionais">
+                            <td>{{profissional.nomeCompleto}}</td>
+                            <td>{{profissional.tipoProfissional}}</td>
+                            <td>{{profissional.empresa}}</td>
+                            <td>{{profissional.email}}</td>
+                            <td>{{profissional.telefone}}</td>
+                            <td>{{profissional.senha}}</td>
+                            <td>{{profissional.funcao}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -68,16 +71,32 @@
             <div class="modal-body">
                 <form #addForm="ngForm" (ngSubmit)="onAddProfissional(addForm)">
                     <div class="form-group">
-                        <label for="titulo">Título</label>
-                        <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                        <label for="nomeCompleto">Nome Completo</label>
+                        <input type="text" ngModel name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
                     </div>
                     <div class="form-group">
-                        <label for="statusProfissional">Status Profissional</label>
-                        <input type="text" ngModel name="statusProfissional" class="form-control" id="statusProfissional" placeholder="Status Profissional" required>
+                        <label for="tipoProfissional">Tipo Profissional</label>
+                        <input type="text" ngModel name="tipoProfissional" class="form-control" id="tipoProfissional" placeholder="Tipo Profissional" required>
                     </div>
                     <div class="form-group">
-                        <label for="resultado">Resultado</label>
-                        <input type="text" ngModel name="resultado" class="form-control" id="resultado" placeholder="Resultado">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" ngModel name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" ngModel name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="text" ngModel name="senha" class="form-control" id="senha" placeholder="Senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="funcao">Função</label>
+                        <input type="text" ngModel name="funcao" class="form-control" id="funcao" placeholder="Função" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Profissional-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -105,16 +124,32 @@
                 <input type="hidden" ngModel="{{editProfissional.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
             </div>
             <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" ngModel="{{editProfissional.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo">
+                <label for="nomeCompleto">Nome Completo</label>
+                <input type="text" ngModel="{{editProfissional.nomeCompleto}}" name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
             </div>
             <div class="form-group">
-                <label for="statusProfissional">Status Profissional</label>
-                <input type="text" ngModel="{{editProfissional.statusProfissional}}" name="statusProfissional" class="form-control" id="statusProfissional" placeholder="Status Profissional">
+                <label for="tipoProfissional">Tipo Profissional</label>
+                <input type="text" ngModel="{{editProfissional.tipoProfissional}}" name="tipoProfissional" class="form-control" id="tipoProfissional" placeholder="Tipo Profissional" required>
                 </div>
             <div class="form-group">
-                <label for="resultado">Resultado</label>
-                <input type="text" ngModel="{{editProfissional.resultado}}" name="resultado" class="form-control" id="resultado" placeholder="Resultado">
+                <label for="empresa">Empresa</label>
+                <input type="text" ngModel="{{editProfissional.empresa}}" name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" ngModel="{{editProfissional.email}}" name="email" class="form-control" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" ngModel="{{editProfissional.telefone}}" name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="text" ngModel="{{editProfissional.senha}}" name="senha" class="form-control" id="senha" placeholder="Senha" required>
+            </div>
+            <div class="form-group">
+                <label for="funcao">Função</label>
+                <input type="text" ngModel="{{editProfissional.funcao}}" name="funcao" class="form-control" id="funcao" placeholder="Função" required>
             </div>
             </form>
         </div>
@@ -137,7 +172,7 @@
         </button>
         </div>
         <div class="modal-body">
-            <p>Você tem certeza que quer apagar o Profissional {{deleteProfissional.titulo}}?</p>
+            <p>Você tem certeza que quer apagar o profissional {{deleteProfissional.nomeCompleto}}?</p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>

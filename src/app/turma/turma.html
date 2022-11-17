@@ -21,23 +21,21 @@
                 <table class="table project-list-table table-nowrap align-middle table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col" class="ps-4" style="width: 50px;">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                            </th>
                             <th scope="col">Título</th>
-                            <th scope="col">Status Turma</th>
-                            <th scope="col">Turma</th>
+                            <th scope="col">Tamanho Máximo</th>
+                            <th scope="col">Tamanho Mínimo</th>
+                            <th scope="col">Treinamento</th>
+                            <th scope="col">Profissionais</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let turma of Turmas">
-                            <th scope="row" class="ps-4">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                            </th>
+                        <tr *ngFor="let turma of turmas">
                             <td>{{turma.titulo}}</td>
-                            <td>{{turma.statusTurma}}</td>
-                            <td>{{turma.Turma}}</td>
+                            <td>{{turma.tamanhoMaximo}}</td>
+                            <td>{{turma.tamanhoMinimo}}</td>
+                            <td>{{turma.treinamento}}</td>
+                            <td>{{turma.profissionais}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -72,12 +70,20 @@
                         <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
                     </div>
                     <div class="form-group">
-                        <label for="statusTurma">Status Turma</label>
-                        <input type="text" ngModel name="statusTurma" class="form-control" id="statusTurma" placeholder="Status Turma" required>
+                        <label for="tamanhoMaximo">Tamanho Máximo</label>
+                        <input type="number" ngModel name="tamanhoMaximo" class="form-control" id="tamanhoMaximo" placeholder="Tamanho Máximo" required>
                     </div>
                     <div class="form-group">
-                        <label for="Turma">Turma</label>
-                        <input type="text" ngModel name="Turma" class="form-control" id="Turma" placeholder="Turma">
+                        <label for="tamanhoMinimo">Tamanho Mínimo</label>
+                        <input type="number" ngModel name="tamanhoMinimo" class="form-control" id="tamanhoMinimo" placeholder="Tamanho Mínimo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="treinamento">Treinamento</label>
+                        <input type="text" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="treinamento">
+                    </div>
+                    <div class="form-group">
+                        <label for="profissionais">Profissionais</label>
+                        <input type="text" ngModel name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Turma-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -106,15 +112,23 @@
             </div>
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" ngModel="{{editTurma.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo">
+                <input type="text" ngModel="{{editTurma.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
             </div>
             <div class="form-group">
-                <label for="statusTurma">Status Turma</label>
-                <input type="text" ngModel="{{editTurma.statusTurma}}" name="statusTurma" class="form-control" id="statusTurma" placeholder="Status Turma">
+                <label for="tamanhoMaximo">Tamanho Máximo</label>
+                <input type="number" ngModel="{{editTurma.tamanhoMaximo}}" name="tamanhoMaximo" class="form-control" id="tamanhoMaximo" placeholder="Tamanho Máximo" required>
                 </div>
             <div class="form-group">
-                <label for="Turma">Turma</label>
-                <input type="text" ngModel="{{editTurma.Turma}}" name="Turma" class="form-control" id="Turma" placeholder="Turma">
+                <label for="tamanhoMinimo">Tamanho Mínimo</label>
+                <input type="number" ngModel="{{editTurma.tamanhoMinimo}}" name="tamanhoMinimo" class="form-control" id="tamanhoMinimo" placeholder="Tamanho Mínimo" required>
+            </div>
+            <div class="form-group">
+                <label for="treinamento">Treinamento</label>
+                <input type="text" ngModel="{{editTurma.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento">
+            </div>
+            <div class="form-group">
+                <label for="profissionais">Profissionais</label>
+                <input type="text" ngModel="{{editTurma.profissionais}}" name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
             </div>
             </form>
         </div>

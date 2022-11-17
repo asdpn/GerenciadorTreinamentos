@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TipoProfissional } from '../tipoProfissional.enum';
 import { Profissional } from './profissional';
 import { ProfissionalService } from './profissional.service';
 
@@ -12,9 +13,9 @@ import { ProfissionalService } from './profissional.service';
 export class ProfissionalComponent {
 
   public profissionais: Profissional[] = [];
-  public addProfissional: Profissional = {id:0, titulo: "", statusProfissional: StatusProfissional.CRIADO, resultado: Resultado};
-  public editProfissional: Profissional = {id:0, titulo: "", statusProfissional: StatusProfissional.CRIADO, resultado: []};
-  public deleteProfissional: Profissional = {id:0, titulo: "", statusProfissional: StatusProfissional.CRIADO, resultado: []};
+  public addProfissional: Profissional = {id:0, nomeCompleto: "", tipoProfissional: TipoProfissional.INTERNO, empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
+  public editProfissional: Profissional = {id:0, nomeCompleto: "", tipoProfissional: TipoProfissional.INTERNO, empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
+  public deleteProfissional: Profissional = {id:0, nomeCompleto: "", tipoProfissional: TipoProfissional.INTERNO, empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
 
   constructor(private ProfissionalService: ProfissionalService){}
 
@@ -69,10 +70,10 @@ export class ProfissionalComponent {
     );
   }
 
-  public searchProfissionals(key: string): void {
+  public searchProfissionais(key: string): void {
     const results: Profissional[] = [];
     for (const profissional of this.profissionais) {
-      if (profissional.titulo.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      if (profissional.nomeCompleto.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(profissional);
       }
     }

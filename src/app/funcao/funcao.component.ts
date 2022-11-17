@@ -12,9 +12,9 @@ import { FuncaoService } from './funcao.service';
 export class FuncaoComponent {
 
   public funcoes: Funcao[] = [];
-  public addFuncao: Funcao = {id:0, titulo: "", statusFuncao: StatusFuncao.CRIADO, resultado: Resultado};
-  public editFuncao: Funcao = {id:0, titulo: "", statusFuncao: StatusFuncao.CRIADO, resultado: []};
-  public deleteFuncao: Funcao = {id:0, titulo: "", statusFuncao: StatusFuncao.CRIADO, resultado: []};
+  public addFuncao: Funcao = {id:0, titulo: "", descricao: "",  permissao: Permissao, profissionais: Profissional[]};
+  public editFuncao: Funcao = {id:0, titulo: "", descricao: "",  permissao: Permissao, profissionais: Profissional[]};
+  public deleteFuncao: Funcao = {id:0, titulo: "", descricao: "",  permissao: Permissao, profissionais: Profissional[]};
 
   constructor(private FuncaoService: FuncaoService){}
 

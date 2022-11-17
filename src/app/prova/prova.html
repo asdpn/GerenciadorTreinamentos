@@ -21,23 +21,22 @@
                 <table class="table project-list-table table-nowrap align-middle table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col" class="ps-4" style="width: 50px;">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                            </th>
                             <th scope="col">Título</th>
-                            <th scope="col">Status Prova</th>
-                            <th scope="col">Resultado</th>
+                            <th scope="col">Nota Máxima</th>
+                            <th scope="col">Nota Mínima</th>
+                            <th scope="col">Questões</th>
+                            <th scope="col">Profissional</th>
+                            <th scope="col">Treinamento</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let prova of Provas">
-                            <th scope="row" class="ps-4">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                            </th>
-                            <td>{{prova.titulo}}</td>
-                            <td>{{prova.statusProva}}</td>
-                            <td>{{prova.resultado}}</td>
+                        <tr *ngFor="let prova of provas">
+                            <td>{{prova.notaMaxima}}</td>
+                            <td>{{prova.notaMinima}}</td>
+                            <td>{{prova.questoes}}</td>
+                            <td>{{prova.profissional}}</td>
+                            <td>{{prova.treinamento}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -72,12 +71,24 @@
                         <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
                     </div>
                     <div class="form-group">
-                        <label for="statusProva">Status Prova</label>
-                        <input type="text" ngModel name="statusProva" class="form-control" id="statusProva" placeholder="Status Prova" required>
+                        <label for="notaMaxima">Nota Máxima</label>
+                        <input type="number" ngModel name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required>
                     </div>
                     <div class="form-group">
-                        <label for="resultado">Resultado</label>
-                        <input type="text" ngModel name="resultado" class="form-control" id="resultado" placeholder="Resultado">
+                        <label for="notaMinima">Nota Mínima</label>
+                        <input type="number" ngModel name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="questoes">Questões</label>
+                        <input type="text" ngModel name="questoes" class="form-control" id="questoes" placeholder="Questões">
+                    </div>
+                    <div class="form-group">
+                        <label for="profissional">Profissional</label>
+                        <input type="text" ngModel name="profissional" class="form-control" id="profissional" placeholder="Profissional">
+                    </div>
+                    <div class="form-group">
+                        <label for="treinamento">Treinamento</label>
+                        <input type="text" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento">
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Prova-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -106,15 +117,27 @@
             </div>
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" ngModel="{{editProva.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo">
+                <input type="text" ngModel="{{editProva.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
             </div>
             <div class="form-group">
-                <label for="statusProva">Status Prova</label>
-                <input type="text" ngModel="{{editProva.statusProva}}" name="statusProva" class="form-control" id="statusProva" placeholder="Status Prova">
+                <label for="notaMaxima">Nota Máxima</label>
+                <input type="number" ngModel="{{editProva.notaMaxima}}" name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required> 
                 </div>
             <div class="form-group">
-                <label for="resultado">Resultado</label>
-                <input type="text" ngModel="{{editProva.resultado}}" name="resultado" class="form-control" id="resultado" placeholder="Resultado">
+                <label for="notaMinima">Nota Mínima</label>
+                <input type="number" ngModel="{{editProva.notaMinima}}" name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
+            </div>
+            <div class="form-group">
+                <label for="questoes">Questões</label>
+                <input type="text" ngModel="{{editProva.questoes}}" name="questoes" class="form-control" id="questoes" placeholder="Questões">
+            </div>
+            <div class="form-group">
+                <label for="profissional">Profissional</label>
+                <input type="text" ngModel="{{editProva.profissional}}" name="profissional" class="form-control" id="profissional" placeholder="Profissional">
+            </div>
+            <div class="form-group">
+                <label for="treinamento">Treinamento</label>
+                <input type="text" ngModel="{{editProva.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento">
             </div>
             </form>
         </div>

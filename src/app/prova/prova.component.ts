@@ -12,9 +12,9 @@ import { ProvaService } from './prova.service';
 export class ProvaComponent {
 
   public provas: Prova[] = [];
-  public addProva: Prova = {id:0, titulo: "", statusProva: StatusProva.CRIADO, resultado: Resultado};
-  public editProva: Prova = {id:0, titulo: "", statusProva: StatusProva.CRIADO, resultado: []};
-  public deleteProva: Prova = {id:0, titulo: "", statusProva: StatusProva.CRIADO, resultado: []};
+  public addProva: Prova = {id:0, notaMaxima: 0, notaMinima: 0, questoes: Questao[], profissional: Profissional, treinamento: Treinamento};
+  public editProva: Prova = {id:0, notaMaxima: 0, notaMinima: 0, questoes: Questao[], profissional: Profissional, treinamento: Treinamento};
+  public deleteProva: Prova = {id:0, notaMaxima: 0, notaMinima: 0, questoes: Questao[], profissional: Profissional, treinamento: Treinamento};
 
   constructor(private ProvaService: ProvaService){}
 

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { StatusTreinamento } from '../statusTreinamento.enum';
 import { Treinamento } from '../treinamento/treinamento';
 import { TreinamentoService } from '../treinamento/treinamento.service';
 
@@ -12,9 +13,9 @@ import { TreinamentoService } from '../treinamento/treinamento.service';
 export class TreinamentoComponent {
 
   public treinamentos: Treinamento[] = [];
-  public addTreinamento: Treinamento = {id:0, titulo: "", statusTreinamento: StatusTreinamento.CRIADO, Treinamento: Treinamento};
-  public editTreinamento: Treinamento = {id:0, titulo: "", statusTreinamento: StatusTreinamento.CRIADO, Treinamento: []};
-  public deleteTreinamento: Treinamento = {id:0, titulo: "", statusTreinamento: StatusTreinamento.CRIADO, Treinamento: []};
+  public addTreinamento: Treinamento = {id:0, titulo: "", descricao: "", motivoReprovacao: "", statusTreinamento: StatusTreinamento.CRIADO, categoria: Categoria, turma: Turma, convite: Convite, provas: Prova[], profissionais: Profissional[]};
+  public editTreinamento: Treinamento = {id:0, titulo: "", descricao: "", motivoReprovacao: "", statusTreinamento: StatusTreinamento.CRIADO, categoria: Categoria, turma: Turma, convite: Convite, provas: Prova[], profissionais: Profissional[]};
+  public deleteTreinamento: Treinamento = {id:0, titulo: "", descricao: "", motivoReprovacao: "", statusTreinamento: StatusTreinamento.CRIADO, categoria: Categoria, turma: Turma, convite: Convite, provas: Prova[], profissionais: Profissional[]};
 
   constructor(private TreinamentoService: TreinamentoService){}
 

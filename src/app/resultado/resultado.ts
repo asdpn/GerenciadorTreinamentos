@@ -4,7 +4,8 @@ import { StatusResultado } from "../statusResultado.enum";
 
 export interface Resultado{
     id: number;
-    notaObtida: string;
+    titulo: string;
+    notaObtida: number;
     statusResultado: StatusResultado;
     certificado: Certificado;
     prova: Prova;

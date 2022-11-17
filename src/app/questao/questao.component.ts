@@ -12,9 +12,9 @@ import { QuestaoService } from './questao.service';
 export class QuestaoComponent {
 
   public questoes: Questao[] = [];
-  public addQuestao: Questao = {id:0, titulo: "", statusQuestao: StatusQuestao.CRIADO, resultado: Resultado};
-  public editQuestao: Questao = {id:0, titulo: "", statusQuestao: StatusQuestao.CRIADO, resultado: []};
-  public deleteQuestao: Questao = {id:0, titulo: "", statusQuestao: StatusQuestao.CRIADO, resultado: []};
+  public addQuestao: Questao = {id:0, cabecalho: "", gabarito: "", provas: Provas[]};
+  public editQuestao: Questao = {id:0, cabecalho: "", gabarito: "", provas: Provas[]};
+  public deleteQuestao: Questao = {id:0, cabecalho: "", gabarito: "", provas: Provas[]};
 
   constructor(private QuestaoService: QuestaoService){}
 
@@ -69,10 +69,10 @@ export class QuestaoComponent {
     );
   }
 
-  public searchquestoes(key: string): void {
+  public searchQuestoes(key: string): void {
     const results: Questao[] = [];
     for (const Questao of this.questoes) {
-      if (Questao.titulo.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      if (Questao.cabecalho.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(Questao);
       }
     }

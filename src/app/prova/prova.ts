@@ -4,6 +4,7 @@ import { Treinamento } from "../treinamento/treinamento";
 
 export interface Prova{
     id: number;
+    titulo: string;
     notaMaxima: number;
     notaMinima: number;
     questoes: Questao[];

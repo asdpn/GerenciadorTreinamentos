@@ -21,23 +21,29 @@
                 <table class="table project-list-table table-nowrap align-middle table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col" class="ps-4" style="width: 50px;">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                            </th>
                             <th scope="col">Título</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Motivo Reprovação</th>
                             <th scope="col">Status Treinamento</th>
-                            <th scope="col">Treinamento</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Turma</th>
+                            <th scope="col">Convite</th>
+                            <th scope="col">Provas</th>
+                            <th scope="col">Profissionais</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let treinamento of Treinamentos">
-                            <th scope="row" class="ps-4">
-                                <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                            </th>
+                        <tr *ngFor="let treinamento of treinamentos">
                             <td>{{treinamento.titulo}}</td>
+                            <td>{{treinamento.descricao}}</td>
+                            <td>{{treinamento.motivoReprovacao}}</td>
                             <td>{{treinamento.statusTreinamento}}</td>
-                            <td>{{treinamento.Treinamento}}</td>
+                            <td>{{treinamento.categoria}}</td>
+                            <td>{{treinamento.turma}}</td>
+                            <td>{{treinamento.convite}}</td>
+                            <td>{{treinamento.provas}}</td>
+                            <td>{{treinamento.profissionais}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -72,12 +78,36 @@
                         <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
                     </div>
                     <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" ngModel name="descricao" class="form-control" id="descricao" placeholder="Descrição">
+                    </div>
+                    <div class="form-group">
+                        <label for="motivoReprovacao">Motivo Reprovação</label>
+                        <input type="text" ngModel name="motivoReprovacao" class="form-control" id="motivoReprovacao" placeholder="Motivo Reprovação">
+                    </div>
+                    <div class="form-group">
                         <label for="statusTreinamento">Status Treinamento</label>
                         <input type="text" ngModel name="statusTreinamento" class="form-control" id="statusTreinamento" placeholder="Status Treinamento" required>
                     </div>
                     <div class="form-group">
-                        <label for="Treinamento">Treinamento</label>
-                        <input type="text" ngModel name="Treinamento" class="form-control" id="Treinamento" placeholder="Treinamento">
+                        <label for="categoria">Categoria</label>
+                        <input type="text" ngModel name="categoria" class="form-control" id="categoria" placeholder="Categoria">
+                    </div>
+                    <div class="form-group">
+                        <label for="turma">Turma</label>
+                        <input type="text" ngModel name="turma" class="form-control" id="turma" placeholder="Turma">
+                    </div>
+                    <div class="form-group">
+                        <label for="convite">Convite</label>
+                        <input type="text" ngModel name="convite" class="form-control" id="convite" placeholder="Convite">
+                    </div>
+                    <div class="form-group">
+                        <label for="provas">Provas</label>
+                        <input type="text" ngModel name="provas" class="form-control" id="provas" placeholder="Provas">
+                    </div>
+                    <div class="form-group">
+                        <label for="profissionais">Profissionais</label>
+                        <input type="text" ngModel name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Treinamento-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -106,15 +136,39 @@
             </div>
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" ngModel="{{editTreinamento.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo">
+                <input type="text" ngModel="{{editTreinamento.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" ngModel="{{editTreinamento.descricao}}" name="descricao" class="form-control" id="descricao" placeholder="Descrição">
+            </div>
+            <div class="form-group">
+                <label for="motivoReprovacao">Motivo Reprovação</label>
+                <input type="text" ngModel="{{editTreinamento.motivoReprovacao}}" name="motivoReprovacao" class="form-control" id="motivoReprovacao" placeholder="Motivo Reprovação">
             </div>
             <div class="form-group">
                 <label for="statusTreinamento">Status Treinamento</label>
-                <input type="text" ngModel="{{editTreinamento.statusTreinamento}}" name="statusTreinamento" class="form-control" id="statusTreinamento" placeholder="Status Treinamento">
-                </div>
+                <input type="text" ngModel="{{editTreinamento.statusTreinamento}}" name="statusTreinamento" class="form-control" id="statusTreinamento" placeholder="Status Treinamento" required>
+            </div>
             <div class="form-group">
-                <label for="Treinamento">Treinamento</label>
-                <input type="text" ngModel="{{editTreinamento.Treinamento}}" name="Treinamento" class="form-control" id="Treinamento" placeholder="Treinamento">
+                <label for="categoria">Categoria</label>
+                <input type="text" ngModel="{{editTreinamento.categoria}}" name="categoria" class="form-control" id="categoria" placeholder="Categoria">
+            </div>
+            <div class="form-group">
+                <label for="turma">Turma</label>
+                <input type="text" ngModel="{{editTreinamento.turma}}" name="turma" class="form-control" id="turma" placeholder="Turma">
+            </div>
+            <div class="form-group">
+                <label for="convite">Convite</label>
+                <input type="text" ngModel="{{editTreinamento.convite}}" name="convite" class="form-control" id="convite" placeholder="Convite">
+            </div>
+            <div class="form-group">
+                <label for="provas">Provas</label>
+                <input type="text" ngModel="{{editTreinamento.provas}}" name="provas" class="form-control" id="provas" placeholder="Provas">
+            </div>
+            <div class="form-group">
+                <label for="profissionais">Profissionais</label>
+                <input type="text" ngModel="{{editTreinamento.profissionais}}" name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
             </div>
             </form>
         </div>
@@ -137,7 +191,7 @@
         </button>
         </div>
         <div class="modal-body">
-            <p>Você tem certeza que quer apagar o Treinamento {{deleteTreinamento.titulo}}?</p>
+            <p>Você tem certeza que quer apagar o treinamento {{deleteTreinamento.titulo}}?</p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
