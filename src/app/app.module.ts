@@ -5,26 +5,33 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { CategoriaService } from './categoria/categoria.service';
-import { CategoriaComponent } from './categoria/categoria.component';
-import { CertificadoService } from './certificado/certificado.service';
-import { CertificadoComponent } from './certificado/certificado.component';
-import { ConviteService } from './convite/convite.service';
-import { ConviteComponent } from './convite/convite.component';
-import { FuncaoService } from './funcao/funcao.service';
-import { FuncaoComponent } from './funcao/funcao.component';
-import { ProfissionalService } from './profissional/profissional.service';
-import { ProfissionalComponent } from './profissional/profissional.component';
-import { ProvaService } from './prova/prova.service';
-import { ProvaComponent } from './prova/prova.component';
-import { QuestaoService } from './questao/questao.service';
-import { QuestaoComponent } from './questao/questao.component';
-import { ResultadoService } from './resultado/resultado.service';
-import { ResultadoComponent } from './resultado/resultado.component';
-import { TreinamentoService } from './treinamento/treinamento.service';
-import { TreinamentoComponent } from './treinamento/treinamento.component';
-import { TurmaService } from './turma/turma.service';
-import { TurmaComponent } from './turma/turma.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from 'src/environments/environment';
+
+import { CategoriaService } from './services/categoria.service';
+import { CategoriaComponent } from './components/categoria/categoria.component';
+import { CertificadoService } from './services/certificado.service';
+import { CertificadoComponent } from './components/certificado/certificado.component';
+import { ConviteService } from './services/convite.service';
+import { ConviteComponent } from './components/convite/convite.component';
+import { FuncaoService } from './services/funcao.service';
+import { FuncaoComponent } from './components/funcao/funcao.component';
+import { ProfissionalService } from './services/profissional.service';
+import { ProfissionalComponent } from './components/profissional/profissional.component';
+import { ProvaService } from './services/prova.service';
+import { ProvaComponent } from './components/prova/prova.component';
+import { QuestaoService } from './services/questao.service';
+import { QuestaoComponent } from './components/questao/questao.component';
+import { ResultadoService } from './services/resultado.service';
+import { ResultadoComponent } from './components/resultado/resultado.component';
+import { TreinamentoService } from './services/treinamento.service';
+import { TreinamentoComponent } from './components/treinamento/treinamento.component';
+import { TurmaService } from './services/turma.service';
+import { TurmaComponent } from './components/turma/turma.component';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +45,20 @@ import { TurmaComponent } from './turma/turma.component';
     QuestaoComponent,
     ResultadoComponent,
     TreinamentoComponent,
-    TurmaComponent
+    TurmaComponent,
+    LoginButtonComponent,
+    NavBarComponent,
+    LogoutButtonComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      ... env.auth,
+    })
   ],
   providers: [CategoriaService, CertificadoService, ConviteService, FuncaoService, ProfissionalService, ProvaService, QuestaoService, ResultadoService, TreinamentoService, TurmaService],
   bootstrap: [AppComponent]
