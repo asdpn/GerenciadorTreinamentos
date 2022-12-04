@@ -1,13 +1,17 @@
 import { Funcao } from "./funcao";
-import { TipoProfissional } from "./enums/tipoProfissional.enum";
+import { Prova } from "./prova";
+import { Treinamento } from "./treinamento";
+import { Turma } from "./turma";
 
 export interface Profissional{
     id: number;
     nomeCompleto: string;
-    tipoProfissional: TipoProfissional;
     empresa: string;
     email: string;
     telefone: string;
     senha: string;
     funcao: Funcao;
+    treinamentos: Treinamento[];
+    turmas: Turma[];
+    provas: Prova[];
 }

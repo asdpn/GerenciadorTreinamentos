@@ -9,12 +9,11 @@ export interface Treinamento{
     id: number;
     titulo: string;
     descricao: string;
-    motivoReprovacao: string;
     statusTreinamento: StatusTreinamento;
     categoria: Categoria;
     turma: Turma;
     convite: Convite;
     provas: Prova[];
-    profissionais: Profissional[];
+    palestrante: Profissional;
 }
 

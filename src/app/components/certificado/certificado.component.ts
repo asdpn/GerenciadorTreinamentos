@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { StatusCertificado } from '../../entities/enums/statusCertificado.enum';
 import { Certificado } from '../../entities/certificado';
 import { CertificadoService } from '../../services/certificado.service';
+import { Resultado } from 'src/app/entities/resultado';
 
 @Component({
   selector: 'app-certificado',
@@ -14,9 +15,9 @@ import { CertificadoService } from '../../services/certificado.service';
 export class CertificadoComponent implements OnInit{
 
   public certificados: Certificado[] = [];
-  public addCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: {}};
-  public editCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: []};
-  public deleteCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: []};
+  public addCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, Resultado};
+  public editCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: new Resultado()};
+  public deleteCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: new Resultado};
 
   constructor(private CertificadoService: CertificadoService){}
 

@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TipoProfissional } from '../../entities/enums/tipoProfissional.enum';
 import { Profissional } from '../../entities/profissional';
 import { ProfissionalService } from '../../services/profissional.service';
 
@@ -13,9 +12,9 @@ import { ProfissionalService } from '../../services/profissional.service';
 export class ProfissionalComponent implements OnInit{
 
   public profissionais: Profissional[] = [];
-  public addProfissional: Profissional = {id:0, nomeCompleto: "", tipoProfissional: TipoProfissional.INTERNO, empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
-  public editProfissional: Profissional = {id:0, nomeCompleto: "", tipoProfissional: TipoProfissional.INTERNO, empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
-  public deleteProfissional: Profissional = {id:0, nomeCompleto: "", tipoProfissional: TipoProfissional.INTERNO, empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
+  public addProfissional: Profissional = {id:0, nomeCompleto: "", empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
+  public editProfissional: Profissional = {id:0, nomeCompleto: "", empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
+  public deleteProfissional: Profissional = {id:0, nomeCompleto: "", empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
 
   constructor(private ProfissionalService: ProfissionalService){}
 

@@ -65,11 +65,11 @@
             <div class="modal-body">
                 <form #addForm="ngForm" (ngSubmit)="onAddQuestao(addForm)">
                     <div class="form-group">
-                        <label for="cabecalho">Cabeçalho</label>
+                        <label for="cabecalho">Cabeçalho*</label>
                         <input type="text" ngModel name="cabecalho" class="form-control" id="cabecalho" placeholder="Cabeçalho" required>
                     </div>
                     <div class="form-group">
-                        <label for="gabarito">Gabarito</label>
+                        <label for="gabarito">Gabarito*</label>
                         <input type="text" ngModel name="gabarito" class="form-control" id="gabarito" placeholder="Gabarito" required>
                     </div>
                     <div class="form-group">
@@ -102,12 +102,12 @@
                 <input type="hidden" ngModel="{{editQuestao.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
             </div>
             <div class="form-group">
-                <label for="cabecalho">Cabeçalho</label>
-                <input type="text" ngModel="{{editQuestao.cabecalho}}" name="cabecalho" class="form-control" id="cabecalho" placeholder="Cabeçalho">
+                <label for="cabecalho">Cabeçalho*</label>
+                <input type="text" ngModel="{{editQuestao.cabecalho}}" name="cabecalho" class="form-control" id="cabecalho" placeholder="Cabeçalho" required>
             </div>
             <div class="form-group">
-                <label for="gabarito">Gabarito</label>
-                <input type="text" ngModel="{{editQuestao.gabarito}}" name="gabarito" class="form-control" id="gabarito" placeholder="Gabarito">
+                <label for="gabarito">Gabarito*</label>
+                <input type="text" ngModel="{{editQuestao.gabarito}}" name="gabarito" class="form-control" id="gabarito" placeholder="Gabarito" required>
                 </div>
             <div class="form-group">
                 <label for="provas">Provas</label>

@@ -1,5 +1,5 @@
 export enum Permissao{
-    CONSULTA,
-    EDICAOGERENTE,
-    EDICAOPALESTRANTE
+    GERENTE,
+    PALESTRANTE,
+    PROFISSIONAL
 }

@@ -64,19 +64,19 @@
             <div class="modal-body">
                 <form #addForm="ngForm" (ngSubmit)="onAddConvite(addForm)">
                     <div class="form-group">
-                        <label for="titulo">Título</label>
+                        <label for="titulo">Título*</label>
                         <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
                     </div>
                     <div class="form-group">
-                        <label for="localLink">Local/Link</label>
+                        <label for="localLink">Local/Link*</label>
                         <input type="text" ngModel name="localLink" class="form-control" id="localLink" placeholder="Local/Link" required>
                     </div>
                     <div class="form-group">
-                        <label for="dataHora">Data e Hora</label>
+                        <label for="dataHora">Data e Hora*</label>
                         <input type="datetime" ngModel name="dataHora" class="form-control" id="dataHora" placeholder="Data e Hora" required>
                     </div>
                     <div class="form-group">
-                        <label for="treinamento">Treinamento</label>
+                        <label for="treinamento">Treinamento*</label>
                         <input type="string" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
                     </div>
                     <div class="modal-footer">
@@ -105,20 +105,20 @@
                 <input type="hidden" ngModel="{{editConvite.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
             </div>
             <div class="form-group">
-                <label for="titulo">Título</label>
+                <label for="titulo">Título*</label>
                 <input type="text" ngModel="{{editConvite.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
             </div>
             <div class="form-group">
-                <label for="localLink">Local/Link</label>
+                <label for="localLink">Local/Link*</label>
                 <input type="text" ngModel="{{editConvite.localLink}}" name="localLink" class="form-control" id="localLink" placeholder="Local/Link" required>
                 </div>
             <div class="form-group">
-                <label for="dataHora">Data e Hora</label>
+                <label for="dataHora">Data e Hora*</label>
                 <input type="datetime" ngModel="{{editConvite.dataHora}}" name="dataHora" class="form-control" id="dataHora" placeholder="Data e Hora" required>
             </div>
             <div class="form-group">
-                <label for="treinamento">Treinamento</label>
-                <input type="text" ngModel="{{editConvite.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento">
+                <label for="treinamento">Treinamento*</label>
+                <input type="text" ngModel="{{editConvite.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
             </div>
             </form>
         </div>
