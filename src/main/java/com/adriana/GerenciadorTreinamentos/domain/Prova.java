@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -41,9 +40,8 @@ public class Prova implements Serializable{
 	private List<Questao> questoes = new ArrayList<>();
 	
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_profissional")
-	@MapsId
 	private Profissional profissional;
 	
 	@ManyToOne

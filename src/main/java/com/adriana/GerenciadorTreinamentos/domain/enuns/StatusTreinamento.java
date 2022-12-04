@@ -1,11 +1,9 @@
 package com.adriana.GerenciadorTreinamentos.domain.enuns;
 
 public enum StatusTreinamento {
-	 CRIADO(1, "Criado"),
-	 APROVADO(2, "Aprovado"),
-	 REPROVADO(3, "Reprovado"),
-	 AGENDADO(4, "Agendado"),
-	 FINALIZADO(5, "Finalizado");
+	 CRIADO (1, "Criado"),
+	 AGENDADO(2, "Agendado"),
+	 FINALIZADO(3, "Finalizado");
 		
 		private Integer cod;
 		private String descricao;

@@ -15,9 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.adriana.GerenciadorTreinamentos.domain.enuns.TipoProfissional;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -31,10 +31,7 @@ public class Profissional implements Serializable{
 	
 	@Column(nullable = false)
 	private String nomeCompleto;
-	
-	@Column(nullable = false)
-	private TipoProfissional tipoProfissional;
-	
+		
 	@Column(nullable = false)
 	private String empresa;
 	
@@ -59,23 +56,21 @@ public class Profissional implements Serializable{
 	
 	private List<Turma> turmas = new ArrayList<>();
 	
-	@JsonIgnore
-	@ManyToMany(mappedBy = "profissionais")
+	@OneToMany(mappedBy = "treinamento")
 	private List<Treinamento> treinamentos = new ArrayList<>();
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "profissional")
-	private Prova prova;	
-	
+	@OneToMany(mappedBy = "prova")
+	private List<Prova> provas = new ArrayList<>();
+		
 	public Profissional() {
 		
 	}
 
-	public Profissional(Integer id, Funcao funcao, TipoProfissional tipoProfissional, String nomeCompleto, String empresa, String email, String telefone, String senha, Prova prova) {
+	public Profissional(Integer id, Funcao funcao, String nomeCompleto, String empresa, String email, String telefone, String senha, Prova prova) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.funcao = funcao;
-		this.tipoProfissional = tipoProfissional;
 		this.empresa = empresa;
 		this.setEmail(email);
 		this.setTelefone(telefone);
@@ -123,21 +118,13 @@ public class Profissional implements Serializable{
 	public void setTreinamentos(List<Treinamento> treinamentos) {
 		this.treinamentos = treinamentos;
 	}
-	
+
 	public Funcao getFuncao() {
 		return funcao;
 	}
 
 	public void setFuncao(Funcao funcao) {
 		this.funcao = funcao;
-	}
-
-	public TipoProfissional getTipoProfissional() {
-		return tipoProfissional;
-	}
-
-	public void setTipoProfissional(TipoProfissional tipoProfissional) {
-		this.tipoProfissional = tipoProfissional;
 	}
 
 	public String getNomeCompleto() {

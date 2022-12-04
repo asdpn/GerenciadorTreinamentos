@@ -82,13 +82,14 @@ public class Categoria implements Serializable{
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
-	//public List<Treinamento> getTreinamentos() {
-	//	return treinamentos;
-	//}
 
-	//public void setTreinamentos(List<Treinamento> treinamentos) {
-	//	this.treinamentos = treinamentos;
-	//}
+	public List<Treinamento> getTreinamentos() {
+		return treinamentos;
+	}
+
+	public void setTreinamentos(List<Treinamento> treinamentos) {
+		this.treinamentos = treinamentos;
+	}
+	
 		
 }

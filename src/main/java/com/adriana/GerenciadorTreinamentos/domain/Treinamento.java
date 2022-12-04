@@ -32,7 +32,6 @@ public class Treinamento implements Serializable{
 	@Column(nullable = false)
 	private String titulo;
 	private String descricao;
-	private String motivoReprovacao;
 	
 	@Column(nullable = false)
 	private StatusTreinamento statusTreinamento; 
@@ -50,28 +49,25 @@ public class Treinamento implements Serializable{
 	
 	@OneToMany(mappedBy = "treinamento")
 	private List<Prova> provas = new ArrayList<>();
-
-	@ManyToMany
-	@JoinTable(name = "TREINAMENTO_PROFISSIONAL",
-			joinColumns = @JoinColumn(name = "id_treinamento"),
-			inverseJoinColumns = @JoinColumn(name = "id_profissional"))
 	
-	private List<Profissional> profissionais = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name="id_profissional")
+	private Profissional palestrante;
 		
 	public Treinamento() {
 		
 	}
 
-	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento, Turma turma, Convite convite, Prova prova) {
+	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento, Turma turma, Convite convite, Prova prova, Profissional palestrante) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;	
-		this.motivoReprovacao = motivoReprovacao;
 		this.statusTreinamento = statusTreinamento;
 		this.categoria = categoria;
 		this.turma = turma;
 		this.convite = convite;
+		this.palestrante = palestrante;
 	}
 	
 	@Override
@@ -115,20 +111,13 @@ public class Treinamento implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public String getMotivoReprovacao() {
-		return motivoReprovacao;
+	
+	public Profissional getPalestrante() {
+		return palestrante;
 	}
 
-	public void setMotivoReprovacao(String motivoReprovacao) {
-		this.motivoReprovacao = motivoReprovacao;
-	}
-
-	public List<Profissional> getProfissionais() {
-		return profissionais;
-	}
-
-	public void setProfissionais(List<Profissional> profissionais) {
-		this.profissionais = profissionais;
+	public void setPalestrante(Profissional palestrante) {
+		this.palestrante = palestrante;
 	}
 
 	public Categoria getCategoria() {

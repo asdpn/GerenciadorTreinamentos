@@ -1,9 +1,9 @@
 package com.adriana.GerenciadorTreinamentos.domain.enuns;
 
 public enum Permissao {
-	CONSULTA(1, "Consulta"),
-	EDICAOGERENTE(2, "EdicaoGerente"),
-	EDICAOPALESTRANTE(3,"EdicaoPalestrante");
+	GERENTE(1, "Gerente de Treinamentos"),
+	PALESTRANTE(2, "Palestrante"),
+	PROFISSIONAL(3,"Profissional");
 	
 	private Integer cod;
 	private String descricao;
