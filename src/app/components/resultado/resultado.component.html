@@ -82,8 +82,8 @@
                         <input type="text" ngModel name="certificado" class="form-control" id="certificado" placeholder="Certificado">
                     </div>
                     <div class="form-group">
-                        <label for="prova">Prova</label>
-                        <input type="text" ngModel name="prova" class="form-control" id="prova" placeholder="Prova">
+                        <label for="prova">Prova*</label>
+                        <input type="text" ngModel name="prova" class="form-control" id="prova" placeholder="Prova" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Resultado-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -108,7 +108,7 @@
         <div class="modal-body">
             <form #editForm="ngForm">
             <div class="form-group" >
-                <input type="hidden" ngModel="{{editResultado.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                <input type="hidden" ngModel="{{editResultado.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
             </div>
             <div class="form-group">
                 <label for="titulo">Título*</label>
@@ -127,8 +127,8 @@
                 <input type="text" ngModel="{{editResultado.certificado}}" name="certificado" class="form-control" id="certificado" placeholder="Certificado">
             </div>
             <div class="form-group">
-                <label for="prova">Prova</label>
-                <input type="text" ngModel="{{editResultado.prova}}" name="prova" class="form-control" id="prova" placeholder="Prova">
+                <label for="prova">Prova*</label>
+                <input type="text" ngModel="{{editResultado.prova}}" name="prova" class="form-control" id="prova" placeholder="Prova" required>
             </div>
             </form>
         </div>
@@ -155,7 +155,7 @@
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button (click)="onDeleteResultado(deleteResultado.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+        <button (click)="onDeleteResultado(deleteResultado.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
         </div>
     </div>
 </div>

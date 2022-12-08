@@ -83,12 +83,12 @@
                         <input type="text" ngModel name="questoes" class="form-control" id="questoes" placeholder="Questões">
                     </div>
                     <div class="form-group">
-                        <label for="profissional">Profissional</label>
-                        <input type="text" ngModel name="profissional" class="form-control" id="profissional" placeholder="Profissional">
+                        <label for="profissional">Profissional*</label>
+                        <input type="text" ngModel name="profissional" class="form-control" id="profissional" placeholder="Profissional" required>
                     </div>
                     <div class="form-group">
-                        <label for="treinamento">Treinamento</label>
-                        <input type="text" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento">
+                        <label for="treinamento">Treinamento*</label>
+                        <input type="text" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Prova-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -113,7 +113,7 @@
         <div class="modal-body">
             <form #editForm="ngForm">
             <div class="form-group" >
-                <input type="hidden" ngModel="{{editProva.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                <input type="hidden" ngModel="{{editProva.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
             </div>
             <div class="form-group">
                 <label for="titulo">Título*</label>
@@ -132,12 +132,12 @@
                 <input type="text" ngModel="{{editProva.questoes}}" name="questoes" class="form-control" id="questoes" placeholder="Questões">
             </div>
             <div class="form-group">
-                <label for="profissional">Profissional</label>
-                <input type="text" ngModel="{{editProva.profissional}}" name="profissional" class="form-control" id="profissional" placeholder="Profissional">
+                <label for="profissional">Profissional*</label>
+                <input type="text" ngModel="{{editProva.profissional}}" name="profissional" class="form-control" id="profissional" placeholder="Profissional" required>
             </div>
             <div class="form-group">
-                <label for="treinamento">Treinamento</label>
-                <input type="text" ngModel="{{editProva.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento">
+                <label for="treinamento">Treinamento*</label>
+                <input type="text" ngModel="{{editProva.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
             </div>
             </form>
         </div>
@@ -160,11 +160,11 @@
         </button>
         </div>
         <div class="modal-body">
-            <p>Você tem certeza que quer apagar o Prova {{deleteProva.titulo}}?</p>
+            <p>Você tem certeza que quer apagar a prova {{deleteProva.titulo}}?</p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button (click)="onDeleteProva(deleteProva.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+        <button (click)="onDeleteProva(deleteProva.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
         </div>
     </div>
 </div>

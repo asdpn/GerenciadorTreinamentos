@@ -21,6 +21,7 @@
                 <table class="table project-list-table table-nowrap align-middle table-borderless">
                     <thead>
                         <tr>
+                            <th scope="col">Identificador</th>
                             <th scope="col">Cabeçalho</th>
                             <th scope="col">Gabarito</th>
                             <th scope="col">Provas</th>
@@ -32,6 +33,7 @@
                             <th scope="row" class="ps-4">
                                 <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
                             </th>
+                            <td>{{questao.Id}}</td>
                             <td>{{questao.cabecalho}}</td>
                             <td>{{questao.gabarito}}</td>
                             <td>{{questao.provas}}</td>
@@ -99,7 +101,7 @@
         <div class="modal-body">
             <form #editForm="ngForm">
             <div class="form-group" >
-                <input type="hidden" ngModel="{{editQuestao.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                <input type="text" ngModel="{{editQuestao.Id}}" name="id" class="form-control" id="id" placeholder="Identificador" disabled>
             </div>
             <div class="form-group">
                 <label for="cabecalho">Cabeçalho*</label>
@@ -134,11 +136,11 @@
         </button>
         </div>
         <div class="modal-body">
-            <p>Você tem certeza que quer apagar essa questão?</p>
+            <p>Você tem certeza que quer apagar a questão {{deleteQuestao.Id}}?</p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button (click)="onDeleteQuestao(deleteQuestao.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+        <button (click)="onDeleteQuestao(deleteQuestao.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
         </div>
     </div>
 </div>
