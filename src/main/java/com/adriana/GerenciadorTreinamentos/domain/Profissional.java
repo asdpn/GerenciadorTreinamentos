@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -56,17 +54,17 @@ public class Profissional implements Serializable{
 	
 	private List<Turma> turmas = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "treinamento")
+	@OneToMany(mappedBy = "palestrante")
 	private List<Treinamento> treinamentos = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "prova")
+	@OneToMany(mappedBy = "profissional")
 	private List<Prova> provas = new ArrayList<>();
-		
+			
 	public Profissional() {
 		
 	}
 
-	public Profissional(Integer id, Funcao funcao, String nomeCompleto, String empresa, String email, String telefone, String senha, Prova prova) {
+	public Profissional(Integer id, Funcao funcao, String nomeCompleto, String empresa, String email, String telefone, String senha) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
@@ -75,7 +73,6 @@ public class Profissional implements Serializable{
 		this.setEmail(email);
 		this.setTelefone(telefone);
 		this.setSenha(senha);
-		this.prova = prova;
 	}
 	
 
@@ -167,12 +164,12 @@ public class Profissional implements Serializable{
 		this.senha = senha;
 	}
 
-	public Prova getProva() {
-		return prova;
+	public List<Prova> getProvas() {
+		return provas;
 	}
 
-	public void setProva(Prova prova) {
-		this.prova = prova;
+	public void setProvas(List<Prova> provas) {
+		this.provas = provas;
 	}
 		
 }
