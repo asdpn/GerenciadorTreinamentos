@@ -4,6 +4,10 @@ import { NgForm } from '@angular/forms';
 import { StatusResultado } from '../../entities/enums/statusResultado.enum';
 import { Resultado } from '../../entities/resultado';
 import { ResultadoService } from '../../services/resultado.service';
+import { Certificado } from '../../entities/certificado';
+import { CertificadoService } from '../../services/certificado.service';
+import { Prova } from '../../entities/prova';
+import { ProvaService } from '../../services/prova.service';
 
 @Component({
   selector: 'app-resultado',
@@ -13,20 +17,47 @@ import { ResultadoService } from '../../services/resultado.service';
 export class ResultadoComponent implements OnInit {
 
   public resultados: Resultado[] = [];
+  public certificados: Certificado[] = [];
+  public provas: Prova[] = [];
+
   public addResultado: Resultado = new Resultado();
   public editResultado: Resultado = new Resultado();
   public deleteResultado: Resultado = new Resultado();
 
-  constructor(private ResultadoService: ResultadoService){}
+  constructor(private ResultadoService: ResultadoService, private CertificadoService: CertificadoService, private ProvaService: ProvaService){}
 
   ngOnInit(){
     this.getResultados();
+    this.getCertificados();
+    this.getProvas();
   }  
 
   public getResultados(): void {
     this.ResultadoService.listResultados().subscribe(
       (response: Resultado[]) => {
         this.resultados = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getCertificados(): void {
+    this.CertificadoService.listCertificados().subscribe(
+      (response: Certificado[]) => {
+        this.certificados = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getProvas(): void {
+    this.ProvaService.listProvas().subscribe(
+      (response: Prova[]) => {
+        this.provas = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Questao } from '../../entities/questao';
 import { QuestaoService } from '../../services/questao.service';
+import { ProvaService } from '../../services/prova.service';
+import { Prova } from 'src/app/entities/prova';
 
 @Component({
   selector: 'app-questao',
@@ -12,20 +14,34 @@ import { QuestaoService } from '../../services/questao.service';
 export class QuestaoComponent implements OnInit{
 
   public questoes: Questao[] = [];
+  public provas: Prova[] = [];
+  
   public addQuestao: Questao = new Questao();
   public editQuestao: Questao = new Questao();
   public deleteQuestao: Questao = new Questao();
 
-  constructor(private QuestaoService: QuestaoService){}
+  constructor(private QuestaoService: QuestaoService,private ProvaService: ProvaService){}
 
   ngOnInit(){
     this.getQuestoes();
+    this.getProvas();
   }  
 
   public getQuestoes(): void {
     this.QuestaoService.listQuestoes().subscribe(
       (response: Questao[]) => {
         this.questoes = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getProvas(): void {
+    this.ProvaService.listProvas().subscribe(
+      (response: Prova[]) => {
+        this.provas = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

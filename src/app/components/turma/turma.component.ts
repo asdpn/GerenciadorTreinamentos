@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Turma } from '../../entities/turma';
 import { TurmaService } from '../../services/turma.service';
+import { Profissional } from '../../entities/profissional';
+import { ProfissionalService } from '../../services/profissional.service';
+import { Treinamento } from 'src/app/entities/treinamento';
+import { TreinamentoService } from 'src/app/services/treinamento.service';
 
 @Component({
   selector: 'app-turma',
@@ -12,20 +16,48 @@ import { TurmaService } from '../../services/turma.service';
 export class TurmaComponent  implements OnInit {
 
   public turmas: Turma[] = [];
+  public treinamentos: Treinamento[] = [];
+  public profissionais: Profissional[] = [];
+
+  
   public addTurma: Turma = new Turma();
   public editTurma: Turma = new Turma();
   public deleteTurma: Turma = new Turma();
 
-  constructor(private TurmaService: TurmaService){}
+  constructor(private TurmaService: TurmaService, private TreinamentoService: TreinamentoService, private ProfissionalService: ProfissionalService){}
 
   ngOnInit(){
     this.getTurmas();
+    this.getTreinamentos();
+    this.getProfissionais();
   }  
 
   public getTurmas(): void {
     this.TurmaService.listTurmas().subscribe(
       (response: Turma[]) => {
         this.turmas = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getTreinamentos(): void {
+    this.TreinamentoService.listTreinamentos().subscribe(
+      (response: Treinamento[]) => {
+        this.treinamentos = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getProfissionais(): void {
+    this.ProfissionalService.listProfissionais().subscribe(
+      (response: Profissional[]) => {
+        this.profissionais = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

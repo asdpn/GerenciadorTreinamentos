@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Categoria } from '../../entities/categoria';
 import { CategoriaService } from '../../services/categoria.service';
+import { Treinamento } from '../../entities/treinamento';
+import { TreinamentoService } from '../../services/treinamento.service';
 
 @Component({
   selector: 'app-categoria',
@@ -12,20 +14,34 @@ import { CategoriaService } from '../../services/categoria.service';
 export class CategoriaComponent implements OnInit{
 
   public categorias: Categoria[] = [];
+  public treinamentos: Treinamento[] = [];
+
   public addCategoria: Categoria = new Categoria();
   public editCategoria: Categoria = new Categoria();
   public deleteCategoria: Categoria = new Categoria();
 
-  constructor(private categoriaService: CategoriaService){}
+  constructor(private categoriaService: CategoriaService, private TreinamentoService: TreinamentoService){}
 
   ngOnInit(){
     this.getCategorias();
+    this.getTreinamentos();
   }  
 
   public getCategorias(): void {
     this.categoriaService.listCategorias().subscribe(
       (response: Categoria[]) => {
         this.categorias = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getTreinamentos(): void {
+    this.TreinamentoService.listTreinamentos().subscribe(
+      (response: Treinamento[]) => {
+        this.treinamentos = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

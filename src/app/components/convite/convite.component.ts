@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Treinamento } from 'src/app/entities/treinamento';
+import { TreinamentoService } from 'src/app/services/treinamento.service';
 import { Convite } from '../../entities/convite';
 import { ConviteService } from '../../services/convite.service';
 
@@ -12,20 +14,34 @@ import { ConviteService } from '../../services/convite.service';
 export class ConviteComponent implements OnInit{
 
   public convites: Convite[] = [];
+  public treinamentos: Treinamento[] = [];
+  
   public addConvite: Convite = new Convite();
   public editConvite: Convite = new Convite();
   public deleteConvite: Convite = new Convite();
 
-  constructor(private ConviteService: ConviteService){}
+  constructor(private ConviteService: ConviteService, private TreinamentoService : TreinamentoService){}
 
   ngOnInit(){
     this.getConvites();
+    this.getTreinamentos();
   }  
 
   public getConvites(): void {
     this.ConviteService.listConvites().subscribe(
       (response: Convite[]) => {
         this.convites = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getTreinamentos(): void {
+    this.TreinamentoService.listTreinamentos().subscribe(
+      (response: Treinamento[]) => {
+        this.treinamentos = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

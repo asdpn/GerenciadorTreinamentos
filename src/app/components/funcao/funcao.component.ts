@@ -1,6 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Permissao } from 'src/app/entities/enums/permissao.enum';
+import { Profissional } from 'src/app/entities/profissional';
+import { ProfissionalService } from 'src/app/services/profissional.service';
 import { Funcao } from '../../entities/funcao';
 import { FuncaoService } from '../../services/funcao.service';
 
@@ -12,20 +15,34 @@ import { FuncaoService } from '../../services/funcao.service';
 export class FuncaoComponent implements OnInit{
 
   public funcoes: Funcao[] = [];
+  public profissionais: Profissional[] = [];
+  
   public addFuncao: Funcao = new Funcao();
   public editFuncao: Funcao = new Funcao();
   public deleteFuncao: Funcao = new Funcao();
 
-  constructor(private FuncaoService: FuncaoService){}
+  constructor(private FuncaoService: FuncaoService, private ProfissionalService: ProfissionalService, private Permissao: Permissao){}
 
   ngOnInit(){
     this.getFuncoes();
+    this.getProfissionais();
   }  
 
   public getFuncoes(): void {
     this.FuncaoService.listFuncoes().subscribe(
       (response: Funcao[]) => {
         this.funcoes = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getProfissionais(): void {
+    this.ProfissionalService.listProfissionais().subscribe(
+      (response: Profissional[]) => {
+        this.profissionais = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

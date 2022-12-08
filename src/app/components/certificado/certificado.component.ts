@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { StatusCertificado } from '../../entities/enums/statusCertificado.enum';
 import { Certificado } from '../../entities/certificado';
 import { CertificadoService } from '../../services/certificado.service';
+import { ResultadoService } from '../../services/resultado.service';
 import { Resultado } from 'src/app/entities/resultado';
 
 @Component({
@@ -16,21 +17,33 @@ export class CertificadoComponent implements OnInit{
 
   public certificados: Certificado[] = [];
   public resultados: Resultado[] = [];
+  
   public addCertificado: Certificado = new Certificado();
   public editCertificado: Certificado = new Certificado();
   public deleteCertificado: Certificado = new Certificado();
 
-  constructor(private CertificadoService: CertificadoService){}
+  constructor(private CertificadoService: CertificadoService, private ResultadoService: ResultadoService){}
 
-    ngOnInit(){
+  ngOnInit(){
     this.getCertificados();
-    // chamar getResultados
+    this.getResultados();
   }  
 
   public getCertificados(): void {
     this.CertificadoService.listCertificados().subscribe(
       (response: Certificado[]) => {
         this.certificados = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getResultados(): void {
+    this.ResultadoService.listResultados().subscribe(
+      (response: Resultado[]) => {
+        this.resultados = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);
