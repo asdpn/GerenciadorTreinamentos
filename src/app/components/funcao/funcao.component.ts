@@ -12,9 +12,9 @@ import { FuncaoService } from '../../services/funcao.service';
 export class FuncaoComponent implements OnInit{
 
   public funcoes: Funcao[] = [];
-  public addFuncao: Funcao = {id:0, titulo: "", descricao: "",  permissao: Permissao, profissionais: Profissional[]};
-  public editFuncao: Funcao = {id:0, titulo: "", descricao: "",  permissao: Permissao, profissionais: Profissional[]};
-  public deleteFuncao: Funcao = {id:0, titulo: "", descricao: "",  permissao: Permissao, profissionais: Profissional[]};
+  public addFuncao: Funcao = new Funcao();
+  public editFuncao: Funcao = new Funcao();
+  public deleteFuncao: Funcao = new Funcao();
 
   constructor(private FuncaoService: FuncaoService){}
 

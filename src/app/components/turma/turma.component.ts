@@ -12,9 +12,9 @@ import { TurmaService } from '../../services/turma.service';
 export class TurmaComponent  implements OnInit {
 
   public turmas: Turma[] = [];
-  public addTurma: Turma = {id:0, tamanhoMaximo: 0, tamanhoMinimo: 0, treinamento: Treinamento, profissionais: Profissional[]};
-  public editTurma: Turma = {id:0, tamanhoMaximo: 0, tamanhoMinimo: 0, treinamento: Treinamento, profissionais: Profissional[]};
-  public deleteTurma: Turma = {id:0, tamanhoMaximo: 0, tamanhoMinimo: 0, treinamento: Treinamento, profissionais: Profissional[]};
+  public addTurma: Turma = new Turma();
+  public editTurma: Turma = new Turma();
+  public deleteTurma: Turma = new Turma();
 
   constructor(private TurmaService: TurmaService){}
 

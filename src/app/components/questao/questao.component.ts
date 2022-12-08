@@ -12,9 +12,9 @@ import { QuestaoService } from '../../services/questao.service';
 export class QuestaoComponent implements OnInit{
 
   public questoes: Questao[] = [];
-  public addQuestao: Questao = {id:0, cabecalho: "", gabarito: "", provas: Provas[]};
-  public editQuestao: Questao = {id:0, cabecalho: "", gabarito: "", provas: Provas[]};
-  public deleteQuestao: Questao = {id:0, cabecalho: "", gabarito: "", provas: Provas[]};
+  public addQuestao: Questao = new Questao();
+  public editQuestao: Questao = new Questao();
+  public deleteQuestao: Questao = new Questao();
 
   constructor(private QuestaoService: QuestaoService){}
 

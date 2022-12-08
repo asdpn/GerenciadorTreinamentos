@@ -12,9 +12,9 @@ import { ProvaService } from '../../services/prova.service';
 export class ProvaComponent implements OnInit {
 
   public provas: Prova[] = [];
-  public addProva: Prova = {id:0, notaMaxima: 0, notaMinima: 0, questoes: Questao[], profissional: Profissional, treinamento: Treinamento};
-  public editProva: Prova = {id:0, notaMaxima: 0, notaMinima: 0, questoes: Questao[], profissional: Profissional, treinamento: Treinamento};
-  public deleteProva: Prova = {id:0, notaMaxima: 0, notaMinima: 0, questoes: Questao[], profissional: Profissional, treinamento: Treinamento};
+  public addProva: Prova = new Prova();
+  public editProva: Prova = new Prova();
+  public deleteProva: Prova = new Prova();
 
   constructor(private ProvaService: ProvaService){}
 

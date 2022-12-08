@@ -13,9 +13,9 @@ import { ResultadoService } from '../../services/resultado.service';
 export class ResultadoComponent implements OnInit {
 
   public resultados: Resultado[] = [];
-  public addResultado: Resultado = {id:0, titulo: "", notaObtida: 0, statusResultado: StatusResultado.CRIADO, certificado: Certificado, prova: Prova};
-  public editResultado: Resultado = {id:0, titulo: "", notaObtida: 0, statusResultado: StatusResultado.CRIADO, certificado: Certificado, prova: Prova};
-  public deleteResultado: Resultado = {id:0, titulo: "", notaObtida: 0, statusResultado: StatusResultado.CRIADO, certificado: Certificado, prova: Prova};
+  public addResultado: Resultado = new Resultado();
+  public editResultado: Resultado = new Resultado();
+  public deleteResultado: Resultado = new Resultado();
 
   constructor(private ResultadoService: ResultadoService){}
 

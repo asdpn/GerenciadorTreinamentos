@@ -12,9 +12,9 @@ import { CategoriaService } from '../../services/categoria.service';
 export class CategoriaComponent implements OnInit{
 
   public categorias: Categoria[] = [];
-  public addCategoria: Categoria = {id:0, titulo: "", descricao: "", treinamentos: []};
-  public editCategoria: Categoria = {id:0, titulo: "", descricao: "", treinamentos: []};
-  public deleteCategoria: Categoria = {id:0, titulo: "", descricao: "", treinamentos: []};
+  public addCategoria: Categoria = new Categoria();
+  public editCategoria: Categoria = new Categoria();
+  public deleteCategoria: Categoria = new Categoria();
 
   constructor(private categoriaService: CategoriaService){}
 

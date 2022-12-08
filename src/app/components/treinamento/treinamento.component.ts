@@ -13,9 +13,9 @@ import { TreinamentoService } from '../../services/treinamento.service';
 export class TreinamentoComponent implements OnInit{
 
   public treinamentos: Treinamento[] = [];
-  public addTreinamento: Treinamento = {id:0, titulo: "", descricao: "", statusTreinamento: StatusTreinamento.AGENDADO, categoria: Categoria, turma: Turma, convite: Convite, provas: Prova[], profissionais: Profissional[]};
-  public editTreinamento: Treinamento = {id:0, titulo: "", descricao: "", statusTreinamento: StatusTreinamento.AGENDADO, categoria: Categoria, turma: Turma, convite: Convite, provas: Prova[], profissionais: Profissional[]};
-  public deleteTreinamento: Treinamento = {id:0, titulo: "", descricao: "", statusTreinamento: StatusTreinamento.AGENDADO, categoria: Categoria, turma: Turma, convite: Convite, provas: Prova[], profissionais: Profissional[]};
+  public addTreinamento: Treinamento = new Treinamento();
+  public editTreinamento: Treinamento = new Treinamento();
+  public deleteTreinamento: Treinamento = new Treinamento();
 
   constructor(private TreinamentoService: TreinamentoService){}
 

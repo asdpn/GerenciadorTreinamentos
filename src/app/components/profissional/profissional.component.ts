@@ -12,9 +12,9 @@ import { ProfissionalService } from '../../services/profissional.service';
 export class ProfissionalComponent implements OnInit{
 
   public profissionais: Profissional[] = [];
-  public addProfissional: Profissional = {id:0, nomeCompleto: "", empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
-  public editProfissional: Profissional = {id:0, nomeCompleto: "", empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
-  public deleteProfissional: Profissional = {id:0, nomeCompleto: "", empresa: "", email: "", telefone: "", senha: "", funcao: Funcao};
+  public addProfissional: Profissional = new Profissional();
+  public editProfissional: Profissional = new Profissional();
+  public deleteProfissional: Profissional = new Profissional();
 
   constructor(private ProfissionalService: ProfissionalService){}
 

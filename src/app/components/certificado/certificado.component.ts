@@ -15,14 +15,16 @@ import { Resultado } from 'src/app/entities/resultado';
 export class CertificadoComponent implements OnInit{
 
   public certificados: Certificado[] = [];
-  public addCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, Resultado};
-  public editCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: new Resultado()};
-  public deleteCertificado: Certificado = {id:0, titulo: "", statusCertificado: StatusCertificado.CRIADO, resultado: new Resultado};
+  public resultados: Resultado[] = [];
+  public addCertificado: Certificado = new Certificado();
+  public editCertificado: Certificado = new Certificado();
+  public deleteCertificado: Certificado = new Certificado();
 
   constructor(private CertificadoService: CertificadoService){}
 
-  ngOnInit(){
+    ngOnInit(){
     this.getCertificados();
+    // chamar getResultados
   }  
 
   public getCertificados(): void {

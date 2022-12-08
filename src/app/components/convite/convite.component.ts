@@ -12,9 +12,9 @@ import { ConviteService } from '../../services/convite.service';
 export class ConviteComponent implements OnInit{
 
   public convites: Convite[] = [];
-  public addConvite: Convite = {id:0, titulo: "",  localLink: "", dataHora: "", treinamento: Treinamento};
-  public editConvite: Convite = {id:0, titulo: "",  localLink: "", dataHora: "", treinamento: Treinamento};
-  public deleteConvite: Convite = {id:0, titulo: "",  localLink: "", dataHora: "", treinamento: Treinamento};
+  public addConvite: Convite = new Convite();
+  public editConvite: Convite = new Convite();
+  public deleteConvite: Convite = new Convite();
 
   constructor(private ConviteService: ConviteService){}
 
