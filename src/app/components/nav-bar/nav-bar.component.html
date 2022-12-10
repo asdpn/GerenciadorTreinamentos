@@ -5,20 +5,20 @@
     <li class="nav-item dropdown-right col-md-6" style="display: block;float: right;">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;float:right;">Menu</a>
         <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Categorias</a>
-            <a class="dropdown-item" href="#">Certificados</a>
-            <a class="dropdown-item" href="#">Convites</a>
-            <a class="dropdown-item" href="#">Funções</a>
-            <a class="dropdown-item" href="#">Profissionais</a>
-            <a class="dropdown-item" href="#">Provas</a>
-            <a class="dropdown-item" href="#">Questão</a>
-            <a class="dropdown-item" href="#">Resultado</a>
-            <a class="dropdown-item" href="#">Treinamento</a>
-            <a class="dropdown-item" href="#">Turma</a>
+            <a class="dropdown-item" routerLink="/categoria">Categorias</a>
+            <a class="dropdown-item" routerLink="/certificado">Certificados</a>
+            <a class="dropdown-item" routerLink="/convite">Convites</a>
+            <a class="dropdown-item" routerLink="/funcao">Funções</a>
+            <a class="dropdown-item" routerLink="/profissional">Profissionais</a>
+            <a class="dropdown-item" routerLink="/prova">Provas</a>
+            <a class="dropdown-item" routerLink="/questao">Questão</a>
+            <a class="dropdown-item" routerLink="/resultado">Resultado</a>
+            <a class="dropdown-item" routerLink="/treinamento">Treinamento</a>
+            <a class="dropdown-item" routerLink="/turma">Turma</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Log out</a>
         </div>
     </li>
-    <app-login-button *ngIf="(auth.isAuthenticated$ | async === false)"></app-login-button>
-    <app-logout-button *ngIf="(auth.isAuthenticated$ | async)"></app-logout-button>
+    <!--app-login-button *ngIf="(auth.isAuthenticated$ | async === false)"></app-login-button>
+    <app-logout-button *ngIf="(auth.isAuthenticated$ | async)"></app-logout-button-->
 </nav>

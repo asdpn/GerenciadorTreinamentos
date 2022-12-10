@@ -1,10 +1,11 @@
 
 <app-nav-bar></app-nav-bar>
-<div class="container" ngIf="auth.isLoading$ | async; else loaded">
+<!--div class="container" ngIf="auth.isLoading$ | async; else loaded">
     <app-loading></app-loading>
 </div>
 
 <ng-template #loaded>
     <div class="container" id="main-container">
     </div>
-</ng-template>
+</ng-template-->
+<router-outlet></router-outlet>

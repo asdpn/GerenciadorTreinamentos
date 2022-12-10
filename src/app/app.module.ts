@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AuthModule } from '@auth0/auth0-angular';
-import { environment as env } from 'src/environments/environment';
+//import { AuthModule } from '@auth0/auth0-angular';
+//import { environment as env } from 'src/environments/environment';
+import { RouterModule } from '@angular/router';
 
 import { CategoriaService } from './services/categoria.service';
 import { CategoriaComponent } from './components/categoria/categoria.component';
@@ -28,10 +28,10 @@ import { TreinamentoService } from './services/treinamento.service';
 import { TreinamentoComponent } from './components/treinamento/treinamento.component';
 import { TurmaService } from './services/turma.service';
 import { TurmaComponent } from './components/turma/turma.component';
-import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
-import { LoadingComponent } from './components/loading/loading.component';
+//import { LoginButtonComponent } from './components/login-button/login-button.component';
+//import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+//import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -46,19 +46,31 @@ import { LoadingComponent } from './components/loading/loading.component';
     ResultadoComponent,
     TreinamentoComponent,
     TurmaComponent,
-    LoginButtonComponent,
     NavBarComponent,
-    LogoutButtonComponent,
-    LoadingComponent
+    //LoginButtonComponent,
+    //LogoutButtonComponent,
+    //LoadingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot([
+      {path: 'categoria', component: CategoriaComponent},
+      {path: 'certificado', component: CertificadoComponent},
+      {path: 'convite', component: ConviteComponent},
+      {path: 'funcao', component: FuncaoComponent},
+      {path: 'profissional', component: ProfissionalComponent},
+      {path: 'prova', component: ProvaComponent},
+      {path: 'questao', component: QuestaoComponent},
+      {path: 'resultado', component: ResultadoComponent},
+      {path: 'treinamento', component: TreinamentoComponent},
+      {path: 'turma', component: TurmaComponent},
+      {path: '', redirectTo: '/treinamento', pathMatch: 'full'}      
+    ]),
     HttpClientModule,
-    FormsModule,
-    AuthModule.forRoot({
-      ... env.auth,
-    })
+    FormsModule
+    //AuthModule.forRoot({
+    //  ... env.auth,
+    //})
   ],
   providers: [CategoriaService, CertificadoService, ConviteService, FuncaoService, ProfissionalService, ProvaService, QuestaoService, ResultadoService, TreinamentoService, TurmaService],
   bootstrap: [AppComponent]
