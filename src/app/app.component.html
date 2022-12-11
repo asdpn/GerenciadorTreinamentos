@@ -1,5 +1,26 @@
 
-<app-nav-bar></app-nav-bar>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="align-items: center;">
+    <li class="nav-item active col-md-6" style="display: block;">
+        <a class="navbar-brand" style="color:white;" routerLink="/treinamento">Gerenciador de Treinamentos <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item dropdown-right col-md-6" style="display: block;float: right;">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;float:right;">Menu</a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="/categoria">Categorias</a>
+            <a class="dropdown-item" routerLink="/certificado">Certificados</a>
+            <a class="dropdown-item" routerLink="/convite">Convites</a>
+            <a class="dropdown-item" routerLink="/profissional">Profissionais</a>
+            <a class="dropdown-item" routerLink="/prova">Provas</a>
+            <a class="dropdown-item" routerLink="/questao">Questão</a>
+            <a class="dropdown-item" routerLink="/resultado">Resultado</a>
+            <a class="dropdown-item" routerLink="/treinamento">Treinamento</a>
+            <a class="dropdown-item" routerLink="/turma">Turma</a>            
+            <a class="dropdown-item" routerLink="/usuario">Usuários</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">Log out</a>
+        </div>
+    </li>
+</nav>
 <!--div class="container" ngIf="auth.isLoading$ | async; else loaded">
     <app-loading></app-loading>
 </div>
