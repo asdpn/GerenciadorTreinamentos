@@ -67,11 +67,15 @@
                     </div>
                     <div class="form-group">
                         <label for="statusCertificado">Status Certificado*</label>
-                        <input type="text" ngModel name="statusCertificado" class="form-control" id="statusCertificado" placeholder="Status Certificado" required>
+                        <select class="form-control" id="statusCertificado" required>
+                            <option *ngFor="let status of statusCertificados" [value]="status">{{status}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="resultado">Resultado</label>
-                        <input type="text" ngModel name="resultado" class="form-control" id="resultado" placeholder="Resultado">
+                        <label for="resultado">Resultado*</label>
+                        <select class="form-control" id="resultado" required>
+                            <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Certificado-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -104,11 +108,15 @@
                 </div>
                 <div class="form-group">
                     <label for="statusCertificado">Status Certificado*</label>
-                    <input type="text" ngModel="{{editCertificado.statusCertificado}}" name="statusCertificado" class="form-control" id="statusCertificado" placeholder="Status Certificado" required>
+                    <select class="form-control" id="statusCertificado" required>
+                        <option *ngFor="let status of statusCertificados" [value]="status">{{status}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="resultado">Resultado*</label>
-                    <input type="text" ngModel="{{editCertificado.resultado}}" name="resultado" class="form-control" id="resultado" placeholder="Resultado" required>
+                    <select class="form-control" id="resultado" required>
+                        <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                    </select>
                 </div>
             </form>
         </div>

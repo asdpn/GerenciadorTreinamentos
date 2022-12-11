@@ -3,12 +3,12 @@ import { Treinamento } from "./treinamento";
 
 export class Turma{
 
-    constructor(public id=0, titulo="", tamanhoMaximo=0, tamanhoMinimo=0, treinamento?: Treinamento, profissionais?: Profissional[]){
+    constructor(public id=0, titulo="", tamanhoMaximo=0, tamanhoMinimo=0, treinamentos?: Treinamento[], profissionais?: Profissional[]){
         this.Id = id;
         this.titulo =  titulo;
         this.tamanhoMaximo = tamanhoMaximo;
         this.tamanhoMinimo = tamanhoMinimo;
-        this.treinamento = treinamento;
+        this.treinamentos = treinamentos;
         this.profissionais = profissionais;
 
     }
@@ -17,7 +17,7 @@ export class Turma{
     public titulo: string;
     public tamanhoMaximo: number;
     public tamanhoMinimo: number;
-    public treinamento?: Treinamento;
+    public treinamentos?: Treinamento[];
     public profissionais?: Profissional[];
 
 }

@@ -1,6 +1,6 @@
 <div class="row align-items-center">
     <div class="col-md-4">
-        <h2 style="padding-top:10px">Questoes</h2>
+        <h2 style="padding-top:10px">Questões</h2>
     </div>
     <div class="col-md-4">
         <form class="form-inline" style="padding-top:10px">
@@ -76,7 +76,9 @@
                     </div>
                     <div class="form-group">
                         <label for="provas">Provas</label>
-                        <input type="text" ngModel name="provas" class="form-control" id="provas" placeholder="Provas">
+                        <select class="form-control" id="provas" required multiple data-mdb-filter="true">
+                            <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Questao-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -100,21 +102,23 @@
         </div>
         <div class="modal-body">
             <form #editForm="ngForm">
-            <div class="form-group" >
-                <input type="text" ngModel="{{editQuestao.Id}}" name="id" class="form-control" id="id" placeholder="Identificador" disabled>
-            </div>
-            <div class="form-group">
-                <label for="cabecalho">Cabeçalho*</label>
-                <input type="text" ngModel="{{editQuestao.cabecalho}}" name="cabecalho" class="form-control" id="cabecalho" placeholder="Cabeçalho" required>
-            </div>
-            <div class="form-group">
-                <label for="gabarito">Gabarito*</label>
-                <input type="text" ngModel="{{editQuestao.gabarito}}" name="gabarito" class="form-control" id="gabarito" placeholder="Gabarito" required>
+                <div class="form-group" >
+                    <input type="text" ngModel="{{editQuestao.Id}}" name="id" class="form-control" id="id" placeholder="Identificador" disabled>
                 </div>
-            <div class="form-group">
-                <label for="provas">Provas</label>
-                <input type="text" ngModel="{{editQuestao.provas}}" name="provas" class="form-control" id="provas" placeholder="Provas">
-            </div>
+                <div class="form-group">
+                    <label for="cabecalho">Cabeçalho*</label>
+                    <input type="text" ngModel="{{editQuestao.cabecalho}}" name="cabecalho" class="form-control" id="cabecalho" placeholder="Cabeçalho" required>
+                </div>
+                <div class="form-group">
+                    <label for="gabarito">Gabarito*</label>
+                    <input type="text" ngModel="{{editQuestao.gabarito}}" name="gabarito" class="form-control" id="gabarito" placeholder="Gabarito" required>
+                </div>
+                <div class="form-group">
+                    <label for="provas">Provas</label>
+                    <select class="form-control" id="provas" required multiple data-mdb-filter="true">
+                        <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                    </select>
+                </div>
             </form>
         </div>
         <div class="modal-footer">

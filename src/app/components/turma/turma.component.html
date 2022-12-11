@@ -24,7 +24,7 @@
                             <th scope="col">Título</th>
                             <th scope="col">Tamanho Máximo</th>
                             <th scope="col">Tamanho Mínimo</th>
-                            <th scope="col">Treinamento</th>
+                            <th scope="col">Treinamento(s)</th>
                             <th scope="col">Profissionais</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
@@ -34,7 +34,7 @@
                             <td>{{turma.titulo}}</td>
                             <td>{{turma.tamanhoMaximo}}</td>
                             <td>{{turma.tamanhoMinimo}}</td>
-                            <td>{{turma.treinamento}}</td>
+                            <td>{{turma.treinamentos}}</td>
                             <td>{{turma.profissionais}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
@@ -78,12 +78,16 @@
                         <input type="number" ngModel name="tamanhoMinimo" class="form-control" id="tamanhoMinimo" placeholder="Tamanho Mínimo" required>
                     </div>
                     <div class="form-group">
-                        <label for="treinamento">Treinamento</label>
-                        <input type="text" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="treinamento">
+                        <label for="treinamentos">Treinamento(s)</label>
+                        <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
+                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="profissionais">Profissionais</label>
-                        <input type="text" ngModel name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
+                        <select class="form-control" id="profissionais" multiple data-mdb-filter="true">
+                            <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Turma-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -107,29 +111,33 @@
         </div>
         <div class="modal-body">
             <form #editForm="ngForm">
-            <div class="form-group" >
-                <input type="hidden" ngModel="{{editTurma.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
-            </div>
-            <div class="form-group">
-                <label for="titulo">Título*</label>
-                <input type="text" ngModel="{{editTurma.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
-            </div>
-            <div class="form-group">
-                <label for="tamanhoMaximo">Tamanho Máximo*</label>
-                <input type="number" ngModel="{{editTurma.tamanhoMaximo}}" name="tamanhoMaximo" class="form-control" id="tamanhoMaximo" placeholder="Tamanho Máximo" required>
+                <div class="form-group" >
+                    <input type="hidden" ngModel="{{editTurma.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
                 </div>
-            <div class="form-group">
-                <label for="tamanhoMinimo">Tamanho Mínimo*</label>
-                <input type="number" ngModel="{{editTurma.tamanhoMinimo}}" name="tamanhoMinimo" class="form-control" id="tamanhoMinimo" placeholder="Tamanho Mínimo" required>
-            </div>
-            <div class="form-group">
-                <label for="treinamento">Treinamento</label>
-                <input type="text" ngModel="{{editTurma.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento">
-            </div>
-            <div class="form-group">
-                <label for="profissionais">Profissionais</label>
-                <input type="text" ngModel="{{editTurma.profissionais}}" name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
-            </div>
+                <div class="form-group">
+                    <label for="titulo">Título*</label>
+                    <input type="text" ngModel="{{editTurma.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                </div>
+                <div class="form-group">
+                    <label for="tamanhoMaximo">Tamanho Máximo*</label>
+                    <input type="number" ngModel="{{editTurma.tamanhoMaximo}}" name="tamanhoMaximo" class="form-control" id="tamanhoMaximo" placeholder="Tamanho Máximo" required>
+                    </div>
+                <div class="form-group">
+                    <label for="tamanhoMinimo">Tamanho Mínimo*</label>
+                    <input type="number" ngModel="{{editTurma.tamanhoMinimo}}" name="tamanhoMinimo" class="form-control" id="tamanhoMinimo" placeholder="Tamanho Mínimo" required>
+                </div>
+                <div class="form-group">
+                    <label for="treinamentos">Treinamento(s)</label>
+                    <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
+                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="profissionais">Profissionais</label>
+                    <select class="form-control" id="profissionais" multiple data-mdb-filter="true">
+                        <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                    </select>
+                </div>
             </form>
         </div>
         <div class="modal-footer">

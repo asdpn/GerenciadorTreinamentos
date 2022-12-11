@@ -1,11 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Profissional } from 'src/app/entities/profissional';
 import { Treinamento } from 'src/app/entities/treinamento';
 import { Prova } from '../../entities/prova';
 import { ProvaService } from '../../services/prova.service';
-import { ProfissionalService } from '../../services/profissional.service';
 import { TreinamentoService } from 'src/app/services/treinamento.service';
 import { Questao } from 'src/app/entities/questao';
 import { QuestaoService } from '../../services/questao.service';
@@ -22,7 +20,6 @@ export class ProvaComponent implements OnInit {
 
   public provas: Prova[] = [];
   public questoes: Questao[] = [];
-  public profissionais: Profissional[] = [];
   public treinamentos: Treinamento[] = [];
   public resultados: Resultado[] = [];
 
@@ -30,12 +27,11 @@ export class ProvaComponent implements OnInit {
   public editProva: Prova = new Prova();
   public deleteProva: Prova = new Prova();
 
-  constructor(private ProvaService: ProvaService, private QuestaoService: QuestaoService, private ProfissionalService: ProfissionalService, private TreinamentoService: TreinamentoService, private ResultadoService: ResultadoService){}
+  constructor(private ProvaService: ProvaService, private QuestaoService: QuestaoService, private TreinamentoService: TreinamentoService, private ResultadoService: ResultadoService){}
 
   ngOnInit(){
     this.getProvas();
     this.getQuestoes();
-    this.getProfissionais();
     this.getTreinamentos();
     this.getResultados();
   }  
@@ -55,17 +51,6 @@ export class ProvaComponent implements OnInit {
     this.QuestaoService.listQuestoes().subscribe(
       (response: Questao[]) => {
         this.questoes = response;
-      },
-      (error: HttpErrorResponse) =>{
-        alert(error.message);
-      }
-    )
-  }
-
-  public getProfissionais(): void {
-    this.ProfissionalService.listProfissionais().subscribe(
-      (response: Profissional[]) => {
-        this.profissionais = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

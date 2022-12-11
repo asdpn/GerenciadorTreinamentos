@@ -8,6 +8,8 @@ import { Certificado } from '../../entities/certificado';
 import { CertificadoService } from '../../services/certificado.service';
 import { Prova } from '../../entities/prova';
 import { ProvaService } from '../../services/prova.service';
+import { Profissional } from 'src/app/entities/profissional';
+import { ProfissionalService } from 'src/app/services/profissional.service';
 
 @Component({
   selector: 'app-resultado',
@@ -19,17 +21,20 @@ export class ResultadoComponent implements OnInit {
   public resultados: Resultado[] = [];
   public certificados: Certificado[] = [];
   public provas: Prova[] = [];
+  public profissionais: Profissional[] = [];  
+  public statusResultados: StatusResultado[] = [StatusResultado.APROVADO, StatusResultado.CRIADO, StatusResultado.REPROVADO];
 
   public addResultado: Resultado = new Resultado();
   public editResultado: Resultado = new Resultado();
   public deleteResultado: Resultado = new Resultado();
 
-  constructor(private ResultadoService: ResultadoService, private CertificadoService: CertificadoService, private ProvaService: ProvaService){}
+  constructor(private ResultadoService: ResultadoService, private CertificadoService: CertificadoService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService){}
 
   ngOnInit(){
     this.getResultados();
     this.getCertificados();
     this.getProvas();
+    this.getProfissionais();
   }  
 
   public getResultados(): void {
@@ -55,6 +60,17 @@ export class ResultadoComponent implements OnInit {
   }
 
   public getProvas(): void {
+    this.ProvaService.listProvas().subscribe(
+      (response: Prova[]) => {
+        this.provas = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getProfissionais(): void {
     this.ProvaService.listProvas().subscribe(
       (response: Prova[]) => {
         this.provas = response;

@@ -22,23 +22,28 @@
                     <thead>
                         <tr>
                             <th scope="col">Nome Completo</th>
-                            <th scope="col">Empresa</th>
+                            <th scope="col">Cargo</th>
                             <th scope="col">Empresa</th>
                             <th scope="col">Email</th>
                             <th scope="col">Telefone</th>
-                            <th scope="col">Senha</th>
-                            <th scope="col">Função</th>
+                            <th scope="col">Usuário</th>
+                            <th scope="col">Treinamentos</th>
+                            <th scope="col">Turmas</th>
+                            <th scope="col">Resultados</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let profissional of profissionais">
                             <td>{{profissional.nomeCompleto}}</td>
+                            <td>{{profissional.cargo}}</td>
                             <td>{{profissional.empresa}}</td>
                             <td>{{profissional.email}}</td>
                             <td>{{profissional.telefone}}</td>
-                            <td>{{profissional.senha}}</td>
-                            <td>{{profissional.funcao}}</td>
+                            <td>{{profissional.usuario}}</td>
+                            <td>{{profissional.treinamentos}}</td>
+                            <td>{{profissional.turmas}}</td>
+                            <td>{{profissional.resultados}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -73,6 +78,10 @@
                         <input type="text" ngModel name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
                     </div>
                     <div class="form-group">
+                        <label for="cargo">Cargo*</label>
+                        <input type="text" ngModel name="cargo" class="form-control" id="cargo" placeholder="Cargo" required>
+                    </div>
+                    <div class="form-group">
                         <label for="empresa">Empresa*</label>
                         <input type="text" ngModel name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
                     </div>
@@ -85,12 +94,28 @@
                         <input type="text" ngModel name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
                     </div>
                     <div class="form-group">
-                        <label for="senha">Senha*</label>
-                        <input type="text" ngModel name="senha" class="form-control" id="senha" placeholder="Senha" required>
+                        <label for="usuario">Usuário*</label>
+                        <select class="form-control" id="usuario" required>
+                            <option *ngFor="let usuario of usuarios" [value]="usuario">{{usuario}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="funcao">Função*</label>
-                        <input type="text" ngModel name="funcao" class="form-control" id="funcao" placeholder="Função" required>
+                        <label for="treinamentos">Treinamentos</label>
+                        <select class="form-control" id="treinamentos" required multiple data-mdb-filter="true">
+                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="turmas">Turmas</label>
+                        <select class="form-control" id="turmas" multiple data-mdb-filter="true">
+                            <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resultados">Resultados</label>
+                        <select class="form-control" id="provas" multiple data-mdb-filter="true">
+                            <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Profissional-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -114,33 +139,53 @@
         </div>
         <div class="modal-body">
             <form #editForm="ngForm">
-            <div class="form-group" >
-                <input type="hidden" ngModel="{{editProfissional.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
-            </div>
-            <div class="form-group">
-                <label for="nomeCompleto">Nome Completo*</label>
-                <input type="text" ngModel="{{editProfissional.nomeCompleto}}" name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
-            </div>
-            <div class="form-group">
-                <label for="empresa">Empresa*</label>
-                <input type="text" ngModel="{{editProfissional.empresa}}" name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email*</label>
-                <input type="text" ngModel="{{editProfissional.email}}" name="email" class="form-control" id="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone*</label>
-                <input type="text" ngModel="{{editProfissional.telefone}}" name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
-            </div>
-            <div class="form-group">
-                <label for="senha">Senha*</label>
-                <input type="text" ngModel="{{editProfissional.senha}}" name="senha" class="form-control" id="senha" placeholder="Senha" required>
-            </div>
-            <div class="form-group">
-                <label for="funcao">Função*</label>
-                <input type="text" ngModel="{{editProfissional.funcao}}" name="funcao" class="form-control" id="funcao" placeholder="Função" required>
-            </div>
+                <div class="form-group" >
+                    <input type="hidden" ngModel="{{editProfissional.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                </div>
+                <div class="form-group">
+                    <label for="nomeCompleto">Nome Completo*</label>
+                    <input type="text" ngModel="{{editProfissional.nomeCompleto}}" name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="cargo">Cargo*</label>
+                    <input type="text" ngModel="{{editProfissional.cargo}}" name="cargo" class="form-control" id="cargo" placeholder="Cargo" required>
+                </div>
+                <div class="form-group">
+                    <label for="empresa">Empresa*</label>
+                    <input type="text" ngModel="{{editProfissional.empresa}}" name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="text" ngModel="{{editProfissional.email}}" name="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone*</label>
+                    <input type="text" ngModel="{{editProfissional.telefone}}" name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
+                </div>
+                <div class="form-group">
+                    <label for="usuario">Usuário*</label>
+                    <select class="form-control" id="usuario" required>
+                        <option *ngFor="let usuario of usuarios" [value]="usuario">{{usuario}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="treinamentos">Treinamentos</label>
+                    <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
+                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="turmas">Turmas</label>
+                    <select class="form-control" id="turmas" multiple data-mdb-filter="true">
+                        <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resultados">Resultados</label>
+                    <select class="form-control" id="provas" multiple data-mdb-filter="true">
+                        <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                    </select>
+                </div>
             </form>
         </div>
         <div class="modal-footer">

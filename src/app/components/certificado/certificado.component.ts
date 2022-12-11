@@ -17,7 +17,8 @@ export class CertificadoComponent implements OnInit{
 
   public certificados: Certificado[] = [];
   public resultados: Resultado[] = [];
-  
+  public statusCertificados: StatusCertificado[]=[StatusCertificado.CRIADO, StatusCertificado.ENVIADO, StatusCertificado.VALIDADO];
+;  
   public addCertificado: Certificado = new Certificado();
   public editCertificado: Certificado = new Certificado();
   public deleteCertificado: Certificado = new Certificado();

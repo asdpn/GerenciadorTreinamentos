@@ -1,0 +1,22 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Gerenciador de Treinamentos</h4>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="nomeUsuario">Nome de Usuário*</label>
+                    <input type="text" formControlName="nomeUsuario" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha*</label>
+                    <input type="senha" formControlName="senha" class="form-control" required/>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>       

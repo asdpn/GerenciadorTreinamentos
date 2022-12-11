@@ -25,8 +25,8 @@
                             <th scope="col">Nota Máxima</th>
                             <th scope="col">Nota Mínima</th>
                             <th scope="col">Questões</th>
-                            <th scope="col">Profissional</th>
                             <th scope="col">Treinamento</th>
+                            <th scope="col">Resultados</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
@@ -35,8 +35,8 @@
                             <td>{{prova.notaMaxima}}</td>
                             <td>{{prova.notaMinima}}</td>
                             <td>{{prova.questoes}}</td>
-                            <td>{{prova.profissional}}</td>
                             <td>{{prova.treinamento}}</td>
+                            <td>{{prova.resultados}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -80,15 +80,21 @@
                     </div>
                     <div class="form-group">
                         <label for="questoes">Questões</label>
-                        <input type="text" ngModel name="questoes" class="form-control" id="questoes" placeholder="Questões">
-                    </div>
-                    <div class="form-group">
-                        <label for="profissional">Profissional*</label>
-                        <input type="text" ngModel name="profissional" class="form-control" id="profissional" placeholder="Profissional" required>
+                        <select class="form-control" id="questoes" multiple data-mdb-filter="true">
+                            <option *ngFor="let questao of questoes" [value]="questao">{{questao}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="treinamento">Treinamento*</label>
-                        <input type="text" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
+                        <select class="form-control" id="treinamento" required>
+                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resultados">Resultados</label>
+                        <select class="form-control" id="resultados">
+                            <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Prova-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -112,33 +118,39 @@
         </div>
         <div class="modal-body">
             <form #editForm="ngForm">
-            <div class="form-group" >
-                <input type="hidden" ngModel="{{editProva.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
-            </div>
-            <div class="form-group">
-                <label for="titulo">Título*</label>
-                <input type="text" ngModel="{{editProva.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
-            </div>
-            <div class="form-group">
-                <label for="notaMaxima">Nota Máxima*</label>
-                <input type="number" ngModel="{{editProva.notaMaxima}}" name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required> 
+                <div class="form-group" >
+                    <input type="hidden" ngModel="{{editProva.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
                 </div>
-            <div class="form-group">
-                <label for="notaMinima">Nota Mínima*</label>
-                <input type="number" ngModel="{{editProva.notaMinima}}" name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
-            </div>
-            <div class="form-group">
-                <label for="questoes">Questões</label>
-                <input type="text" ngModel="{{editProva.questoes}}" name="questoes" class="form-control" id="questoes" placeholder="Questões">
-            </div>
-            <div class="form-group">
-                <label for="profissional">Profissional*</label>
-                <input type="text" ngModel="{{editProva.profissional}}" name="profissional" class="form-control" id="profissional" placeholder="Profissional" required>
-            </div>
-            <div class="form-group">
-                <label for="treinamento">Treinamento*</label>
-                <input type="text" ngModel="{{editProva.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
-            </div>
+                <div class="form-group">
+                    <label for="titulo">Título*</label>
+                    <input type="text" ngModel="{{editProva.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
+                </div>
+                <div class="form-group">
+                    <label for="notaMaxima">Nota Máxima*</label>
+                    <input type="number" ngModel="{{editProva.notaMaxima}}" name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required> 
+                    </div>
+                <div class="form-group">
+                    <label for="notaMinima">Nota Mínima*</label>
+                    <input type="number" ngModel="{{editProva.notaMinima}}" name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
+                </div>
+                <div class="form-group">
+                    <label for="questoes">Questões</label>
+                    <select class="form-control" id="questoes" multiple data-mdb-filter="true">
+                        <option *ngFor="let questao of questoes" [value]="questao">{{questao}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="treinamento">Treinamento*</label>
+                    <select class="form-control" id="treinamento" required>
+                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resultados">Resultados</label>
+                    <select class="form-control" id="resultados">
+                        <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                    </select>
+                </div>
             </form>
         </div>
         <div class="modal-footer">

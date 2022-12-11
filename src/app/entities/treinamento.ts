@@ -7,7 +7,7 @@ import { Turma } from "./turma";
 
 export class Treinamento{
 
-    constructor(public id=0, titulo="", descricao="", statusTreinamento= StatusTreinamento.CRIADO, categoria = new Categoria(), turma?: Turma, convite?: Convite, provas?: Prova[], palestrante?: Profissional){
+    constructor(public id=0, titulo="", descricao="", statusTreinamento= StatusTreinamento.CRIADO, categoria = new Categoria(), turma?: Turma, convite?: Convite, prova?: Prova, palestrantes?: Profissional[]){
         this.Id = id;
         this.titulo =  titulo;
         this.descricao = descricao;
@@ -15,8 +15,8 @@ export class Treinamento{
         this.categoria = categoria;
         this.turma = turma;
         this.convite = convite;
-        this.provas = provas;
-        this.palestrante = palestrante;
+        this.prova = prova;
+        this.palestrantes = palestrantes;
 
     }
 
@@ -27,7 +27,7 @@ export class Treinamento{
     public categoria: Categoria;
     public turma?: Turma;
     public convite?: Convite;
-    public provas?: Prova[];
-    public palestrante?: Profissional;
+    public prova?: Prova;
+    public palestrantes?: Profissional[];
 
 }

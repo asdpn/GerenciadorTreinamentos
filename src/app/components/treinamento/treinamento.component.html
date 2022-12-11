@@ -27,8 +27,8 @@
                             <th scope="col">Categoria</th>
                             <th scope="col">Turma</th>
                             <th scope="col">Convite</th>
-                            <th scope="col">Provas</th>
-                            <th scope="col">Palestrante</th>
+                            <th scope="col">Prova</th>
+                            <th scope="col">Palestrante(s)</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
@@ -40,8 +40,8 @@
                             <td>{{treinamento.categoria}}</td>
                             <td>{{treinamento.turma}}</td>
                             <td>{{treinamento.convite}}</td>
-                            <td>{{treinamento.provas}}</td>
-                            <td>{{treinamento.palestrante}}</td>
+                            <td>{{treinamento.prova}}</td>
+                            <td>{{treinamento.palestrantes}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -85,23 +85,33 @@
                     </div>
                     <div class="form-group">
                         <label for="categoria">Categoria*</label>
-                        <input type="text" ngModel name="categoria" class="form-control" id="categoria" placeholder="Categoria" required>
+                        <select class="form-control" id="categoria" required>
+                            <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="turma">Turma</label>
-                        <input type="text" ngModel name="turma" class="form-control" id="turma" placeholder="Turma">
+                        <select class="form-control" id="turma">
+                            <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="convite">Convite</label>
-                        <input type="text" ngModel name="convite" class="form-control" id="convite" placeholder="Convite">
+                        <select class="form-control" id="convite">
+                            <option *ngFor="let convite of convites" [value]="convite">{{convite}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="provas">Provas</label>
-                        <input type="text" ngModel name="provas" class="form-control" id="provas" placeholder="Provas">
+                        <label for="prova">Prova</label>
+                        <select class="form-control" id="prova">
+                            <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="palestrante">Palestrante</label>
-                        <input type="text" ngModel name="palestrante" class="form-control" id="palestrante" placeholder="Palestrante">
+                        <label for="palestrantes">Palestrante(s)</label>
+                        <select class="form-control" id="palestrantes" multiple data-mdb-filter="true">
+                            <option *ngFor="let palestrante of profissionais" [value]="palestrante">{{palestrante}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Treinamento-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -125,41 +135,51 @@
         </div>
         <div class="modal-body">
             <form #editForm="ngForm">
-            <div class="form-group" >
-                <input type="hidden" ngModel="{{editTreinamento.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
-            </div>
-            <div class="form-group">
-                <label for="titulo">Título*</label>
-                <input type="text" ngModel="{{editTreinamento.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
-            </div>
-            <div class="form-group">
-                <label for="descricao">Descrição</label>
-                <input type="text" ngModel="{{editTreinamento.descricao}}" name="descricao" class="form-control" id="descricao" placeholder="Descrição">
-            </div>
-            <div class="form-group">
-                <label for="statusTreinamento">Status Treinamento*</label>
-                <input type="text" ngModel="{{editTreinamento.statusTreinamento}}" name="statusTreinamento" class="form-control" id="statusTreinamento" placeholder="Status Treinamento" required>
-            </div>
-            <div class="form-group">
-                <label for="categoria">Categoria*</label>
-                <input type="text" ngModel="{{editTreinamento.categoria}}" name="categoria" class="form-control" id="categoria" placeholder="Categoria" required>
-            </div>
-            <div class="form-group">
-                <label for="turma">Turma</label>
-                <input type="text" ngModel="{{editTreinamento.turma}}" name="turma" class="form-control" id="turma" placeholder="Turma">
-            </div>
-            <div class="form-group">
-                <label for="convite">Convite</label>
-                <input type="text" ngModel="{{editTreinamento.convite}}" name="convite" class="form-control" id="convite" placeholder="Convite">
-            </div>
-            <div class="form-group">
-                <label for="provas">Provas</label>
-                <input type="text" ngModel="{{editTreinamento.provas}}" name="provas" class="form-control" id="provas" placeholder="Provas">
-            </div>
-            <div class="form-group">
-                <label for="Palestrante">Palestrante</label>
-                <input type="text" ngModel="{{editTreinamento.palestrante}}" name="palestrante" class="form-control" id="palestrante" placeholder="Palestrante">
-            </div>
+                <div class="form-group" >
+                    <input type="hidden" ngModel="{{editTreinamento.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Título*</label>
+                    <input type="text" ngModel="{{editTreinamento.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" ngModel="{{editTreinamento.descricao}}" name="descricao" class="form-control" id="descricao" placeholder="Descrição">
+                </div>
+                <div class="form-group">
+                    <label for="statusTreinamento">Status Treinamento*</label>
+                    <input type="text" ngModel="{{editTreinamento.statusTreinamento}}" name="statusTreinamento" class="form-control" id="statusTreinamento" placeholder="Status Treinamento" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria*</label>
+                    <select class="form-control" id="categoria" required>
+                        <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="turma">Turma</label>
+                    <select class="form-control" id="turma">
+                        <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="convite">Convite</label>
+                    <select class="form-control" id="convite">
+                        <option *ngFor="let convite of convites" [value]="convite">{{convite}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="prova">Prova</label>
+                    <select class="form-control" id="prova">
+                        <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="palestrantes">Palestrante(s)</label>
+                    <select class="form-control" id="palestrantes" multiple data-mdb-filter="true">
+                        <option *ngFor="let palestrante of profissionais" [value]="palestrante">{{palestrante}}</option>
+                    </select>
+                </div>
             </form>
         </div>
         <div class="modal-footer">

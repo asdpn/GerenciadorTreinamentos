@@ -22,20 +22,22 @@
                     <thead>
                         <tr>
                             <th scope="col">Título</th>
+                            <th scope="col">Prova</th>
+                            <th scope="col">Profissional</th>
                             <th scope="col">Nota Obtida</th>
                             <th scope="col">Certificado</th>
                             <th scope="col">Status Resultado</th>
-                            <th scope="col">Prova</th>
                             <th scope="col" style="width: 200px;">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let resultado of resultados">
                             <td>{{resultado.titulo}}</td>
+                            <td>{{resultado.prova}}</td>
+                            <td>{{resultado.profissional}}</td>
                             <td>{{resultado.notaObtida}}</td>
                             <td>{{resultado.statusResultado}}</td>
                             <td>{{resultado.certificado}}</td>
-                            <td>{{resultado.prova}}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
@@ -70,20 +72,32 @@
                         <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
                     </div>
                     <div class="form-group">
+                        <label for="prova">Prova*</label>
+                        <select class="form-control" id="prova" required>
+                            <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="profissional">Profissional*</label>
+                        <select class="form-control" id="profissional" required>
+                            <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="notaObtida">Nota Obtida*</label>
                         <input type="number" ngModel name="notaObtida" class="form-control" id="notaObtida" placeholder="Nota Obtida" required>
                     </div>
                     <div class="form-group">
                         <label for="statusResultado">Status Resultado*</label>
-                        <input type="text" ngModel name="statusResultado" class="form-control" id="statusResultado" placeholder="Status Resultado" required>
+                        <select class="form-control" id="statusResultado" required>
+                            <option *ngFor="let status of statusResultados" [value]="status">{{status}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="certificado">Certificado</label>
-                        <input type="text" ngModel name="certificado" class="form-control" id="certificado" placeholder="Certificado">
-                    </div>
-                    <div class="form-group">
-                        <label for="prova">Prova*</label>
-                        <input type="text" ngModel name="prova" class="form-control" id="prova" placeholder="Prova" required>
+                        <select class="form-control" id="certificado">
+                            <option *ngFor="let certificado of certificados" [value]="certificado">{{certificado}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Resultado-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -107,29 +121,41 @@
         </div>
         <div class="modal-body">
             <form #editForm="ngForm">
-            <div class="form-group" >
-                <input type="hidden" ngModel="{{editResultado.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
-            </div>
-            <div class="form-group">
-                <label for="titulo">Título*</label>
-                <input type="text" ngModel="{{editResultado.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
-            </div>
-            <div class="form-group">
-                <label for="notaObtida">Nota Obtida*</label>
-                <input type="text" ngModel="{{editResultado.notaObtida}}" name="notaObtida" class="form-control" id="notaObtida" placeholder="Nota Obtida" required>
-            </div>
-            <div class="form-group">
-                <label for="statusResultado">Status Resultado*</label>
-                <input type="text" ngModel="{{editResultado.statusResultado}}" name="statusResultado" class="form-control" id="statusResultado" placeholder="Status Resultado" required>
-            </div>
-            <div class="form-group">
-                <label for="certificado">Certificado</label>
-                <input type="text" ngModel="{{editResultado.certificado}}" name="certificado" class="form-control" id="certificado" placeholder="Certificado">
-            </div>
-            <div class="form-group">
-                <label for="prova">Prova*</label>
-                <input type="text" ngModel="{{editResultado.prova}}" name="prova" class="form-control" id="prova" placeholder="Prova" required>
-            </div>
+                <div class="form-group" >
+                    <input type="hidden" ngModel="{{editResultado.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Título*</label>
+                    <input type="text" ngModel="{{editResultado.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                </div>
+                <div class="form-group">
+                    <label for="prova">Prova*</label>
+                    <select class="form-control" id="prova" required>
+                        <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="profissional">Profissional*</label>
+                    <select class="form-control" id="profissional" required>
+                        <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notaObtida">Nota Obtida*</label>
+                    <input type="text" ngModel="{{editResultado.notaObtida}}" name="notaObtida" class="form-control" id="notaObtida" placeholder="Nota Obtida" required>
+                </div>
+                <div class="form-group">
+                    <label for="statusResultado">Status Resultado*</label>
+                    <select class="form-control" id="statusResultado" required>
+                        <option *ngFor="let status of statusResultados" [value]="status">{{status}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="certificado">Certificado</label>
+                    <select class="form-control" id="certificado">
+                        <option *ngFor="let certificado of certificados" [value]="certificado">{{certificado}}</option>
+                    </select>
+                </div>
             </form>
         </div>
         <div class="modal-footer">

@@ -77,7 +77,9 @@
                     </div>
                     <div class="form-group">
                         <label for="treinamento">Treinamento*</label>
-                        <input type="string" ngModel name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
+                        <select class="form-control" id="treinamento" required>
+                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="close-add-Convite-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -118,7 +120,9 @@
             </div>
             <div class="form-group">
                 <label for="treinamento">Treinamento*</label>
-                <input type="text" ngModel="{{editConvite.treinamento}}" name="treinamento" class="form-control" id="treinamento" placeholder="Treinamento" required>
+                <select class="form-control" id="treinamento" required>
+                    <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                </select>
             </div>
             </form>
         </div>

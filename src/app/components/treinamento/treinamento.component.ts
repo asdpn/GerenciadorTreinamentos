@@ -28,6 +28,7 @@ export class TreinamentoComponent implements OnInit{
   public convites: Convite[] = [];
   public provas: Prova[] = [];
   public profissionais: Profissional[] = [];
+  public statusTreinamento: StatusTreinamento[]=[StatusTreinamento.AGENDADO, StatusTreinamento.CRIADO, StatusTreinamento.FINALIZADO];
 
 
   public addTreinamento: Treinamento = new Treinamento();
