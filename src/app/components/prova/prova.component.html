@@ -32,6 +32,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let prova of provas">
+                            <td>{{prova.titulo}}</td>
                             <td>{{prova.notaMaxima}}</td>
                             <td>{{prova.notaMinima}}</td>
                             <td>{{prova.questoes}}</td>
@@ -92,7 +93,7 @@
                     </div>
                     <div class="form-group">
                         <label for="resultados">Resultados</label>
-                        <select class="form-control" id="resultados">
+                        <select class="form-control" id="resultados" multiple data-mdb-filter="true">
                             <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
                         </select>
                     </div>

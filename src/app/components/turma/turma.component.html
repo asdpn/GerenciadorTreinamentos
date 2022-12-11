@@ -78,15 +78,15 @@
                         <input type="number" ngModel name="tamanhoMinimo" class="form-control" id="tamanhoMinimo" placeholder="Tamanho Mínimo" required>
                     </div>
                     <div class="form-group">
-                        <label for="treinamentos">Treinamento(s)</label>
-                        <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
-                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                        <label for="profissionais">Profissionais*</label>
+                        <select class="form-control" id="profissionais" multiple data-mdb-filter="true" required>
+                            <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="profissionais">Profissionais</label>
-                        <select class="form-control" id="profissionais" multiple data-mdb-filter="true">
-                            <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                        <label for="treinamentos">Treinamento(s)</label>
+                        <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
+                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
                         </select>
                     </div>
                     <div class="modal-footer">
@@ -127,15 +127,15 @@
                     <input type="number" ngModel="{{editTurma.tamanhoMinimo}}" name="tamanhoMinimo" class="form-control" id="tamanhoMinimo" placeholder="Tamanho Mínimo" required>
                 </div>
                 <div class="form-group">
-                    <label for="treinamentos">Treinamento(s)</label>
-                    <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
-                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                    <label for="profissionais">Profissionais*</label>
+                    <select class="form-control" id="profissionais" multiple data-mdb-filter="true" required>
+                        <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="profissionais">Profissionais</label>
-                    <select class="form-control" id="profissionais" multiple data-mdb-filter="true">
-                        <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                    <label for="treinamentos">Treinamento(s)</label>
+                    <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
+                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
                     </select>
                 </div>
             </form>
