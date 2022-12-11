@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,7 +30,10 @@ public class Profissional implements Serializable{
 	
 	@Column(nullable = false)
 	private String nomeCompleto;
-		
+	
+	@Column(nullable = false)
+	private String cargo;
+	
 	@Column(nullable = false)
 	private String empresa;
 	
@@ -38,41 +42,42 @@ public class Profissional implements Serializable{
 	
 	@Column(nullable = false)
 	private String telefone;
+		
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "profissional")
+	private Usuario usuario;
 	
-	@Column(nullable = false)
-	private String senha;
-	
-	@ManyToOne
-	@JoinColumn(name="id_funcao")
-	private Funcao funcao;
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "PROFISSIONAL_TREINAMENTO",
+			joinColumns = @JoinColumn(name = "id_profissional"),
+			inverseJoinColumns = @JoinColumn(name = "id_treinamento"))
+	private List<Treinamento> treinamentos = new ArrayList<>();
 	
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "PROFISSIONAL_TURMA",
 			joinColumns = @JoinColumn(name = "id_profissional"),
 			inverseJoinColumns = @JoinColumn(name = "id_turma"))
-	
 	private List<Turma> turmas = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "palestrante")
-	private List<Treinamento> treinamentos = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "profissional")
-	private List<Prova> provas = new ArrayList<>();
+	private List<Resultado> resultados = new ArrayList<>();
+	
 			
 	public Profissional() {
 		
 	}
 
-	public Profissional(Integer id, Funcao funcao, String nomeCompleto, String empresa, String email, String telefone, String senha) {
+	public Profissional(Integer id, String nomeCompleto, String cargo, String empresa, String email, String telefone, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
-		this.funcao = funcao;
+		this.cargo = cargo;
 		this.empresa = empresa;
-		this.setEmail(email);
-		this.setTelefone(telefone);
-		this.setSenha(senha);
+		this.email = email;
+		this.telefone = telefone;
+		this.usuario = usuario;
 	}
 	
 
@@ -101,35 +106,20 @@ public class Profissional implements Serializable{
 		this.id = id;
 	}
 
-	public List<Turma> getTurmas() {
-		return turmas;
-	}
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
-	}	
-
-	public List<Treinamento> getTreinamentos() {
-		return treinamentos;
-	}
-
-	public void setTreinamentos(List<Treinamento> treinamentos) {
-		this.treinamentos = treinamentos;
-	}
-
-	public Funcao getFuncao() {
-		return funcao;
-	}
-
-	public void setFuncao(Funcao funcao) {
-		this.funcao = funcao;
-	}
-
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
 
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 
 	public String getEmpresa() {
@@ -156,20 +146,37 @@ public class Profissional implements Serializable{
 		this.telefone = telefone;
 	}
 
-	public String getSenha() {
-		return senha;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public List<Prova> getProvas() {
-		return provas;
+	public List<Treinamento> getTreinamentos() {
+		return treinamentos;
 	}
 
-	public void setProvas(List<Prova> provas) {
-		this.provas = provas;
+	public void setTreinamentos(List<Treinamento> treinamentos) {
+		this.treinamentos = treinamentos;
 	}
-		
+
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
+
+	public List<Resultado> getResultados() {
+		return resultados;
+	}
+
+	public void setResultados(List<Resultado> resultados) {
+		this.resultados = resultados;
+	}
+
+
 }

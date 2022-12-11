@@ -8,7 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusResultado;
@@ -34,10 +34,13 @@ public class Resultado implements Serializable{
 	private Certificado certificado;
 	
 	
-	@OneToOne
-	@JoinColumn(name = "id_prova")
-	@MapsId
+	@ManyToOne
+	@JoinColumn(name="id_prova")
 	private Prova prova;
+	
+	@ManyToOne
+	@JoinColumn(name="id_profissional")
+	private Profissional profissional;
 	
 	public Resultado() {
 		
@@ -51,6 +54,7 @@ public class Resultado implements Serializable{
 		this.statusResultado = statusResultado;
 		this.certificado = certificado;
 		this.prova = prova;
+		this.profissional = profissional;
 	}
 	
 	@Override
@@ -117,5 +121,13 @@ public class Resultado implements Serializable{
 	public void setProva(Prova prova) {
 		this.prova = prova;
 	}
-		
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+			
 }

@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -39,31 +39,25 @@ public class Prova implements Serializable{
 			inverseJoinColumns = @JoinColumn(name = "id_questao"))
 	private List<Questao> questoes = new ArrayList<>();
 	
-
-	@ManyToOne
-	@JoinColumn(name = "id_profissional")
-	private Profissional profissional;
-	
-	@ManyToOne
-	@JoinColumn(name="id_treinamento")
+	@OneToOne
+	@JoinColumn(name = "id_treinamento")
+	@MapsId
 	private Treinamento treinamento;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "prova")
-	private Resultado resultado;
+	@OneToMany(mappedBy = "prova")
+	private List<Resultado> resultados  = new ArrayList<>();
 	
 	public Prova() {
 		
 	}
 
-	public Prova(Integer id, String titulo, Double notaMaxima, Double notaMinima, Resultado resultado, Profissional profissional, Treinamento treinamento) {
+	public Prova(Integer id, String titulo, Double notaMaxima, Double notaMinima, Treinamento treinamento) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.notaMaxima = notaMaxima;
 		this.notaMinima = notaMinima;	
-		this.resultado = resultado;
-		this.profissional = profissional;
 		this.treinamento = treinamento;
 	}
 	
@@ -107,7 +101,7 @@ public class Prova implements Serializable{
 	public void setNotaMaxima(Double notaMaxima) {
 		this.notaMaxima = notaMaxima;
 	}
-	
+
 	public Double getNotaMinima() {
 		return notaMinima;
 	}
@@ -124,29 +118,20 @@ public class Prova implements Serializable{
 		this.questoes = questoes;
 	}
 
-
-	public Resultado getResultado() {
-		return resultado;
-	}
-
-	public void setResultado(Resultado resultado) {
-		this.resultado = resultado;
-	}
-
-	public Profissional getProfissional() {
-		return profissional;
-	}
-
-	public void setProfissional(Profissional profissional) {
-		this.profissional = profissional;
-	}
-
 	public Treinamento getTreinamento() {
 		return treinamento;
 	}
 
 	public void setTreinamento(Treinamento treinamento) {
 		this.treinamento = treinamento;
+	}
+
+	public List<Resultado> getResultados() {
+		return resultados;
+	}
+
+	public void setResultados(List<Resultado> resultados) {
+		this.resultados = resultados;
 	}
 		
 }

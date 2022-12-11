@@ -12,8 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusTreinamento;
@@ -29,6 +29,7 @@ public class Treinamento implements Serializable{
 	
 	@Column(nullable = false)
 	private String titulo;
+	
 	private String descricao;
 	
 	@Column(nullable = false)
@@ -39,24 +40,24 @@ public class Treinamento implements Serializable{
 	private Categoria categoria;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
+	@ManyToOne
+	@JoinColumn(name="id_turma")
 	private Turma turma;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
 	private Convite convite;
 	
-	@OneToMany(mappedBy = "treinamento")
-	private List<Prova> provas = new ArrayList<>();
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
+	private Prova prova;
 	
-	@ManyToOne
-	@JoinColumn(name="id_profissional")
-	private Profissional palestrante;
+	@ManyToMany(mappedBy = "treinamentos")
+	private List<Profissional> palestrantes = new ArrayList<>();
 		
 	public Treinamento() {
 		
 	}
 
-	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento, Turma turma, Convite convite, Prova prova, Profissional palestrante) {
+	public Treinamento(Integer id, String titulo, String descricao, String motivoReprovacao, Categoria categoria, StatusTreinamento statusTreinamento, Turma turma, Convite convite, Prova prova) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -65,7 +66,6 @@ public class Treinamento implements Serializable{
 		this.categoria = categoria;
 		this.turma = turma;
 		this.convite = convite;
-		this.palestrante = palestrante;
 	}
 	
 	@Override
@@ -109,13 +109,12 @@ public class Treinamento implements Serializable{
 		this.descricao = descricao;
 	}
 
-	
-	public Profissional getPalestrante() {
-		return palestrante;
+	public StatusTreinamento getStatusTreinamento() {
+		return statusTreinamento;
 	}
 
-	public void setPalestrante(Profissional palestrante) {
-		this.palestrante = palestrante;
+	public void setStatusTreinamento(StatusTreinamento statusTreinamento) {
+		this.statusTreinamento = statusTreinamento;
 	}
 
 	public Categoria getCategoria() {
@@ -126,14 +125,6 @@ public class Treinamento implements Serializable{
 		this.categoria = categoria;
 	}
 
-	public StatusTreinamento getStatusTreinamento() {
-		return statusTreinamento;
-	}
-
-	public void setStatusTreinamento(StatusTreinamento statusTreinamento) {
-		this.statusTreinamento = statusTreinamento;
-	}
-
 	public Turma getTurma() {
 		return turma;
 	}
@@ -141,7 +132,7 @@ public class Treinamento implements Serializable{
 	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
-	
+
 	public Convite getConvite() {
 		return convite;
 	}
@@ -150,12 +141,20 @@ public class Treinamento implements Serializable{
 		this.convite = convite;
 	}
 
-	public List<Prova> getProvas() {
-		return provas;
+	public Prova getProva() {
+		return prova;
 	}
 
-	public void setProvas(List<Prova> provas) {
-		this.provas = provas;
+	public void setProva(Prova prova) {
+		this.prova = prova;
+	}
+
+	public List<Profissional> getPalestrantes() {
+		return palestrantes;
+	}
+
+	public void setPalestrantes(List<Profissional> palestrantes) {
+		this.palestrantes = palestrantes;
 	}
 		
 }

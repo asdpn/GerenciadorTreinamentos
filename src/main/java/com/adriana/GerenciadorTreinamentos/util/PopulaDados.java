@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import com.adriana.GerenciadorTreinamentos.domain.Categoria;
 import com.adriana.GerenciadorTreinamentos.domain.Convite;
-import com.adriana.GerenciadorTreinamentos.domain.Funcao;
 import com.adriana.GerenciadorTreinamentos.domain.Profissional;
 import com.adriana.GerenciadorTreinamentos.domain.Prova;
 import com.adriana.GerenciadorTreinamentos.domain.Questao;
@@ -18,11 +17,9 @@ import com.adriana.GerenciadorTreinamentos.domain.Treinamento;
 import com.adriana.GerenciadorTreinamentos.domain.Turma;
 import com.adriana.GerenciadorTreinamentos.domain.enuns.Permissao;
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusTreinamento;
-import com.adriana.GerenciadorTreinamentos.domain.enuns.TipoProfissional;
 import com.adriana.GerenciadorTreinamentos.repository.CategoriaRepository;
 import com.adriana.GerenciadorTreinamentos.repository.CertificadoRepository;
 import com.adriana.GerenciadorTreinamentos.repository.ConviteRepository;
-import com.adriana.GerenciadorTreinamentos.repository.FuncaoRepository;
 import com.adriana.GerenciadorTreinamentos.repository.ProfissionalRepository;
 import com.adriana.GerenciadorTreinamentos.repository.ProvaRepository;
 import com.adriana.GerenciadorTreinamentos.repository.QuestaoRepository;
@@ -42,8 +39,7 @@ public class PopulaDados {
 	@Autowired
 	ConviteRepository conviteRepository;
 
-	@Autowired
-	FuncaoRepository funcaoRepository;
+
 	
 	@Autowired
 	ProfissionalRepository profissionalRepository;
@@ -65,7 +61,7 @@ public class PopulaDados {
 	
 	//@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
 	public void cadastrar () {
-		Categoria dev = new Categoria(null,"Desenvolvimento",null);
+		Categoria dev = new Categoria(null,"Desenvolvimento de Software",null);
 		Categoria lid = new Categoria(null,"Liderança",null);
 		Categoria com = new Categoria(null,"Comunicação", null);
 		

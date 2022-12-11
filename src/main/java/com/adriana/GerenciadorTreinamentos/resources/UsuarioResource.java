@@ -14,44 +14,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adriana.GerenciadorTreinamentos.domain.Funcao;
-import com.adriana.GerenciadorTreinamentos.service.FuncaoService;
+import com.adriana.GerenciadorTreinamentos.domain.Usuario;
+import com.adriana.GerenciadorTreinamentos.service.UsuarioService;
 
 @RestController
-@RequestMapping("/funcao")
-public class FuncaoResource {
+@RequestMapping("/usuario")
+public class UsuarioResource {
 
 	@Autowired
-	private FuncaoService service;
+	private UsuarioService service;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Funcao> getFuncao(@PathVariable Integer id) {
-		Funcao obj = service.getFuncao(id);
+	public ResponseEntity<Usuario> getUsuario(@PathVariable Integer id) {
+		Usuario obj = service.getUsuario(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Funcao> addFuncao(@RequestBody Funcao funcao) {
-		funcao = service.addFuncao(funcao);
-		return new ResponseEntity<>(funcao, HttpStatus.CREATED);
+	public ResponseEntity<Usuario> addUsuario(@RequestBody Usuario usuario) {
+		usuario = service.addUsuario(usuario);
+		return new ResponseEntity<>(usuario, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Funcao> editFuncao(@RequestBody Funcao funcao, @PathVariable Integer id) {
-		funcao.setId(id);
-		funcao = service.editFuncao(funcao);
-		return new ResponseEntity<>(funcao, HttpStatus.OK);
+	public ResponseEntity<Usuario> editUsuario(@RequestBody Usuario usuario, @PathVariable Integer id) {
+		usuario.setId(id);
+		usuario = service.editUsuario(usuario);
+		return new ResponseEntity<>(usuario, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Void> deleteFuncao(@PathVariable Integer id) {
-		service.deleteFuncao(id);
+	public ResponseEntity<Void> deleteUsuario(@PathVariable Integer id) {
+		service.deleteUsuario(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Funcao>> getFuncoes() {
-		List<Funcao> list = service.getFuncoes();
+	public ResponseEntity<List<Usuario>> getUsuarios() {
+		List<Usuario> list = service.getUsuarios();
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 }
