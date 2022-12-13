@@ -58,9 +58,15 @@ public class PopulaDados {
 	
 	@Autowired
 	TurmaRepository turmaRepository;	
+
 	
-	//@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
+	@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
 	public void cadastrar () {
+		
+		//Profissional adriana = new Profissional(null, "Adriana Sodré", "Coordenadora", "Radix", "adriana@teste.com", "91234 5678", null);
+		
+		
+		
 		Categoria dev = new Categoria(null,"Desenvolvimento de Software",null);
 		Categoria lid = new Categoria(null,"Liderança",null);
 		Categoria com = new Categoria(null,"Comunicação", null);
@@ -108,6 +114,9 @@ public class PopulaDados {
 		
 	
 		categoriaRepository.saveAll(Arrays.asList(dev, lid, com));
+		//profissionalRepository.saveAll(Arrays.asList(adriana));
+		//usuarioRepository.saveAll(Arrays.asList(adrianasdpn));
+		
 		//provaRepository.saveAll(Arrays.asList(p1,p2));
 		//questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
 		//treinamentoRepository.saveAll(Arrays.asList(t1,t2,t3));

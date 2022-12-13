@@ -1,6 +1,8 @@
 package com.adriana.GerenciadorTreinamentos.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,14 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.Permissao;
 
+
 @Entity
-public class Usuario implements Serializable{
+public class Funcao implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,33 +25,31 @@ public class Usuario implements Serializable{
 	private Integer id;
 	
 	@Column(nullable = false)
-	private String nomeUsuario;
+	private String titulo;
 	
 	@Column(nullable = false)
-	private String senha;
+	private String descricao;
 	
 	@Column(nullable = false)
 	private Permissao permissao;
 	
-	@OneToOne
-	@JoinColumn(name = "id_profissional")
-	@MapsId
-	private Profissional profissional;
-
-	private String token;
+	//@ManyToOne
+	//@JoinColumn(name="id_permissao")
+	//private Permissao permissao;
 	
-	public Usuario() {
+	@OneToMany(mappedBy = "funcao")
+	private List<Profissional> profissionais = new ArrayList<>();
+	
+	public Funcao() {
 		
 	}
 
-	public Usuario(Integer id, String nomeUsuario, String senha, Permissao permissao, Profissional profissional, String token) {
+	public Funcao(Integer id, String titulo, String descricao, Permissao permissao) {
 		super();
 		this.id = id;
-		this.nomeUsuario = nomeUsuario;
-		this.senha = senha;
+		this.titulo = titulo;
+		this.descricao = descricao;
 		this.permissao = permissao;
-		this.profissional = profissional;
-		this.token = token;
 	}
 	
 	@Override
@@ -66,7 +65,7 @@ public class Usuario implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Funcao other = (Funcao) obj;
 		return Objects.equals(id, other.id);
 	}
 
@@ -78,20 +77,20 @@ public class Usuario implements Serializable{
 		this.id = id;
 	}
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Permissao getPermissao() {
@@ -102,20 +101,12 @@ public class Usuario implements Serializable{
 		this.permissao = permissao;
 	}
 
-	public Profissional getProfissional() {
-		return profissional;
+	public List<Profissional> getProfissionais() {
+		return profissionais;
 	}
 
-	public void setProfissional(Profissional profissional) {
-		this.profissional = profissional;
+	public void setProfissionais(List<Profissional> profissionais) {
+		this.profissionais = profissionais;
 	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
+	
 }

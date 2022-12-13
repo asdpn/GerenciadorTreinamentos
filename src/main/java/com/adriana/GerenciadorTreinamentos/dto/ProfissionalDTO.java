@@ -16,8 +16,8 @@ public class ProfissionalDTO implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String nomeCompleto;
 	private String email;
+	private String senha;
 
 	
 	public ProfissionalDTO() {
@@ -25,26 +25,27 @@ public class ProfissionalDTO implements Serializable{
 	}
 
 	public ProfissionalDTO(Profissional obj) {
-		this.nomeCompleto = obj.getNomeCompleto();
 		this.email = obj.getEmail();
-	}
-
-
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+		this.senha = obj.getSenha();
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 }

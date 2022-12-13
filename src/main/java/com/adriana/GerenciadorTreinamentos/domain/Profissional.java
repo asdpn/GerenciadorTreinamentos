@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,7 +31,7 @@ public class Profissional implements Serializable{
 	private String nomeCompleto;
 	
 	@Column(nullable = false)
-	private String cargo;
+	private String telefone;
 	
 	@Column(nullable = false)
 	private String empresa;
@@ -40,11 +39,16 @@ public class Profissional implements Serializable{
 	@Column(nullable = false)
 	private String email;
 	
+	
 	@Column(nullable = false)
-	private String telefone;
-		
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "profissional")
-	private Usuario usuario;
+	private String nomeUsuario;
+	
+	@Column(nullable = false)
+	private String senha;
+	
+	@ManyToOne
+	@JoinColumn(name="id_funcao")
+	private Funcao funcao;
 	
 	@JsonIgnore
 	@ManyToMany
@@ -69,17 +73,18 @@ public class Profissional implements Serializable{
 		
 	}
 
-	public Profissional(Integer id, String nomeCompleto, String cargo, String empresa, String email, String telefone, Usuario usuario) {
+	public Profissional(Integer id, String nomeCompleto, String telefone, String empresa, String email,
+			String nomeUsuario, String senha, Funcao funcao) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
-		this.cargo = cargo;
+		this.telefone = telefone;
 		this.empresa = empresa;
 		this.email = email;
-		this.telefone = telefone;
-		this.usuario = usuario;
+		this.nomeUsuario = nomeUsuario;
+		this.senha = senha;
+		this.funcao = funcao;
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -114,12 +119,12 @@ public class Profissional implements Serializable{
 		this.nomeCompleto = nomeCompleto;
 	}
 
-	public String getCargo() {
-		return cargo;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getEmpresa() {
@@ -138,20 +143,28 @@ public class Profissional implements Serializable{
 		this.email = email;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Funcao getFuncao() {
+		return funcao;
+	}
+
+	public void setFuncao(Funcao funcao) {
+		this.funcao = funcao;
 	}
 
 	public List<Treinamento> getTreinamentos() {
@@ -177,6 +190,5 @@ public class Profissional implements Serializable{
 	public void setResultados(List<Resultado> resultados) {
 		this.resultados = resultados;
 	}
-
 
 }
