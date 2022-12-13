@@ -1,31 +1,33 @@
-import { Usuario } from "./usuario";
 import { Treinamento } from "./treinamento";
 import { Turma } from "./turma";
 import { Resultado } from "./resultado";
+import { Funcao } from "./funcao";
 
 export class Profissional{
 
-    constructor(public id=0, nomeCompleto="", cargo="", empresa="", email="", telefone="", usuario = new Usuario(), treinamentos?: Treinamento[], turmas?: Turma[], resultados?: Resultado[]){
+    constructor(public id=0, nomeCompleto="", nomeUsuario="", senha="", empresa="", email="", telefone="", funcao?: Funcao, treinamentos?: Treinamento[], turmas?: Turma[], resultados?: Resultado[]){
         this.Id = id;
         this.nomeCompleto =  nomeCompleto;
-        this.cargo = cargo;
+        this.nomeUsuario = nomeUsuario;
         this.empresa = empresa;
         this.email = email;
         this.telefone = telefone;
-        this.usuario = usuario;
+        this.senha = senha;
         this.treinamentos = treinamentos;
         this.turmas = turmas;
         this.resultados = resultados;
+        this.funcao = funcao;
 
     }
 
     public Id: number;
     public nomeCompleto: string;
-    public cargo: string;
+    public nomeUsuario: string;
+    public senha: string;
     public empresa: string;
     public email: string;
     public telefone: string;
-    public usuario: Usuario;
+    public funcao?: Funcao;
     public treinamentos?: Treinamento[];
     public turmas?: Turma[];
     public resultados?: Resultado[];

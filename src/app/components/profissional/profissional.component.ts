@@ -1,8 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Usuario } from '../../entities/usuario';
-import { UsuarioService } from '../../services/usuario.service';
 import { Treinamento } from 'src/app/entities/treinamento';
 import { TreinamentoService } from 'src/app/services/treinamento.service';
 
@@ -13,6 +11,8 @@ import { Resultado } from 'src/app/entities/resultado';
 import { ResultadoService } from 'src/app/services/resultado.service';
 import { TurmaService } from 'src/app/services/turma.service';
 import { Turma } from 'src/app/entities/turma';
+import { FuncaoService } from 'src/app/services/funcao.service';
+import { Funcao } from 'src/app/entities/funcao';
 
 @Component({
   selector: 'app-profissional',
@@ -22,41 +22,30 @@ import { Turma } from 'src/app/entities/turma';
 export class ProfissionalComponent implements OnInit{
 
   public profissionais: Profissional[] = [];
-  public usuarios: Usuario[] = [];
   public treinamentos: Treinamento[] = [];
   public turmas: Turma[] = [];
   public resultados: Resultado[] = [];
+  public funcoes: Funcao[] = [];
 
 
   public addProfissional: Profissional = new Profissional();
   public editProfissional: Profissional = new Profissional();
   public deleteProfissional: Profissional = new Profissional();
 
-  constructor(private ProfissionalService: ProfissionalService, private UsuarioService: UsuarioService, private TreinamentoService: TreinamentoService, private TurmaService: TurmaService, private ResultadoService: ResultadoService){}
+  constructor(private ProfissionalService: ProfissionalService, private TreinamentoService: TreinamentoService, private TurmaService: TurmaService, private ResultadoService: ResultadoService, private FuncaoService: FuncaoService){}
 
   ngOnInit(){
     this.getProfissionais();
-    this.getUsuarios();
     this.getTreinamentos();
     this.getTurmas();
     this.getResultados();
+    this.getFuncoes();
   }  
 
   public getProfissionais(): void {
     this.ProfissionalService.listProfissionais().subscribe(
       (response: Profissional[]) => {
         this.profissionais = response;
-      },
-      (error: HttpErrorResponse) =>{
-        alert(error.message);
-      }
-    )
-  }
-
-  public getUsuarios(): void {
-    this.UsuarioService.listUsuarios().subscribe(
-      (response: Usuario[]) => {
-        this.usuarios = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);
@@ -90,6 +79,17 @@ export class ProfissionalComponent implements OnInit{
     this.ResultadoService.listResultados().subscribe(
       (response: Resultado[]) => {
         this.resultados = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getFuncoes(): void {
+    this.FuncaoService.listFuncoes().subscribe(
+      (response: Funcao[]) => {
+        this.funcoes = response;
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);

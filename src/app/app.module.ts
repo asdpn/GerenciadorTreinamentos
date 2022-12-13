@@ -12,8 +12,8 @@ import { CertificadoService } from './services/certificado.service';
 import { CertificadoComponent } from './components/certificado/certificado.component';
 import { ConviteService } from './services/convite.service';
 import { ConviteComponent } from './components/convite/convite.component';
-import { UsuarioService } from './services/usuario.service';
-import { UsuarioComponent } from './components/usuario/usuario.component';
+import { FuncaoService } from './services/funcao.service';
+import { FuncaoComponent } from './components/funcao/funcao.component';
 import { ProfissionalService } from './services/profissional.service';
 import { ProfissionalComponent } from './components/profissional/profissional.component';
 import { ProvaService } from './services/prova.service';
@@ -27,8 +27,6 @@ import { TreinamentoComponent } from './components/treinamento/treinamento.compo
 import { TurmaService } from './services/turma.service';
 import { TurmaComponent } from './components/turma/turma.component';
 import { LoginComponent } from './components/login/login.component';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +34,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     CategoriaComponent,
     CertificadoComponent,
     ConviteComponent,
-    UsuarioComponent,
+    FuncaoComponent,
     ProfissionalComponent,
     ProvaComponent,
     QuestaoComponent,
@@ -55,15 +53,13 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     CategoriaService, 
     CertificadoService, 
     ConviteService, 
-    UsuarioService, 
+    FuncaoService, 
     ProfissionalService, 
     ProvaService, 
     QuestaoService, 
     ResultadoService, 
     TreinamentoService, 
-    TurmaService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    TurmaService
   ],
   bootstrap: [AppComponent]
 })

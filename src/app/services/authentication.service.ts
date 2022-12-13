@@ -5,39 +5,39 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { Usuario } from '../entities/usuario';
+import { Profissional } from '../entities/profissional';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private usuarioSubject: BehaviorSubject<Usuario>;
-    public usuario: Observable<Usuario>;
+    private profissionalSubject: BehaviorSubject<Profissional>;
+    public profissional: Observable<Profissional>;
 
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
-        this.usuarioSubject = new BehaviorSubject<Usuario>(JSON.parse(localStorage.getItem('usuario') || ''));
-        this.usuario = this.usuarioSubject.asObservable();
+        this.profissionalSubject = new BehaviorSubject<Profissional>(JSON.parse(sessionStorage.getItem('profissional') ?? '{}'));
+        this.profissional = this.profissionalSubject.asObservable();
     }
 
-    public get usuarioValue(): Usuario {
-        return this.usuarioSubject.value;
+    public get profissionalValue(): Profissional {
+        return this.profissionalSubject.value;
     }
 
     login(nomeUsuario: string, senha: string) {
-        return this.http.post<any>(`${environment.apiBaseUrl}/usuarios/authenticate`, { nomeUsuario, senha })
-            .pipe(map(usuario => {
+        return this.http.post<any>(`${environment.apiBaseUrl}/profissional/authenticate`, { nomeUsuario, senha })
+            .pipe(map(profissional => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('usuario', JSON.stringify(usuario));
-                this.usuarioSubject.next(usuario);
-                return usuario;
+                sessionStorage.setItem('profissional', JSON.stringify(profissional));
+                this.profissionalSubject.next(profissional);
+                return profissional;
             }));
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('usuario');
-        this.usuarioSubject.next(new Usuario());
+        sessionStorage.removeItem('profissional');
+        this.profissionalSubject.next(new Profissional());
         this.router.navigate(['/login']);
     }
 }

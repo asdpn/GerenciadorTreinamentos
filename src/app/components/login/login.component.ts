@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Usuario } from 'src/app/entities/usuario';
+import { Profissional } from 'src/app/entities/profissional';
 
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-    usuario = new Usuario();
+    profissional = new Profissional();
     loading = false;
     submitted = false;
     error = '';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService
     ) { 
         // redirect to home if already logged in
-        if (this.authenticationService.usuarioValue) { 
+        if (this.authenticationService.profissionalValue) { 
             this.router.navigate(['/']);
         }
     }
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.loading = true;
-        this.authenticationService.login(this.usuario.nomeUsuario, this.usuario.senha)
+        this.authenticationService.login(this.profissional.nomeUsuario, this.profissional.senha)
             .pipe(first())
             .subscribe({
                 next: () => {

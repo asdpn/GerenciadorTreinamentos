@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { CertificadoComponent } from './components/certificado/certificado.component';
 import { ConviteComponent } from './components/convite/convite.component';
-import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ProfissionalComponent } from './components/profissional/profissional.component';
 import { ProvaComponent } from './components/prova/prova.component';
 import { QuestaoComponent } from './components/questao/questao.component';
@@ -12,6 +11,7 @@ import { TreinamentoComponent } from './components/treinamento/treinamento.compo
 import { TurmaComponent } from './components/turma/turma.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { FuncaoComponent } from './components/funcao/funcao.component';
 
 
 
@@ -25,7 +25,7 @@ const routes: Routes = [
     {path: 'resultado', component: ResultadoComponent, canActivate: [AuthGuard]},
     {path: 'treinamento', component: TreinamentoComponent, canActivate: [AuthGuard]},
     {path: 'turma', component: TurmaComponent, canActivate: [AuthGuard]},    
-    {path: 'usuario', component: UsuarioComponent, canActivate: [AuthGuard]},
+    {path: 'funcao', component: FuncaoComponent, canActivate: [AuthGuard]},
     {path: 'login', component: LoginComponent},
     {path: '', redirectTo: '/treinamento', pathMatch: 'full'}     
 ];

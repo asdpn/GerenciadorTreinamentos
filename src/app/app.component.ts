@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { Permissao } from './entities/enums/permissao.enum';
-import { Usuario } from './entities/usuario';
+import { Profissional } from './entities/profissional';
 
 import { AuthenticationService } from './services/authentication.service';
 
@@ -10,23 +10,23 @@ import { AuthenticationService } from './services/authentication.service';
 })
 export class AppComponent {
 
-   public usuario: Usuario = new Usuario();
+   public profissional: Profissional = new Profissional();
 
    constructor(private authenticationService: AuthenticationService) {
-       this.authenticationService.usuario.subscribe(x => this.usuario = x);
+       this.authenticationService.profissional.subscribe(x => this.profissional = x);
    }
 
    get isGerente() {
-       return this.usuario && this.usuario.permissao === Permissao.GERENTE;
+       return this.profissional && this.profissional.funcao?.permissao === Permissao.GERENTE;
    }
 
    get isProfissional() {
-    return this.usuario && this.usuario.permissao === Permissao.PROFISSIONAL;
+    return this.profissional && this.profissional.funcao?.permissao === Permissao.PROFISSIONAL;
     }
 
     get isPalestrante() {
-        return this.usuario && this.usuario.permissao === Permissao.PALESTRANTE;
-        }
+        return this.profissional && this.profissional.funcao?.permissao === Permissao.PALESTRANTE;
+    }
 
    logout() {
        this.authenticationService.logout();
