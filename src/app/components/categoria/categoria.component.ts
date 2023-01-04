@@ -8,8 +8,7 @@ import { TreinamentoService } from '../../services/treinamento.service';
 
 @Component({
   selector: 'app-categoria',
-  templateUrl: 'categoria.component.html',
-  styleUrls: ['./categoria.component.css']
+  templateUrl: 'categoria.component.html'
 })
 export class CategoriaComponent implements OnInit{
 
