@@ -7,10 +7,12 @@ import { Profissional } from 'src/app/entities/profissional';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-    profissional = new Profissional();
+    email = '';
+    senha='';
     loading = false;
     submitted = false;
     error = '';
+    show = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -26,20 +28,26 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
-    onSubmit() {
-        this.loading = true;
-        this.authenticationService.login(this.profissional.nomeUsuario, this.profissional.senha)
-            .pipe(first())
-            .subscribe({
-                next: () => {
-                    // get return url from query parameters or default to home page
-                    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                    this.router.navigateByUrl(returnUrl);
-                },
-                error: error => {
-                    this.error = error;
-                    this.loading = false;
-                }
-            });
+    onSubmit(id: string) {
+        if (id === 'login'){
+            this.loading = true;
+            this.authenticationService.login(this.email, this.senha)
+                .pipe(first())
+                .subscribe({
+                    next: () => {
+                        // get return url from query parameters or default to home page
+                        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+                        this.router.navigateByUrl(returnUrl);
+                    },
+                    error: error => {
+                        this.error = error.error.msg;
+                        this.loading = false;
+                    }
+                });
+        }
+
+        if (id === 'showHideButton'){
+            this.show = !this.show;
+        }
     }
 }
