@@ -2,7 +2,7 @@
     <div class="card">
         <h4 class="card-header">Login - Gerenciador de Treinamentos</h4>
         <div class="card-body">
-            <form #loginForm="ngForm" (ngSubmit)="onSubmit($event.submitter.id)">
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit($event.submitter.id,loginForm)">
                 <div class="form-group">
                     <label for="email">Email*</label>
                     <input type="text" ngModel id="email" name="email" class="form-control" required/>

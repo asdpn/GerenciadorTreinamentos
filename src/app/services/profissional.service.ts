@@ -27,4 +27,8 @@ export class ProfissionalService{
     public deleteProfissional(profissionalId: number): Observable<void>{
         return this.http.delete<void>(`${this.apiServerUrl}profissional/delete/${profissionalId}`)
     }
+
+    public authenticateProfissional(profissional: Profissional): Observable<Profissional>{
+        return this.http.post<Profissional>(`${this.apiServerUrl}profissional/authenticate`, profissional)
+    }
 }

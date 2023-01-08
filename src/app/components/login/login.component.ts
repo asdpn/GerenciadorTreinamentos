@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Profissional } from 'src/app/entities/profissional';
+import { NgForm } from '@angular/forms';
 
 
 @Component({ templateUrl: 'login.component.html' })
@@ -28,9 +29,11 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
-    onSubmit(id: string) {
+    onSubmit(id: string, loginForm: NgForm) {
         if (id === 'login'){
             this.loading = true;
+            this.email = loginForm.value.email;
+            this.senha = loginForm.value.senha;
             this.authenticationService.login(this.email, this.senha)
                 .pipe(first())
                 .subscribe({
