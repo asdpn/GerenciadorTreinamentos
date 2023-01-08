@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adriana.GerenciadorTreinamentos.domain.Profissional;
-import com.adriana.GerenciadorTreinamentos.dto.ProfissionalDTO;
 import com.adriana.GerenciadorTreinamentos.repository.ProfissionalRepository;
 import com.adriana.GerenciadorTreinamentos.service.exception.ConstraintViolationExcep;
 import com.adriana.GerenciadorTreinamentos.service.exception.ObjetoNaoEncontradoException;
@@ -48,8 +47,8 @@ public class ProfissionalService {
 		return repo.findAll();
 	}
 	
-	//public Profissional authenticateProfissional(ProfissionalDTO profissionalDTO) {
-	//	Optional<Profissional> obj = repo.findB
-	//	return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Profissional não encontrado."));
-	//}
+	public Profissional authenticateProfissional(String email, String senha) {
+		Optional<Profissional> obj = repo.findByEmailAndSenha(email, senha);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Profissional não encontrado."));
+	}
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.adriana.GerenciadorTreinamentos.domain.Categoria;
 import com.adriana.GerenciadorTreinamentos.domain.Convite;
+import com.adriana.GerenciadorTreinamentos.domain.Funcao;
 import com.adriana.GerenciadorTreinamentos.domain.Profissional;
 import com.adriana.GerenciadorTreinamentos.domain.Prova;
 import com.adriana.GerenciadorTreinamentos.domain.Questao;
@@ -20,6 +21,7 @@ import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusTreinamento;
 import com.adriana.GerenciadorTreinamentos.repository.CategoriaRepository;
 import com.adriana.GerenciadorTreinamentos.repository.CertificadoRepository;
 import com.adriana.GerenciadorTreinamentos.repository.ConviteRepository;
+import com.adriana.GerenciadorTreinamentos.repository.FuncaoRepository;
 import com.adriana.GerenciadorTreinamentos.repository.ProfissionalRepository;
 import com.adriana.GerenciadorTreinamentos.repository.ProvaRepository;
 import com.adriana.GerenciadorTreinamentos.repository.QuestaoRepository;
@@ -45,6 +47,9 @@ public class PopulaDados {
 	ProfissionalRepository profissionalRepository;
 	
 	@Autowired
+	FuncaoRepository funcaoRepository;
+	
+	@Autowired
 	ProvaRepository provaRepository;
 	
 	@Autowired
@@ -60,7 +65,7 @@ public class PopulaDados {
 	TurmaRepository turmaRepository;	
 
 	
-	@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
+	//@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
 	public void cadastrar () {
 		
 		//Profissional adriana = new Profissional(null, "Adriana Sodré", "Coordenadora", "Radix", "adriana@teste.com", "91234 5678", null);
@@ -106,22 +111,21 @@ public class PopulaDados {
 	    //t2.setConvite(c2);
 	    //t3.setConvite(c3);
 		
-		//Funcao gerente = new Funcao(null, "Gerente",Permissao.EDICAOGERENTE);
+		Funcao gerente = new Funcao(null, "Gerente","",Permissao.GERENTE);
 		//Funcao coordenador = new Funcao(null, "Coordenador", Permissao.CONSULTA);
 		
-		//Profissional pf1 = new Profissional(null, gerente, TipoProfissional.INTERNO, "Tomas", "Siemens", "tomas@teste123.com", "012384569", "123456");
+		Profissional adriana = new Profissional(null, "Adriana Sodré", "91234 5678", "Radix", "adriana@teste.com", "adrianaspdn", "123456", gerente);
 		//Profissional pf2 = new Profissional(null, coordenador, TipoProfissional.INTERNO, "Adriana", "Radix", "adriana@teste123.com", "012384569", "0125892");
 		
 	
 		categoriaRepository.saveAll(Arrays.asList(dev, lid, com));
-		//profissionalRepository.saveAll(Arrays.asList(adriana));
 		//usuarioRepository.saveAll(Arrays.asList(adrianasdpn));
 		
 		//provaRepository.saveAll(Arrays.asList(p1,p2));
 		//questaoRepository.saveAll(Arrays.asList(q1,q2,q3,q4,q5));
 		//treinamentoRepository.saveAll(Arrays.asList(t1,t2,t3));
-		//funcaoRepository.saveAll(Arrays.asList(gerente, coordenador));
-		//profissionalRepository.saveAll(Arrays.asList(pf1,pf2));
+		funcaoRepository.saveAll(Arrays.asList(gerente));
+		profissionalRepository.saveAll(Arrays.asList(adriana));
 		//turmaRepository.saveAll(Arrays.asList(tu1));
 		//conviteRepository.saveAll(Arrays.asList(c1,c2,c3));
 

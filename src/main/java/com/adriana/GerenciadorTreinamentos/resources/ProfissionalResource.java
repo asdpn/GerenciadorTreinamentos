@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adriana.GerenciadorTreinamentos.domain.Profissional;
-import com.adriana.GerenciadorTreinamentos.dto.ProfissionalDTO;
 import com.adriana.GerenciadorTreinamentos.service.ProfissionalService;
 
 @RestController
@@ -56,9 +55,9 @@ public class ProfissionalResource {
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 	
-	//@PostMapping("/authenticate}")
-	//public ResponseEntity<Profissional> authenticatProfissional(@RequestBody ProfissionalDTO profissionalDTO) {
-	//	Profissional profissional = service.authenticateProfissional(profissionalDTO);
-	//	return new ResponseEntity<>(profissional, HttpStatus.OK);
-	//}
+	@PostMapping("/authenticate")
+	public ResponseEntity<Profissional> authenticatProfissional(@RequestBody Profissional profissional) {
+		Profissional profissionalEncontrado = service.authenticateProfissional(profissional.getEmail(), profissional.getSenha());
+		return new ResponseEntity<>(profissionalEncontrado, HttpStatus.OK);
+	}
 }

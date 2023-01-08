@@ -33,10 +33,6 @@ public class Funcao implements Serializable{
 	@Column(nullable = false)
 	private Permissao permissao;
 	
-	//@ManyToOne
-	//@JoinColumn(name="id_permissao")
-	//private Permissao permissao;
-	
 	@OneToMany(mappedBy = "funcao")
 	private List<Profissional> profissionais = new ArrayList<>();
 	
