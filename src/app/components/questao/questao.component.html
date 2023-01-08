@@ -104,7 +104,7 @@
             <div class="modal-body">
                 <form #editForm="ngForm">
                     <div class="form-group" >
-                        <input type="text" ngModel="{{editQuestao.Id}}" name="id" class="form-control" id="id" placeholder="Identificador" disabled>
+                        <input type="text" ngModel="{{editQuestao.id}}" name="id" class="form-control" id="id" placeholder="Identificador" disabled>
                     </div>
                     <div class="form-group">
                         <label for="cabecalho">Cabeçalho*</label>
@@ -145,7 +145,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-            <button (click)="onDeleteQuestao(deleteQuestao.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+            <button (click)="onDeleteQuestao(deleteQuestao.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
             </div>
         </div>
     </div>

@@ -105,7 +105,7 @@
             <div class="modal-body">
                 <form #editForm="ngForm">
                 <div class="form-group" >
-                    <input type="hidden" ngModel="{{editConvite.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                    <input type="hidden" ngModel="{{editConvite.id}}" name="id" class="form-control" id="id" placeholder="Identificador">
                 </div>
                 <div class="form-group">
                     <label for="titulo">Título*</label>
@@ -150,7 +150,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-            <button (click)="onDeleteConvite(deleteConvite.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+            <button (click)="onDeleteConvite(deleteConvite.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
             </div>
         </div>
     </div>
