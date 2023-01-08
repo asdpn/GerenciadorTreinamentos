@@ -1,74 +1,120 @@
-<div class="row align-items-center">
-    <div class="col-md-4">
-        <h2 style="padding-top:10px">Funcoes</h2>
-    </div>
-    <div class="col-md-4">
-        <form class="form-inline" style="padding-top:10px">
-            <input type="search" (ngModelChange)="searchFuncoes(key.value)" #key="ngModel" ngModel
-                name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Funções..." required>
-        </form>
-    </div>
-    <div class="col-md-4">
-        <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
-            <a (click)="onOpenModal(addFuncao, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
+<div class="container" id="main-container">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <h2 style="padding-top:10px">Funcoes</h2>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="">
-            <div class="table-responsive">
-                <table class="table project-list-table table-nowrap align-middle table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">Título</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Permisão</th>
-                            <th scope="col" style="width: 200px;">Profissionais</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let funcao of funcoes">
-                            <td>{{funcao.titulo}}</td>
-                            <td>{{funcao.descricao}}</td>
-                            <td>{{funcao.permissao}}</td>
-                            <td>{{funcao.profissionais}}</td>
-                            <td>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <a (click)="onOpenModal(funcao, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a (click)="onOpenModal(funcao, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="col-md-4">
+            <form class="form-inline" style="padding-top:10px">
+                <input type="search" (ngModelChange)="searchFuncoes(key.value)" #key="ngModel" ngModel
+                    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Funções..." required>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
+                <a (click)="onOpenModal(addFuncao, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="">
+                <div class="table-responsive">
+                    <table class="table project-list-table table-nowrap align-middle table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Permisão</th>
+                                <th scope="col" style="width: 200px;">Profissionais</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let funcao of funcoes">
+                                <td>{{funcao.titulo}}</td>
+                                <td>{{funcao.descricao}}</td>
+                                <td>{{funcao.permissao}}</td>
+                                <td>{{funcao.profissionais}}</td>
+                                <td>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a (click)="onOpenModal(funcao, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a (click)="onOpenModal(funcao, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Add Modal -->
-<div class="modal fade" id="addFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="addFuncaoModalLabel" aria-hidden="true">
+    <!-- Add Modal -->
+    <div class="modal fade" id="addFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="addFuncaoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addFuncaoModalLabel">Criar Funcao</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></div>
+                <div class="modal-body">
+                    <form #addForm="ngForm" (ngSubmit)="onAddFuncao(addForm)">
+                        <div class="form-group">
+                            <label for="titulo">Título*</label>
+                            <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição*</label>
+                            <input type="text" ngModel name="descricao" class="form-control" id="descricao" placeholder="Descrição" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="permissao">Permissão*</label>
+                            <select class="form-control" id="permissao" required>
+                                <option *ngFor="let permissao of permissoes" [value]="permissao">{{permissao}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="profissionais">Profissionais</label>
+                            <select class="form-control" id="profissionais" multiple data-mdb-filter="true">
+                                <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="close-add-Funcao-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="editFuncaoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addFuncaoModalLabel">Criar Funcao</h5>
+                <h5 class="modal-title" id="editFuncaoModalLabel">Editar Função</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-                </button></div>
+                </button>
+            </div>
             <div class="modal-body">
-                <form #addForm="ngForm" (ngSubmit)="onAddFuncao(addForm)">
-                    <div class="form-group">
-                        <label for="titulo">Título*</label>
-                        <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="descricao">Descrição*</label>
-                        <input type="text" ngModel name="descricao" class="form-control" id="descricao" placeholder="Descrição" required>
+                <form #editForm="ngForm">
+                <div class="form-group" >
+                    <input type="hidden" ngModel="{{editFuncao.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Título*</label>
+                    <input type="text" ngModel="{{editFuncao.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição*</label>
+                    <input type="text" ngModel="{{editFuncao.descricao}}" name="descricao" class="form-control" id="descricao" placeholder="Descrição" required>
                     </div>
                     <div class="form-group">
                         <label for="permissao">Permissão*</label>
@@ -76,82 +122,38 @@
                             <option *ngFor="let permissao of permissoes" [value]="permissao">{{permissao}}</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="profissionais">Profissionais</label>
-                        <select class="form-control" id="profissionais" multiple data-mdb-filter="true">
-                            <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="close-add-Funcao-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
+                <div class="form-group">
+                    <label for="profissionais">Profissionais</label>
+                    <input type="text" ngModel="{{editFuncao.profissionais}}" name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
+                </div>
                 </form>
             </div>
+            <div class="modal-footer">
+            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+            <button (click)="onUpdateFuncao(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
+            </div>
         </div>
     </div>
-</div>
+    </div>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="editFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="editFuncaoModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="editFuncaoModalLabel">Editar Função</h5>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="deleteFuncaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="deleteFuncaoModalLabel">Apagar Função</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-        <div class="modal-body">
-            <form #editForm="ngForm">
-            <div class="form-group" >
-                <input type="hidden" ngModel="{{editFuncao.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
             </div>
-            <div class="form-group">
-                <label for="titulo">Título*</label>
-                <input type="text" ngModel="{{editFuncao.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
+            <div class="modal-body">
+                <p>Você tem certeza que quer apagar a função {{deleteFuncao.titulo}}?</p>
             </div>
-            <div class="form-group">
-                <label for="descricao">Descrição*</label>
-                <input type="text" ngModel="{{editFuncao.descricao}}" name="descricao" class="form-control" id="descricao" placeholder="Descrição" required>
-                </div>
-                <div class="form-group">
-                    <label for="permissao">Permissão*</label>
-                    <select class="form-control" id="permissao" required>
-                        <option *ngFor="let permissao of permissoes" [value]="permissao">{{permissao}}</option>
-                    </select>
-                </div>
-            <div class="form-group">
-                <label for="profissionais">Profissionais</label>
-                <input type="text" ngModel="{{editFuncao.profissionais}}" name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            <button (click)="onDeleteFuncao(deleteFuncao.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
             </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-        <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-        <button (click)="onUpdateFuncao(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
         </div>
     </div>
-</div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteFuncaoModal" tabindex="-1" role="dialog" aria-labelledby="deleteFuncaoModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="deleteFuncaoModalLabel">Apagar Função</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <p>Você tem certeza que quer apagar a função {{deleteFuncao.titulo}}?</p>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button (click)="onDeleteFuncao(deleteFuncao.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
-        </div>
     </div>
-</div>
 </div>

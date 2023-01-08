@@ -1,89 +1,163 @@
-<div class="row align-items-center">
-    <div class="col-md-4">
-        <h2 style="padding-top:10px">Profissionais</h2>
-    </div>
-    <div class="col-md-4">
-        <form class="form-inline" style="padding-top:10px">
-            <input type="search" (ngModelChange)="searchProfissionais(key.value)" #key="ngModel" ngModel
-                name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Profissionais..." required>
-        </form>
-    </div>
-    <div class="col-md-4">
-        <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
-            <a (click)="onOpenModal(addProfissional, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
+<div class="container" id="main-container">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <h2 style="padding-top:10px">Profissionais</h2>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="">
-            <div class="table-responsive">
-                <table class="table project-list-table table-nowrap align-middle table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nome Completo</th>
-                            <th scope="col">Nome Usuário</th>
-                            <th scope="col">Função</th>
-                            <th scope="col">Empresa</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Treinamentos</th>
-                            <th scope="col">Turmas</th>
-                            <th scope="col">Resultados</th>
-                            <th scope="col" style="width: 200px;">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let profissional of profissionais">
-                            <td>{{profissional.nomeCompleto}}</td>
-                            <td>{{profissional.nomeUsuario}}</td>
-                            <td>{{profissional.funcao}}</td>
-                            <td>{{profissional.empresa}}</td>
-                            <td>{{profissional.email}}</td>
-                            <td>{{profissional.telefone}}</td>
-                            <td>{{profissional.treinamentos}}</td>
-                            <td>{{profissional.turmas}}</td>
-                            <td>{{profissional.resultados}}</td>
-                            <td>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <a (click)="onOpenModal(profissional, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a (click)="onOpenModal(profissional, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="col-md-4">
+            <form class="form-inline" style="padding-top:10px">
+                <input type="search" (ngModelChange)="searchProfissionais(key.value)" #key="ngModel" ngModel
+                    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Profissionais..." required>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
+                <a (click)="onOpenModal(addProfissional, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="">
+                <div class="table-responsive">
+                    <table class="table project-list-table table-nowrap align-middle table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome Completo</th>
+                                <th scope="col">Nome Usuário</th>
+                                <th scope="col">Função</th>
+                                <th scope="col">Empresa</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Treinamentos</th>
+                                <th scope="col">Turmas</th>
+                                <th scope="col">Resultados</th>
+                                <th scope="col" style="width: 200px;">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let profissional of profissionais">
+                                <td>{{profissional.nomeCompleto}}</td>
+                                <td>{{profissional.nomeUsuario}}</td>
+                                <td>{{profissional.funcao}}</td>
+                                <td>{{profissional.empresa}}</td>
+                                <td>{{profissional.email}}</td>
+                                <td>{{profissional.telefone}}</td>
+                                <td>{{profissional.treinamentos}}</td>
+                                <td>{{profissional.turmas}}</td>
+                                <td>{{profissional.resultados}}</td>
+                                <td>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a (click)="onOpenModal(profissional, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a (click)="onOpenModal(profissional, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Add Modal -->
-<div class="modal fade" id="addProfissionalModal" tabindex="-1" role="dialog" aria-labelledby="addProfissionalModalLabel" aria-hidden="true">
+    <!-- Add Modal -->
+    <div class="modal fade" id="addProfissionalModal" tabindex="-1" role="dialog" aria-labelledby="addProfissionalModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProfissionalModalLabel">Criar Profissional</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></div>
+                <div class="modal-body">
+                    <form #addForm="ngForm" (ngSubmit)="onAddProfissional(addForm)">
+                        <div class="form-group">
+                            <label for="nomeCompleto">Nome Completo*</label>
+                            <input type="text" ngModel name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomeUsuario">Nome Usuário*</label>
+                            <input type="text" ngModel name="nomeUsuario" class="form-control" id="nomeUsuario" placeholder="Nome Usuário" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha*</label>
+                            <input type="text" ngModel name="senha" class="form-control" id="senha" placeholder="Senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="funcao">Funcao*</label>
+                            <select class="form-control" id="funcao">
+                                <option *ngFor="let funcao of funcoes" [value]="funcao">{{funcao}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa*</label>
+                            <input type="text" ngModel name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="text" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone*</label>
+                            <input type="text" ngModel name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="treinamentos">Treinamentos</label>
+                            <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
+                                <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="turmas">Turmas</label>
+                            <select class="form-control" id="turmas" multiple data-mdb-filter="true">
+                                <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="resultados">Resultados</label>
+                            <select class="form-control" id="provas" multiple data-mdb-filter="true">
+                                <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="close-add-Profissional-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editProfissionalModal" tabindex="-1" role="dialog" aria-labelledby="editProfissionalModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addProfissionalModalLabel">Criar Profissional</h5>
+                <h5 class="modal-title" id="editProfissionalModalLabel">Editar Profissional</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-                </button></div>
+                </button>
+            </div>
             <div class="modal-body">
-                <form #addForm="ngForm" (ngSubmit)="onAddProfissional(addForm)">
+                <form #editForm="ngForm">
+                    <div class="form-group" >
+                        <input type="hidden" ngModel="{{editProfissional.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                    </div>
                     <div class="form-group">
                         <label for="nomeCompleto">Nome Completo*</label>
-                        <input type="text" ngModel name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
+                        <input type="text" ngModel="{{editProfissional.nomeCompleto}}" name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
                     </div>
                     <div class="form-group">
                         <label for="nomeUsuario">Nome Usuário*</label>
-                        <input type="text" ngModel name="nomeUsuario" class="form-control" id="nomeUsuario" placeholder="Nome Usuário" required>
+                        <input type="text" ngModel="{{editProfissional.nomeUsuario}}" name="nomeUsuario" class="form-control" id="nomeUsuario" placeholder="Nome Usuário" required>
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha*</label>
-                        <input type="text" ngModel name="senha" class="form-control" id="senha" placeholder="Senha" required>
+                        <input type="text" ngModel="{{editProfissional.senha}}" name="senha" class="form-control" id="senha" placeholder="Senha" required>
                     </div>
                     <div class="form-group">
                         <label for="funcao">Funcao*</label>
@@ -93,15 +167,15 @@
                     </div>
                     <div class="form-group">
                         <label for="empresa">Empresa*</label>
-                        <input type="text" ngModel name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
+                        <input type="text" ngModel="{{editProfissional.empresa}}" name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email*</label>
-                        <input type="text" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                        <input type="text" ngModel="{{editProfissional.email}}" name="email" class="form-control" id="email" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="telefone">Telefone*</label>
-                        <input type="text" ngModel name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
+                        <input type="text" ngModel="{{editProfissional.telefone}}" name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
                     </div>
                     <div class="form-group">
                         <label for="treinamentos">Treinamentos</label>
@@ -121,106 +195,34 @@
                             <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" id="close-add-Profissional-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+            <button (click)="onUpdateProfissional(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>
-</div>
+    </div>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="editProfissionalModal" tabindex="-1" role="dialog" aria-labelledby="editProfissionalModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="editProfissionalModalLabel">Editar Profissional</h5>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteProfissionalModal" tabindex="-1" role="dialog" aria-labelledby="deleteProfissionalModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="deleteProfissionalModalLabel">Apagar Profissional</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-        <div class="modal-body">
-            <form #editForm="ngForm">
-                <div class="form-group" >
-                    <input type="hidden" ngModel="{{editProfissional.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
-                </div>
-                <div class="form-group">
-                    <label for="nomeCompleto">Nome Completo*</label>
-                    <input type="text" ngModel="{{editProfissional.nomeCompleto}}" name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="Nome Completo" required>
-                </div>
-                <div class="form-group">
-                    <label for="nomeUsuario">Nome Usuário*</label>
-                    <input type="text" ngModel="{{editProfissional.nomeUsuario}}" name="nomeUsuario" class="form-control" id="nomeUsuario" placeholder="Nome Usuário" required>
-                </div>
-                <div class="form-group">
-                    <label for="senha">Senha*</label>
-                    <input type="text" ngModel="{{editProfissional.senha}}" name="senha" class="form-control" id="senha" placeholder="Senha" required>
-                </div>
-                <div class="form-group">
-                    <label for="funcao">Funcao*</label>
-                    <select class="form-control" id="funcao">
-                        <option *ngFor="let funcao of funcoes" [value]="funcao">{{funcao}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="empresa">Empresa*</label>
-                    <input type="text" ngModel="{{editProfissional.empresa}}" name="empresa" class="form-control" id="empresa" placeholder="Empresa" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="text" ngModel="{{editProfissional.email}}" name="email" class="form-control" id="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="telefone">Telefone*</label>
-                    <input type="text" ngModel="{{editProfissional.telefone}}" name="telefone" class="form-control" id="telefone" placeholder="Telefone" required>
-                </div>
-                <div class="form-group">
-                    <label for="treinamentos">Treinamentos</label>
-                    <select class="form-control" id="treinamentos" multiple data-mdb-filter="true">
-                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="turmas">Turmas</label>
-                    <select class="form-control" id="turmas" multiple data-mdb-filter="true">
-                        <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="resultados">Resultados</label>
-                    <select class="form-control" id="provas" multiple data-mdb-filter="true">
-                        <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-        <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-        <button (click)="onUpdateProfissional(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
+            </div>
+            <div class="modal-body">
+                <p>Você tem certeza que quer apagar o profissional {{deleteProfissional.nomeCompleto}}?</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            <button (click)="onDeleteProfissional(deleteProfissional.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+            </div>
         </div>
     </div>
-</div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteProfissionalModal" tabindex="-1" role="dialog" aria-labelledby="deleteProfissionalModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="deleteProfissionalModalLabel">Apagar Profissional</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <p>Você tem certeza que quer apagar o profissional {{deleteProfissional.nomeCompleto}}?</p>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button (click)="onDeleteProfissional(deleteProfissional.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
-        </div>
     </div>
-</div>
 </div>

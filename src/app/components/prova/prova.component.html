@@ -1,83 +1,139 @@
-<div class="row align-items-center">
-    <div class="col-md-4">
-        <h2 style="padding-top:10px">Provas</h2>
-    </div>
-    <div class="col-md-4">
-        <form class="form-inline" style="padding-top:10px">
-            <input type="search" (ngModelChange)="searchProvas(key.value)" #key="ngModel" ngModel
-                name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Provas..." required>
-        </form>
-    </div>
-    <div class="col-md-4">
-        <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
-            <a (click)="onOpenModal(addProva, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
+<div class="container" id="main-container">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <h2 style="padding-top:10px">Provas</h2>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="">
-            <div class="table-responsive">
-                <table class="table project-list-table table-nowrap align-middle table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">Título</th>
-                            <th scope="col">Nota Máxima</th>
-                            <th scope="col">Nota Mínima</th>
-                            <th scope="col">Questões</th>
-                            <th scope="col">Treinamento</th>
-                            <th scope="col">Resultados</th>
-                            <th scope="col" style="width: 200px;">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let prova of provas">
-                            <td>{{prova.titulo}}</td>
-                            <td>{{prova.notaMaxima}}</td>
-                            <td>{{prova.notaMinima}}</td>
-                            <td>{{prova.questoes}}</td>
-                            <td>{{prova.treinamento}}</td>
-                            <td>{{prova.resultados}}</td>
-                            <td>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <a (click)="onOpenModal(prova, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a (click)="onOpenModal(prova, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="col-md-4">
+            <form class="form-inline" style="padding-top:10px">
+                <input type="search" (ngModelChange)="searchProvas(key.value)" #key="ngModel" ngModel
+                    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Provas..." required>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
+                <a (click)="onOpenModal(addProva, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="">
+                <div class="table-responsive">
+                    <table class="table project-list-table table-nowrap align-middle table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Nota Máxima</th>
+                                <th scope="col">Nota Mínima</th>
+                                <th scope="col">Questões</th>
+                                <th scope="col">Treinamento</th>
+                                <th scope="col">Resultados</th>
+                                <th scope="col" style="width: 200px;">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let prova of provas">
+                                <td>{{prova.titulo}}</td>
+                                <td>{{prova.notaMaxima}}</td>
+                                <td>{{prova.notaMinima}}</td>
+                                <td>{{prova.questoes}}</td>
+                                <td>{{prova.treinamento}}</td>
+                                <td>{{prova.resultados}}</td>
+                                <td>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a (click)="onOpenModal(prova, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a (click)="onOpenModal(prova, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Add Modal -->
-<div class="modal fade" id="addProvaModal" tabindex="-1" role="dialog" aria-labelledby="addProvaModalLabel" aria-hidden="true">
+    <!-- Add Modal -->
+    <div class="modal fade" id="addProvaModal" tabindex="-1" role="dialog" aria-labelledby="addProvaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProvaModalLabel">Criar Prova</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></div>
+                <div class="modal-body">
+                    <form #addForm="ngForm" (ngSubmit)="onAddProva(addForm)">
+                        <div class="form-group">
+                            <label for="titulo">Título*</label>
+                            <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="notaMaxima">Nota Máxima*</label>
+                            <input type="number" ngModel name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="notaMinima">Nota Mínima*</label>
+                            <input type="number" ngModel name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="questoes">Questões</label>
+                            <select class="form-control" id="questoes" multiple data-mdb-filter="true">
+                                <option *ngFor="let questao of questoes" [value]="questao">{{questao}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="treinamento">Treinamento*</label>
+                            <select class="form-control" id="treinamento" required>
+                                <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="resultados">Resultados</label>
+                            <select class="form-control" id="resultados" multiple data-mdb-filter="true">
+                                <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="close-add-Prova-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editProvaModal" tabindex="-1" role="dialog" aria-labelledby="editProvaModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addProvaModalLabel">Criar Prova</h5>
+                <h5 class="modal-title" id="editProvaModalLabel">Editar Prova</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-                </button></div>
+                </button>
+            </div>
             <div class="modal-body">
-                <form #addForm="ngForm" (ngSubmit)="onAddProva(addForm)">
+                <form #editForm="ngForm">
+                    <div class="form-group" >
+                        <input type="hidden" ngModel="{{editProva.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
+                    </div>
                     <div class="form-group">
                         <label for="titulo">Título*</label>
-                        <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Título" required>
+                        <input type="text" ngModel="{{editProva.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
                     </div>
                     <div class="form-group">
                         <label for="notaMaxima">Nota Máxima*</label>
-                        <input type="number" ngModel name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required>
-                    </div>
+                        <input type="number" ngModel="{{editProva.notaMaxima}}" name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required> 
+                        </div>
                     <div class="form-group">
                         <label for="notaMinima">Nota Mínima*</label>
-                        <input type="number" ngModel name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
+                        <input type="number" ngModel="{{editProva.notaMinima}}" name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
                     </div>
                     <div class="form-group">
                         <label for="questoes">Questões</label>
@@ -93,92 +149,38 @@
                     </div>
                     <div class="form-group">
                         <label for="resultados">Resultados</label>
-                        <select class="form-control" id="resultados" multiple data-mdb-filter="true">
+                        <select class="form-control" id="resultados">
                             <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" id="close-add-Prova-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+            <button (click)="onUpdateProva(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>
-</div>
+    </div>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="editProvaModal" tabindex="-1" role="dialog" aria-labelledby="editProvaModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="editProvaModalLabel">Editar Prova</h5>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteProvaModal" tabindex="-1" role="dialog" aria-labelledby="deleteProvaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="deleteProvaModalLabel">Apagar Prova</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-        <div class="modal-body">
-            <form #editForm="ngForm">
-                <div class="form-group" >
-                    <input type="hidden" ngModel="{{editProva.Id}}" name="id" class="form-control" id="id" placeholder="Identificador">
-                </div>
-                <div class="form-group">
-                    <label for="titulo">Título*</label>
-                    <input type="text" ngModel="{{editProva.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
-                </div>
-                <div class="form-group">
-                    <label for="notaMaxima">Nota Máxima*</label>
-                    <input type="number" ngModel="{{editProva.notaMaxima}}" name="notaMaxima" class="form-control" id="notaMaxima" placeholder="Nota Máxima" required> 
-                    </div>
-                <div class="form-group">
-                    <label for="notaMinima">Nota Mínima*</label>
-                    <input type="number" ngModel="{{editProva.notaMinima}}" name="notaMinima" class="form-control" id="notaMinima" placeholder="Nota Mínima" required>
-                </div>
-                <div class="form-group">
-                    <label for="questoes">Questões</label>
-                    <select class="form-control" id="questoes" multiple data-mdb-filter="true">
-                        <option *ngFor="let questao of questoes" [value]="questao">{{questao}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="treinamento">Treinamento*</label>
-                    <select class="form-control" id="treinamento" required>
-                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="resultados">Resultados</label>
-                    <select class="form-control" id="resultados">
-                        <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-        <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-        <button (click)="onUpdateProva(editForm.value)" data-dismiss="modal" class="btn btn-primary">Salvar</button>
+            </div>
+            <div class="modal-body">
+                <p>Você tem certeza que quer apagar a prova {{deleteProva.titulo}}?</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            <button (click)="onDeleteProva(deleteProva.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+            </div>
         </div>
     </div>
-</div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteProvaModal" tabindex="-1" role="dialog" aria-labelledby="deleteProvaModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="deleteProvaModalLabel">Apagar Prova</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <p>Você tem certeza que quer apagar a prova {{deleteProva.titulo}}?</p>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button (click)="onDeleteProva(deleteProva.Id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
-        </div>
     </div>
-</div>
 </div>
