@@ -11,13 +11,10 @@ export class AuthGuard implements CanActivate {
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const profissional = this.authenticationService.profissionalValue;
-        if (profissional) {
-            // authorised so return true
+        if (this.authenticationService.loginOK) {
             return true;
         }
 
-        // not logged in so redirect to login page with the return url
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         return false;
     }

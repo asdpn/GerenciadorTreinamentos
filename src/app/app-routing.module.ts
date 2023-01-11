@@ -16,16 +16,16 @@ import { FuncaoComponent } from './components/funcao/funcao.component';
 
 
 const routes: Routes = [
-    {path: 'categoria', component: CategoriaComponent},
-    {path: 'certificado', component: CertificadoComponent},
-    {path: 'convite', component: ConviteComponent},
-    {path: 'profissional', component: ProfissionalComponent},
-    {path: 'prova', component: ProvaComponent},
-    {path: 'questao', component: QuestaoComponent},
-    {path: 'resultado', component: ResultadoComponent},
-    {path: 'treinamento', component: TreinamentoComponent},
-    {path: 'turma', component: TurmaComponent},    
-    {path: 'funcao', component: FuncaoComponent},
+    {path: 'categoria', component: CategoriaComponent, canActivate: [AuthGuard]},
+    {path: 'certificado', component: CertificadoComponent, canActivate: [AuthGuard]},
+    {path: 'convite', component: ConviteComponent, canActivate: [AuthGuard]},
+    {path: 'profissional', component: ProfissionalComponent, canActivate: [AuthGuard]},
+    {path: 'prova', component: ProvaComponent, canActivate: [AuthGuard]},
+    {path: 'questao', component: QuestaoComponent, canActivate: [AuthGuard]},
+    {path: 'resultado', component: ResultadoComponent, canActivate: [AuthGuard]},
+    {path: 'treinamento', component: TreinamentoComponent, canActivate: [AuthGuard]},
+    {path: 'turma', component: TurmaComponent, canActivate: [AuthGuard]},    
+    {path: 'funcao', component: FuncaoComponent, canActivate: [AuthGuard]},
     {path: 'login', component: LoginComponent},
     {path: '', redirectTo: '/login', pathMatch: 'full'}     
 ];

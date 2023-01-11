@@ -13,7 +13,7 @@ export class AppComponent {
    public profissional: Profissional = new Profissional();
 
    constructor(private authenticationService: AuthenticationService) {
-       this.authenticationService.profissional.subscribe(x => this.profissional = x);
+       this.authenticationService.profissional;
    }
 
    get isGerente() {
