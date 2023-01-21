@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Profissional } from '../entities/profissional';
@@ -24,6 +23,7 @@ export class AuthenticationService {
         return this.ProfissionalService.authenticateProfissional(this.profissional)
             .pipe(map(profissional => {
                 sessionStorage.setItem('profissional', JSON.stringify(profissional));
+                this.loginOK = true;
                 return profissional;
             }));
     }
