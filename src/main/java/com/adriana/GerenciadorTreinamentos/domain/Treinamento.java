@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusTreinamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Treinamento implements Serializable{
@@ -50,6 +51,7 @@ public class Treinamento implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "treinamento")
 	private Prova prova;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "treinamentos")
 	private List<Profissional> palestrantes = new ArrayList<>();
 		

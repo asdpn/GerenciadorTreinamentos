@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.Permissao;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -33,6 +34,7 @@ public class Funcao implements Serializable{
 	@Column(nullable = false)
 	private Permissao permissao;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "funcao")
 	private List<Profissional> profissionais = new ArrayList<>();
 	
