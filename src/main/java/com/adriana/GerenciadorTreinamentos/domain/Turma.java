@@ -7,9 +7,13 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Turma implements Serializable{
@@ -17,6 +21,7 @@ public class Turma implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(nullable = false)
@@ -28,6 +33,7 @@ public class Turma implements Serializable{
 	@Column(nullable = false)
 	private Integer tamanhoMinimo;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "turma")
 	private List<Treinamento> treinamentos = new ArrayList<>();
 	

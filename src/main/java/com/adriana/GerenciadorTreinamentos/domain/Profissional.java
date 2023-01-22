@@ -64,7 +64,7 @@ public class Profissional implements Serializable{
 			inverseJoinColumns = @JoinColumn(name = "id_turma"))
 	private List<Turma> turmas = new ArrayList<>();
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "profissional")
 	private List<Resultado> resultados = new ArrayList<>();
 	

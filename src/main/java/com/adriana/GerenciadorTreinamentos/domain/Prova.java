@@ -15,6 +15,8 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Prova implements Serializable{
 
@@ -44,7 +46,7 @@ public class Prova implements Serializable{
 	@MapsId
 	private Treinamento treinamento;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "prova")
 	private List<Resultado> resultados  = new ArrayList<>();
 	

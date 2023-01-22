@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.OneToMany;
 
 @Entity
@@ -28,6 +31,7 @@ public class Categoria implements Serializable{
 	
 	private String descricao;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "categoria")
 	private List<Treinamento> treinamentos = new ArrayList<>();
 	
