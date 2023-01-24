@@ -1,5 +1,5 @@
 export enum StatusCertificado{
-    CRIADO,
-    VALIDADO,
-    ENVIADO
+    CRIADO = "Criado",
+    VALIDADO = "Validado",
+    ENVIADO = "Enviado"
 }

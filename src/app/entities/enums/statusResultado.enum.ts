@@ -1,5 +1,5 @@
 export enum StatusResultado{
-    CRIADO,
-    APROVADO,
-    REPROVADO
+    CRIADO = "Criado",
+    APROVADO = "Aprovado",
+    REPROVADO = "Reprovado"
 }

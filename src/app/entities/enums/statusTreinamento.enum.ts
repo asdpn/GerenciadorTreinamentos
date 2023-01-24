@@ -1,5 +1,5 @@
 export enum StatusTreinamento{
-    CRIADO,
-    AGENDADO,
-    FINALIZADO
+    CRIADO = "Criado",
+    AGENDADO = "Agendado",
+    FINALIZADO = "Finalizado"
 }
