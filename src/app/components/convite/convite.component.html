@@ -74,16 +74,16 @@
                         </div>
                         <div class="form-group">
                             <label for="dataHora">Data e Hora*</label>
-                            <input type="datetime" ngModel name="dataHora" class="form-control" id="dataHora" placeholder="Data e Hora" required>
+                            <input type="datetime" data-format="dd/MM/yyyy hh:mm" ngModel name="dataHora" class="form-control" id="dataHora" placeholder="Data e Hora" required>
                         </div>
                         <div class="form-group">
                             <label for="treinamento">Treinamento*</label>
                             <select class="form-control" id="treinamento" required>
-                                <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                                <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento.titulo}}</option>
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="close-add-Convite-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" id="close-add-convite-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
                         </div>
                     </form>
@@ -122,7 +122,7 @@
                 <div class="form-group">
                     <label for="treinamento">Treinamento*</label>
                     <select class="form-control" id="treinamento" required>
-                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                        <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento.titulo}}</option>
                     </select>
                 </div>
                 </form>

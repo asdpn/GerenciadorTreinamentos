@@ -38,7 +38,7 @@
                                 <td>{{treinamento.titulo}}</td>
                                 <td>{{treinamento.descricao}}</td>
                                 <td>{{treinamento.statusTreinamento}}</td>
-                                <td>{{treinamento.categoria}}</td>
+                                <td>{{treinamento.categoria.titulo}}</td>
                                 <td>{{treinamento.turma}}</td>
                                 <td>{{treinamento.convite}}</td>
                                 <td>{{treinamento.prova}}</td>
@@ -82,36 +82,38 @@
                         </div>
                         <div class="form-group">
                             <label for="statusTreinamento">Status Treinamento*</label>
-                            <input type="text" ngModel name="statusTreinamento" class="form-control" id="statusTreinamento" placeholder="Status Treinamento" required>
+                            <select class="form-control" id="statusTreinamento" required>
+                                <option *ngFor="let status of statusTreinamento" [value]="status">{{status}}</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="categoria">Categoria*</label>
                             <select class="form-control" id="categoria" required>
-                                <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+                                <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria.titulo}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="turma">Turma</label>
                             <select class="form-control" id="turma">
-                                <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
+                                <option *ngFor="let turma of turmas" [value]="turma">{{turma.titulo}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="convite">Convite</label>
                             <select class="form-control" id="convite">
-                                <option *ngFor="let convite of convites" [value]="convite">{{convite}}</option>
+                                <option *ngFor="let convite of convites" [value]="convite">{{convite.titulo}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="prova">Prova</label>
                             <select class="form-control" id="prova">
-                                <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                                <option *ngFor="let prova of provas" [value]="prova">{{prova.titulo}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="palestrantes">Palestrante(s)</label>
                             <select class="form-control" id="palestrantes" multiple data-mdb-filter="true">
-                                <option *ngFor="let palestrante of profissionais" [value]="palestrante">{{palestrante}}</option>
+                                <option *ngFor="let palestrante of profissionais" [value]="palestrante">{{palestrante.nomeCompleto}}</option>
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -149,36 +151,38 @@
                     </div>
                     <div class="form-group">
                         <label for="statusTreinamento">Status Treinamento*</label>
-                        <input type="text" ngModel="{{editTreinamento.statusTreinamento}}" name="statusTreinamento" class="form-control" id="statusTreinamento" placeholder="Status Treinamento" required>
+                        <select class="form-control" id="statusTreinamento" required>
+                            <option *ngFor="let status of statusTreinamento" [value]="status">{{status}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="categoria">Categoria*</label>
                         <select class="form-control" id="categoria" required>
-                            <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+                            <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria.titulo}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="turma">Turma</label>
                         <select class="form-control" id="turma">
-                            <option *ngFor="let turma of turmas" [value]="turma">{{turma}}</option>
+                            <option *ngFor="let turma of turmas" [value]="turma">{{turma.titulo}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="convite">Convite</label>
                         <select class="form-control" id="convite">
-                            <option *ngFor="let convite of convites" [value]="convite">{{convite}}</option>
+                            <option *ngFor="let convite of convites" [value]="convite">{{convite.titulo}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="prova">Prova</label>
                         <select class="form-control" id="prova">
-                            <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                            <option *ngFor="let prova of provas" [value]="prova">{{prova.titulo}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="palestrantes">Palestrante(s)</label>
                         <select class="form-control" id="palestrantes" multiple data-mdb-filter="true">
-                            <option *ngFor="let palestrante of profissionais" [value]="palestrante">{{palestrante}}</option>
+                            <option *ngFor="let palestrante of profissionais" [value]="palestrante">{{palestrante.nomeCompleto}}</option>
                         </select>
                     </div>
                 </form>

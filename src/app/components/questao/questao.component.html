@@ -31,10 +31,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let questao of questoes">
-                                <th scope="row" class="ps-4">
-                                    <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                                </th>
-                                <td>{{questao.Id}}</td>
+                                <td>{{questao.id}}</td>
                                 <td>{{questao.cabecalho}}</td>
                                 <td>{{questao.gabarito}}</td>
                                 <td>{{questao.provas}}</td>
@@ -78,7 +75,7 @@
                         <div class="form-group">
                             <label for="provas">Prova(s)</label>
                             <select class="form-control" id="provas" multiple data-mdb-filter="true">
-                                <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                                <option *ngFor="let prova of provas" [value]="prova">{{prova.titulo}}</option>
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -117,7 +114,7 @@
                     <div class="form-group">
                         <label for="provas">Prova(s)</label>
                         <select class="form-control" id="provas" multiple data-mdb-filter="true">
-                            <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                            <option *ngFor="let prova of provas" [value]="prova">{{prova.titulo}}</option>
                         </select>
                     </div>
                 </form>
@@ -141,7 +138,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <p>Você tem certeza que quer apagar a questão {{deleteQuestao.Id}}?</p>
+                <p>Você tem certeza que quer apagar a questão {{deleteQuestao.id}}?</p>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>

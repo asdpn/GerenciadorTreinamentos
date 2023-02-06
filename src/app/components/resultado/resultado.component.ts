@@ -4,8 +4,8 @@ import { NgForm } from '@angular/forms';
 import { StatusResultado } from '../../entities/enums/statusResultado.enum';
 import { Resultado } from '../../entities/resultado';
 import { ResultadoService } from '../../services/resultado.service';
-import { Certificado } from '../../entities/certificado';
-import { CertificadoService } from '../../services/certificado.service';
+//import { Certificado } from '../../entities/certificado';
+//import { CertificadoService } from '../../services/certificado.service';
 import { Prova } from '../../entities/prova';
 import { ProvaService } from '../../services/prova.service';
 import { Profissional } from 'src/app/entities/profissional';
@@ -19,7 +19,7 @@ import { ProfissionalService } from 'src/app/services/profissional.service';
 export class ResultadoComponent implements OnInit {
 
   public resultados: Resultado[] = [];
-  public certificados: Certificado[] = [];
+  //public certificados: Certificado[] = [];
   public provas: Prova[] = [];
   public profissionais: Profissional[] = [];  
   public statusResultados: StatusResultado[] = [StatusResultado.APROVADO, StatusResultado.CRIADO, StatusResultado.REPROVADO];
@@ -28,11 +28,13 @@ export class ResultadoComponent implements OnInit {
   public editResultado: Resultado = new Resultado();
   public deleteResultado: Resultado = new Resultado();
 
-  constructor(private ResultadoService: ResultadoService, private CertificadoService: CertificadoService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService){}
+  //constructor(private ResultadoService: ResultadoService, private CertificadoService: CertificadoService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService){}
+  constructor(private ResultadoService: ResultadoService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService){}
+
 
   ngOnInit(){
     this.getResultados();
-    this.getCertificados();
+    //this.getCertificados();
     this.getProvas();
     this.getProfissionais();
   }  
@@ -48,16 +50,16 @@ export class ResultadoComponent implements OnInit {
     )
   }
 
-  public getCertificados(): void {
-    this.CertificadoService.listCertificados().subscribe(
-      (response: Certificado[]) => {
-        this.certificados = response;
-      },
-      (error: HttpErrorResponse) =>{
-        alert(error.message);
-      }
-    )
-  }
+  //public getCertificados(): void {
+  //  this.CertificadoService.listCertificados().subscribe(
+  //    (response: Certificado[]) => {
+  //      this.certificados = response;
+  //    },
+  //    (error: HttpErrorResponse) =>{
+  //      alert(error.message);
+  //    }
+  //  )
+  //}
 
   public getProvas(): void {
     this.ProvaService.listProvas().subscribe(

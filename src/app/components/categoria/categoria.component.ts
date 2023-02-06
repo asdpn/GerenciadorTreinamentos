@@ -23,7 +23,7 @@ export class CategoriaComponent implements OnInit{
 
   ngOnInit(){
     this.getCategorias();
-    //this.getTreinamentos();
+    this.getTreinamentos();
   }  
 
   public getCategorias(): void {

@@ -27,18 +27,18 @@
                                 <th scope="col">Profissional</th>
                                 <th scope="col">Nota Obtida</th>
                                 <th scope="col">Status Resultado</th>
-                                <th scope="col">Certificado</th>
+                                <!--th scope="col">Certificado</th-->
                                 <th scope="col" style="width: 200px;">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let resultado of resultados">
                                 <td>{{resultado.titulo}}</td>
-                                <td>{{resultado.prova}}</td>
-                                <td>{{resultado.profissional}}</td>
+                                <td>{{resultado.prova.titulo}}</td>
+                                <td>{{resultado.profissional.nomeCompleto}}</td>
                                 <td>{{resultado.notaObtida}}</td>
                                 <td>{{resultado.statusResultado}}</td>
-                                <td>{{resultado.certificado}}</td>
+                                <!--td>{{resultado.certificado}}</td-->
                                 <td>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item">
@@ -75,13 +75,13 @@
                         <div class="form-group">
                             <label for="prova">Prova*</label>
                             <select class="form-control" id="prova" required>
-                                <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                                <option *ngFor="let prova of provas" [value]="prova">{{prova.titulo}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="profissional">Profissional*</label>
                             <select class="form-control" id="profissional" required>
-                                <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                                <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional.nomeCompleto}}</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -94,12 +94,12 @@
                                 <option *ngFor="let status of statusResultados" [value]="status">{{status}}</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <!--div class="form-group">
                             <label for="certificado">Certificado</label>
                             <select class="form-control" id="certificado">
-                                <option *ngFor="let certificado of certificados" [value]="certificado">{{certificado}}</option>
+                                <option *ngFor="let certificado of certificados" [value]="certificado">{{certificado.titulo}}</option>
                             </select>
-                        </div>
+                        </div-->
                         <div class="modal-footer">
                             <button type="button" id="close-add-Resultado-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
@@ -132,13 +132,13 @@
                     <div class="form-group">
                         <label for="prova">Prova*</label>
                         <select class="form-control" id="prova" required>
-                            <option *ngFor="let prova of provas" [value]="prova">{{prova}}</option>
+                            <option *ngFor="let prova of provas" [value]="prova">{{prova.titulo}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="profissional">Profissional*</label>
                         <select class="form-control" id="profissional" required>
-                            <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                            <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional.nomeCompleto}}</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -151,12 +151,12 @@
                             <option *ngFor="let status of statusResultados" [value]="status">{{status}}</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label for="certificado">Certificado</label>
                         <select class="form-control" id="certificado">
-                            <option *ngFor="let certificado of certificados" [value]="certificado">{{certificado}}</option>
+                            <option *ngFor="let certificado of certificados" [value]="certificado">{{certificado.titulo}}</option>
                         </select>
-                    </div>
+                    </div-->
                 </form>
             </div>
             <div class="modal-footer">

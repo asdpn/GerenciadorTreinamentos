@@ -83,24 +83,24 @@
                         <div class="form-group">
                             <label for="questoes">Questões</label>
                             <select class="form-control" id="questoes" multiple data-mdb-filter="true">
-                                <option *ngFor="let questao of questoes" [value]="questao">{{questao}}</option>
+                                <option *ngFor="let questao of questoes" [value]="questao">{{questao.id}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="treinamento">Treinamento*</label>
                             <select class="form-control" id="treinamento" required>
-                                <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                                <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento.titulo}}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="resultados">Resultados</label>
+                             <label for="resultados">Resultados</label>
                             <select class="form-control" id="resultados" multiple data-mdb-filter="true">
-                                <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
-                            </select>
+                                <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado.titulo}}</option>
+                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="close-add-Prova-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
+                                <button type="button" id="close-add-Prova-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -138,19 +138,19 @@
                     <div class="form-group">
                         <label for="questoes">Questões</label>
                         <select class="form-control" id="questoes" multiple data-mdb-filter="true">
-                            <option *ngFor="let questao of questoes" [value]="questao">{{questao}}</option>
+                            <option *ngFor="let questao of questoes" [value]="questao">{{questao.id}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="treinamento">Treinamento*</label>
                         <select class="form-control" id="treinamento" required>
-                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento}}</option>
+                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento.titulo}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="resultados">Resultados</label>
                         <select class="form-control" id="resultados">
-                            <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado}}</option>
+                            <option *ngFor="let resultado of resultados" [value]="resultado">{{resultado.titulo}}</option>
                         </select>
                     </div>
                 </form>
