@@ -41,6 +41,7 @@ public class Prova implements Serializable{
 			inverseJoinColumns = @JoinColumn(name = "id_questao"))
 	private List<Questao> questoes = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "id_treinamento")
 	@MapsId

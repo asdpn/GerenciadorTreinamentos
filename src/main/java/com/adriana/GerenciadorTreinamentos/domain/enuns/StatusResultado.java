@@ -2,38 +2,16 @@ package com.adriana.GerenciadorTreinamentos.domain.enuns;
 
 public enum StatusResultado {
 
-	 CRIADO(1, "Criado"),
-	 APROVADO(2, "Aprovado"),
-	 REPROVADO(3, "Reprovado");
-		
-		private Integer cod;
+	Criado("Criado"),
+	Aprovado("Aprovado"),
+	Reprovado("Reprovado");
+
 		private String descricao;
 		
-		private StatusResultado(Integer cod, String descricao) {
-			this.cod = cod;
+		private StatusResultado(String descricao) {
 			this.descricao = descricao;
 		}
 		
-		public static StatusResultado toEnum(Integer cod) {
-			if (cod == null) {
-				return null;
-			}
-			
-			for (StatusResultado stR : StatusResultado.values()) {
-				if (cod.equals(stR.getCod())) {
-					return stR;
-				}
-			}
-			
-			throw new IllegalArgumentException();
-		}
-		
-		public Integer getCod() {
-			return cod;
-		}
-		public void setCod(Integer cod) {
-			this.cod = cod;
-		}
 		public String getDescricao() {
 			return descricao;
 		}

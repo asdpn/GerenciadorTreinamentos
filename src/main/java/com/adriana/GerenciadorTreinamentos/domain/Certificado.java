@@ -26,6 +26,7 @@ public class Certificado implements Serializable{
 	@Column(nullable = false)
 	private StatusCertificado statusCertificado;
 	
+
 	@OneToOne
 	@JoinColumn(name = "id_resultado")
 	@MapsId

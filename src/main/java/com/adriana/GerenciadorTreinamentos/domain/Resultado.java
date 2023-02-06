@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.adriana.GerenciadorTreinamentos.domain.enuns.StatusResultado;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Resultado implements Serializable{
@@ -35,6 +36,7 @@ public class Resultado implements Serializable{
 	@Column(nullable = false)
 	private StatusResultado statusResultado;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "resultado")
 	private Certificado certificado;
 	

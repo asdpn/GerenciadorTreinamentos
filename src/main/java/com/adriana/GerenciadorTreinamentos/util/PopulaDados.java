@@ -68,20 +68,20 @@ public class PopulaDados {
 	TurmaRepository turmaRepository;	
 
 	
-	//@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
+	@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
 	public void cadastrar () throws ParseException {
 		
 		Categoria dev = new Categoria(null,"Desenvolvimento de Software","Treinamentos relacionados a Desenvolvimento de Software");
 		Categoria lid = new Categoria(null,"Liderança","Treinamentos relacionados a Liderança");
 		Categoria com = new Categoria(null,"Comunicação", "Treinamentos relacionados a Comunicação");
 		
-		Treinamento t1 = new Treinamento(null, "C++", "Básico de C++", null, dev, StatusTreinamento.AGENDADO, null,null,null);
-		Treinamento t2 = new Treinamento(null, ".NET", "Básico de .NET", null, dev, StatusTreinamento.CRIADO, null,null,null);
-		Treinamento t3 = new Treinamento(null, "Comunicação Não Violenta", "Básico de CNV", null, com, StatusTreinamento.FINALIZADO, null,null,null);
+		Treinamento t1 = new Treinamento(null, "C++", "Básico de C++", null, dev, StatusTreinamento.Agendado, null,null,null);
+		Treinamento t2 = new Treinamento(null, ".NET", "Básico de .NET", null, dev, StatusTreinamento.Criado, null,null,null);
+		Treinamento t3 = new Treinamento(null, "Comunicação Não Violenta", "Básico de CNV", null, com, StatusTreinamento.Finalizado, null,null,null);
 		
-		Funcao gerente = new Funcao(null, "Gerente","Cargo com permissão de Gerente",Permissao.GERENTE);
-		Funcao pales = new Funcao(null, "Palestrante","Cargo com permissão de Palestrante",Permissao.PALESTRANTE);
-		Funcao prof = new Funcao(null, "Profissional","Cargo com permissão de Profissional",Permissao.PROFISSIONAL);
+		Funcao gerente = new Funcao(null, "Gerente","Cargo com permissão de Gerente",Permissao.Gerente);
+		Funcao pales = new Funcao(null, "Palestrante","Cargo com permissão de Palestrante",Permissao.Palestrante);
+		Funcao prof = new Funcao(null, "Profissional","Cargo com permissão de Profissional",Permissao.Profissional);
 		
 		Profissional gerenteTreinamento = new Profissional(null, "Adriana Sodré", "91234 5678", "Radix", "adriana@teste.com", "adrianaspdn", "123456", gerente);
 		Profissional palestrante = new Profissional(null, "Adriana Palestrante", "91234 5678", "Radix", "adrianaPalestrante@teste.com", "adrianaspdn_pales", "123456", pales);
@@ -91,14 +91,14 @@ public class PopulaDados {
 		Prova p2 = new Prova(null, "Prova 2", 10.0, 7.0, t2);
 		Prova p3 = new Prova(null, "Prova 3", 10.0, 7.0, t3);
 		
-		Certificado cert1 =  new Certificado(null, "Certificado 1", StatusCertificado.CRIADO, null);
-		Certificado cert2 =  new Certificado(null, "Certificado 2", StatusCertificado.ENVIADO, null);
-		Certificado cert3 =  new Certificado(null, "Certificado 3", StatusCertificado.VALIDADO, null);
+		Certificado cert1 =  new Certificado(null, "Certificado 1", StatusCertificado.Criado, null);
+		Certificado cert2 =  new Certificado(null, "Certificado 2", StatusCertificado.Enviado, null);
+		Certificado cert3 =  new Certificado(null, "Certificado 3", StatusCertificado.Validado, null);
 		
 		
-		Resultado r1 = new Resultado(null, "Resultado 1", 4.5, StatusResultado.CRIADO, cert1, gerenteTreinamento, p1);
-		Resultado r2 = new Resultado(null, "Resultado 2", 8.5, StatusResultado.CRIADO, cert2, palestrante, p2);
-		Resultado r3 = new Resultado(null, "Resultado 3", 10.5, StatusResultado.CRIADO, cert3, profissional, p3);
+		Resultado r1 = new Resultado(null, "Resultado 1", 4.5, StatusResultado.Criado, cert1, gerenteTreinamento, p1);
+		Resultado r2 = new Resultado(null, "Resultado 2", 8.5, StatusResultado.Criado, cert2, palestrante, p2);
+		Resultado r3 = new Resultado(null, "Resultado 3", 10.5, StatusResultado.Criado, cert3, profissional, p3);
 		
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");		

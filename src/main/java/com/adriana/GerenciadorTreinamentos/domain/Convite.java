@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Convite implements Serializable{
 
@@ -28,6 +30,7 @@ public class Convite implements Serializable{
 	@Column(nullable = false)
 	private Date dataHora;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "id_treinamento")
 	@MapsId
