@@ -14,7 +14,7 @@ public class WebConfig
 			return new WebMvcConfigurer() {
 				@Override
 				public void addCorsMappings(CorsRegistry registry) {
-					registry.addMapping("/**").allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS").allowedOrigins("http://localhost:4200","https://gerenciador-treinamentos.herokuapp.com");
+					registry.addMapping("/**").allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS").allowedOrigins("https://gerenciador-treinamentos.herokuapp.com");
 				}
 		};
 	}
