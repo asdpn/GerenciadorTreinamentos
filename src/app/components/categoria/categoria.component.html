@@ -9,7 +9,7 @@
                     name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar categorias..." required>
             </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" *ngIf="isGerente">
             <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
                 <a (click)="onOpenModal(addCategoria, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
             </div>
@@ -34,11 +34,11 @@
                                 <td>{{categoria.descricao}}</td>
                                 <td>{{categoria.treinamentos}}</td>
                                 <td>
-                                    <ul class="list-inline mb-0">
+                                    <ul class="list-inline mb-0" *ngIf="isGerente">
                                         <li class="list-inline-item">
                                             <a (click)="onOpenModal(categoria, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
                                         </li>
-                                        <li class="list-inline-item">
+                                        <li class="list-inline-item" *ngIf="isGerente">
                                             <a (click)="onOpenModal(categoria, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
                                         </li>
                                     </ul>
@@ -72,8 +72,8 @@
                         </div>
                         <div class="form-group">
                             <label for="treinamento">Treinamentos</label>
-                            <select class="form-control" id="treinamento" multiple data-mdb-filter="true">
-                                <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento.titulo}}</option>
+                            <select ngModel name="treinamento" class="form-control" id="treinamento" multiple data-mdb-filter="true">
+                                <option *ngFor="let treinamento of treinamentos" [ngValue]="treinamento">{{treinamento.titulo}}</option>
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -112,8 +112,8 @@
                     </div>
                     <div class="form-group">
                         <label for="treinamento">Treinamentos</label>
-                        <select class="form-control" id="treinamento" multiple data-mdb-filter="true">
-                            <option *ngFor="let treinamento of treinamentos" [value]="treinamento">{{treinamento.titulo}}</option>
+                        <select ngModel name="treinamento" class="form-control" id="treinamento" multiple data-mdb-filter="true">
+                            <option *ngFor="let treinamento of treinamentos" [ngValue]="treinamento">{{treinamento.titulo}}</option>
                         </select>
                     </div>
                 </form>

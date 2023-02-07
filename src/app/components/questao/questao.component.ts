@@ -5,6 +5,7 @@ import { Questao } from '../../entities/questao';
 import { QuestaoService } from '../../services/questao.service';
 import { ProvaService } from '../../services/prova.service';
 import { Prova } from 'src/app/entities/prova';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-questao',
@@ -19,8 +20,14 @@ export class QuestaoComponent implements OnInit{
   public addQuestao: Questao = new Questao();
   public editQuestao: Questao = new Questao();
   public deleteQuestao: Questao = new Questao();
+  public isGerente = false;
+  public isPalestrante = false;
 
-  constructor(private QuestaoService: QuestaoService,private ProvaService: ProvaService){}
+  constructor(private QuestaoService: QuestaoService,private ProvaService: ProvaService, private athenticationService: AuthenticationService){
+    this.isGerente = this.athenticationService.isGerente;
+    this.isPalestrante = this.athenticationService.isPalestrante;
+  }
+
 
   ngOnInit(){
     this.getQuestoes();

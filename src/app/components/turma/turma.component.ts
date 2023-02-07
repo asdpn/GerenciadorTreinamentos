@@ -7,6 +7,7 @@ import { Profissional } from '../../entities/profissional';
 import { ProfissionalService } from '../../services/profissional.service';
 import { Treinamento } from 'src/app/entities/treinamento';
 import { TreinamentoService } from 'src/app/services/treinamento.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-turma',
@@ -23,9 +24,12 @@ export class TurmaComponent  implements OnInit {
   public addTurma: Turma = new Turma();
   public editTurma: Turma = new Turma();
   public deleteTurma: Turma = new Turma();
+  public isGerente = false;
 
-  constructor(private TurmaService: TurmaService, private TreinamentoService: TreinamentoService, private ProfissionalService: ProfissionalService){}
+  constructor(private TurmaService: TurmaService, private TreinamentoService: TreinamentoService, private ProfissionalService: ProfissionalService, private athenticationService: AuthenticationService){
 
+    this.isGerente = this.athenticationService.isGerente;
+  }
   ngOnInit(){
     this.getTurmas();
     this.getTreinamentos();

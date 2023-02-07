@@ -13,6 +13,7 @@ import { TurmaService } from 'src/app/services/turma.service';
 import { Turma } from 'src/app/entities/turma';
 import { FuncaoService } from 'src/app/services/funcao.service';
 import { Funcao } from 'src/app/entities/funcao';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-profissional',
@@ -26,13 +27,15 @@ export class ProfissionalComponent implements OnInit{
   public turmas: Turma[] = [];
   public resultados: Resultado[] = [];
   public funcoes: Funcao[] = [];
-
+  public isGerente = false;
 
   public addProfissional: Profissional = new Profissional();
   public editProfissional: Profissional = new Profissional();
   public deleteProfissional: Profissional = new Profissional();
 
-  constructor(private ProfissionalService: ProfissionalService, private TreinamentoService: TreinamentoService, private TurmaService: TurmaService, private ResultadoService: ResultadoService, private FuncaoService: FuncaoService){}
+  constructor(private ProfissionalService: ProfissionalService, private TreinamentoService: TreinamentoService, private TurmaService: TurmaService, private ResultadoService: ResultadoService, private FuncaoService: FuncaoService, private athenticationService: AuthenticationService){
+    this.isGerente = this.athenticationService.isGerente;
+  }
 
   ngOnInit(){
     this.getProfissionais();

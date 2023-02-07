@@ -10,6 +10,7 @@ import { Prova } from '../../entities/prova';
 import { ProvaService } from '../../services/prova.service';
 import { Profissional } from 'src/app/entities/profissional';
 import { ProfissionalService } from 'src/app/services/profissional.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-resultado',
@@ -19,7 +20,6 @@ import { ProfissionalService } from 'src/app/services/profissional.service';
 export class ResultadoComponent implements OnInit {
 
   public resultados: Resultado[] = [];
-  //public certificados: Certificado[] = [];
   public provas: Prova[] = [];
   public profissionais: Profissional[] = [];  
   public statusResultados: StatusResultado[] = [StatusResultado.APROVADO, StatusResultado.CRIADO, StatusResultado.REPROVADO];
@@ -27,14 +27,17 @@ export class ResultadoComponent implements OnInit {
   public addResultado: Resultado = new Resultado();
   public editResultado: Resultado = new Resultado();
   public deleteResultado: Resultado = new Resultado();
+  public isGerente = false;
+  public isPalestrante = false;
 
-  //constructor(private ResultadoService: ResultadoService, private CertificadoService: CertificadoService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService){}
-  constructor(private ResultadoService: ResultadoService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService){}
+  constructor(private ResultadoService: ResultadoService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService, private athenticationService: AuthenticationService){
+    this.isGerente = this.athenticationService.isGerente;
+    this.isPalestrante = this.athenticationService.isPalestrante;
+  }
 
 
   ngOnInit(){
     this.getResultados();
-    //this.getCertificados();
     this.getProvas();
     this.getProfissionais();
   }  
@@ -49,17 +52,6 @@ export class ResultadoComponent implements OnInit {
       }
     )
   }
-
-  //public getCertificados(): void {
-  //  this.CertificadoService.listCertificados().subscribe(
-  //    (response: Certificado[]) => {
-  //      this.certificados = response;
-  //    },
-  //    (error: HttpErrorResponse) =>{
-  //      alert(error.message);
-  //    }
-  //  )
-  //}
 
   public getProvas(): void {
     this.ProvaService.listProvas().subscribe(

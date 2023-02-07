@@ -1,5 +1,5 @@
 export enum Permissao{
-    GERENTE = "Gerente de Treinamentos",
+    GERENTE = "Gerente",
     PALESTRANTE = "Palestrante",
     PROFISSIONAL = "Profissional"
 }

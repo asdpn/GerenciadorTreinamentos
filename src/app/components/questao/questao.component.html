@@ -9,7 +9,7 @@
                     name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Funções..." required>
             </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" *ngIf="isGerente || isPalestrante">
             <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
                 <a (click)="onOpenModal(addQuestao, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
             </div>
@@ -36,11 +36,11 @@
                                 <td>{{questao.gabarito}}</td>
                                 <td>{{questao.provas}}</td>
                                 <td>
-                                    <ul class="list-inline mb-0">
+                                    <ul class="list-inline mb-0" *ngIf="isGerente || isPalestrante">
                                         <li class="list-inline-item">
                                             <a (click)="onOpenModal(questao, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
                                         </li>
-                                        <li class="list-inline-item">
+                                        <li class="list-inline-item" *ngIf="isGerente || isPalestrante">
                                             <a (click)="onOpenModal(questao, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
                                         </li>
                                     </ul>

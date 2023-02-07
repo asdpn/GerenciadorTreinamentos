@@ -9,7 +9,7 @@
                     name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar Funções..." required>
             </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" *ngIf="isGerente">
             <div class="d-flex align-items-center justify-content-end" style="padding-top:10px">
                 <a (click)="onOpenModal(addFuncao, 'add')" class="btn btn-primary" style="background-color:#343a40;color:white;border-color:#343a40;"><i class="bx bx-plus me-1"></i>Adicionar</a>
             </div>
@@ -36,11 +36,11 @@
                                 <td>{{funcao.permissao}}</td>
                                 <td>{{funcao.profissionais}}</td>
                                 <td>
-                                    <ul class="list-inline mb-0">
+                                    <ul class="list-inline mb-0" *ngIf="isGerente">
                                         <li class="list-inline-item">
                                             <a (click)="onOpenModal(funcao, 'edit')" data-placement="top" data-original-title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
                                         </li>
-                                        <li class="list-inline-item">
+                                        <li class="list-inline-item" *ngIf="isGerente">
                                             <a (click)="onOpenModal(funcao, 'delete')" data-placement="top" data-original-title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
                                         </li>
                                     </ul>
@@ -74,17 +74,17 @@
                         </div>
                         <div class="form-group">
                             <label for="permissao">Permissão*</label>
-                            <select class="form-control" id="permissao" required>
-                                <option *ngFor="let permissao of permissoes" [value]="permissao">{{permissao}}</option>
+                            <select ngModel name="permissao" class="form-control" id="permissao" required>
+                                <option *ngFor="let permissao of permissoes" [ngValue]="permissao">{{permissao}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="profissionais">Profissionais</label>
-                            <select class="form-control" id="profissionais" multiple data-mdb-filter="true">
-                                <option *ngFor="let profissional of profissionais" [value]="profissional">{{profissional}}</option>
+                            <select ngModel name="profissionais" class="form-control" id="profissionais" multiple data-mdb-filter="true">
+                                <option *ngFor="let profissional of profissionais" [ngValue]="profissional">{{profissional.nomeCompleto}}</option>
                             </select>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer">  
                             <button type="button" id="close-add-Funcao-form" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Salvar</button>
                         </div>
@@ -119,13 +119,15 @@
                     </div>
                     <div class="form-group">
                         <label for="permissao">Permissão*</label>
-                        <select class="form-control" id="permissao" required>
-                            <option *ngFor="let permissao of permissoes" [value]="permissao">{{permissao}}</option>
+                        <select ngModel name="permissao" class="form-control" id="permissao" required>
+                            <option *ngFor="let permissao of permissoes" [ngValue]="permissao">{{permissao}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="profissionais">Profissionais</label>
-                        <input type="text" ngModel="{{editFuncao.profissionais}}" name="profissionais" class="form-control" id="profissionais" placeholder="Profissionais">
+                        <select ngModel name="profissionais" class="form-control" id="profissionais" multiple data-mdb-filter="true">
+                            <option *ngFor="let profissional of profissionais" [ngValue]="profissional">{{profissional.nomeCompleto}}</option>
+                        </select>
                     </div>
                 </form>
             </div>

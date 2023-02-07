@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Treinamento } from 'src/app/entities/treinamento';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TreinamentoService } from 'src/app/services/treinamento.service';
 import { Convite } from '../../entities/convite';
 import { ConviteService } from '../../services/convite.service';
@@ -19,8 +20,11 @@ export class ConviteComponent implements OnInit{
   public addConvite: Convite = new Convite();
   public editConvite: Convite = new Convite();
   public deleteConvite: Convite = new Convite();
+  public isGerente = false;
 
-  constructor(private ConviteService: ConviteService, private TreinamentoService : TreinamentoService){}
+  constructor(private ConviteService: ConviteService, private TreinamentoService : TreinamentoService, private athenticationService: AuthenticationService){
+    this.isGerente = this.athenticationService.isGerente;
+  }
 
   ngOnInit(){
     this.getConvites();

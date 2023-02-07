@@ -5,6 +5,7 @@ import { Categoria } from '../../entities/categoria';
 import { CategoriaService } from '../../services/categoria.service';
 import { Treinamento } from '../../entities/treinamento';
 import { TreinamentoService } from '../../services/treinamento.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-categoria',
@@ -18,8 +19,11 @@ export class CategoriaComponent implements OnInit{
   public addCategoria: Categoria = new Categoria();
   public editCategoria: Categoria = new Categoria();
   public deleteCategoria: Categoria = new Categoria();
+  public isGerente = false;
 
-  constructor(private categoriaService: CategoriaService, private TreinamentoService: TreinamentoService){}
+  constructor(private categoriaService: CategoriaService, private TreinamentoService: TreinamentoService, private athenticationService: AuthenticationService){
+     this.isGerente = this.athenticationService.isGerente;
+  }
 
   ngOnInit(){
     this.getCategorias();

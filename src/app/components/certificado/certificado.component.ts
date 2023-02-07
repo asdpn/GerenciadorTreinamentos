@@ -6,6 +6,7 @@ import { Certificado } from '../../entities/certificado';
 import { CertificadoService } from '../../services/certificado.service';
 import { ResultadoService } from '../../services/resultado.service';
 import { Resultado } from 'src/app/entities/resultado';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-certificado',
@@ -22,8 +23,11 @@ export class CertificadoComponent implements OnInit{
   public addCertificado: Certificado = new Certificado();
   public editCertificado: Certificado = new Certificado();
   public deleteCertificado: Certificado = new Certificado();
+  public isGerente = false;
 
-  constructor(private CertificadoService: CertificadoService, private ResultadoService: ResultadoService){}
+  constructor(private CertificadoService: CertificadoService, private ResultadoService: ResultadoService, private athenticationService: AuthenticationService){
+    this.isGerente = this.athenticationService.isGerente;
+  }
 
   ngOnInit(){
     this.getCertificados();

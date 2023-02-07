@@ -16,18 +16,6 @@ export class AppComponent {
        this.authenticationService.profissional;
    }
 
-   get isGerente() {
-       return this.profissional && this.profissional.funcao?.permissao === Permissao.GERENTE;
-   }
-
-   get isProfissional() {
-    return this.profissional && this.profissional.funcao?.permissao === Permissao.PROFISSIONAL;
-    }
-
-    get isPalestrante() {
-        return this.profissional && this.profissional.funcao?.permissao === Permissao.PALESTRANTE;
-    }
-
    logout() {
        this.authenticationService.logout();
    }

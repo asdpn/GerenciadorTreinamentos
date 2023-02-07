@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Permissao } from 'src/app/entities/enums/permissao.enum';
 import { Profissional } from 'src/app/entities/profissional';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProfissionalService } from 'src/app/services/profissional.service';
 import { Funcao } from '../../entities/funcao';
 import { FuncaoService } from '../../services/funcao.service';
@@ -21,8 +22,11 @@ export class FuncaoComponent implements OnInit{
   public addFuncao: Funcao = new Funcao();
   public editFuncao: Funcao = new Funcao();
   public deleteFuncao: Funcao = new Funcao();
+  public isGerente = false;
 
-  constructor(private FuncaoService: FuncaoService, private ProfissionalService: ProfissionalService){}
+  constructor(private FuncaoService: FuncaoService, private ProfissionalService: ProfissionalService, private athenticationService: AuthenticationService){
+    this.isGerente = this.athenticationService.isGerente;
+  }
 
   ngOnInit(){
     this.getFuncoes();

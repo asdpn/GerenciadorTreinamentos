@@ -14,6 +14,7 @@ import { Prova } from 'src/app/entities/prova';
 import { ProvaService } from 'src/app/services/prova.service';
 import { Profissional } from '../../entities/profissional';
 import { ProfissionalService } from '../../services/profissional.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-treinamento',
@@ -34,9 +35,11 @@ export class TreinamentoComponent implements OnInit{
   public addTreinamento: Treinamento = new Treinamento();
   public editTreinamento: Treinamento = new Treinamento();
   public deleteTreinamento: Treinamento = new Treinamento();
+  public isGerente = false;
 
-  constructor(private TreinamentoService: TreinamentoService, private categoriaService: CategoriaService, private TurmaService: TurmaService, private ConviteService: ConviteService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService){}
-
+  constructor(private TreinamentoService: TreinamentoService, private categoriaService: CategoriaService, private TurmaService: TurmaService, private ConviteService: ConviteService, private ProvaService: ProvaService, private ProfissionalService: ProfissionalService, private athenticationService: AuthenticationService){
+    this.isGerente = this.athenticationService.isGerente;
+  }
   ngOnInit(){
     this.getTreinamentos();
     this.getCategorias();
