@@ -1,0 +1,14 @@
+Perfis para entrar no sistema:
+
+GERENTE DE TREINAMENTOS:
+EMAIL: adriana@teste.com
+SENHA: 123456
+
+PALESTRANTE:
+EMAIL: adrianaPalestrante@teste.com
+SENHA: 123456
+
+PROFISSIONAL:
+EMAIL: adrianaProf@teste.com
+SENHA: 123456
+
