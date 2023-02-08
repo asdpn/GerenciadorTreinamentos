@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.adriana.GerenciadorTreinamentos.GerenciadorTreinamentosApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.168 s - in com.adriana.GerenciadorTreinamentos.GerenciadorTreinamentosApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.086 s - in com.adriana.GerenciadorTreinamentos.GerenciadorTreinamentosApplicationTests

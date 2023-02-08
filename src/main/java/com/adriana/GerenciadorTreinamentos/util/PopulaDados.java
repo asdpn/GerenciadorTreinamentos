@@ -68,7 +68,7 @@ public class PopulaDados {
 	TurmaRepository turmaRepository;	
 
 	
-	@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
+	//@PostConstruct //Comentar isso quando mudar pro banco de dados Postgre
 	public void cadastrar () throws ParseException {
 		
 		Categoria dev = new Categoria(null,"Desenvolvimento de Software","Treinamentos relacionados a Desenvolvimento de Software");
